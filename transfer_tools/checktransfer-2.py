@@ -23,7 +23,7 @@ def checkf(command_temp):
     	tmpchk = 0
     
     # check if two files are of the same size
-    if (check1[14]!=tmpchk)&&(len(check1)!=len(check2)):
+    if check1[14]!=tmpchk:
     	good_set=False
     	print "ERROR"
     	for i in range(len(check2)):
@@ -35,13 +35,13 @@ def checkf(command_temp):
 p=commands.getstatusoutput("./mkfiletransfer.py")
 output_lines = p[1].split("\n")
 
-print "\n>>>>>>  Checking consistency of transferred files...\n"
+print "\n>>>>>>  Checking consistency of transferred files..."
 
 for line in range(1,len(output_lines)):
 	checkf(output_lines[line])
 
 if good_set==True:
-	print "\n >>>>>>  The dataset was transferred fully (congrats!)"
+	print "\n>>>>>>  The dataset was transferred fully (CONGRATS!) \n"
 elif good_set==False:
-	print "\n >>>>>>  There was an error with the transferred dataset"
+	print "\n>>>>>>  There was an error with the transferred dataset"
 	print bad_files
