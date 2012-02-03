@@ -1,0 +1,1359 @@
+{
+  "Dataset" : "HTRun2011AB",
+  "Configuration" :
+  {
+    "Common.AlphaT.CalcWithEt" : 1,
+    "Common.ApplyXCleaning" : 1,
+    "Common.Electrons.ApplyID" : 1,
+    "Common.Electrons.CombIsoCut" : 0.15,
+    "Common.Electrons.EtaCut" : 2.5,
+    "Common.Electrons.PtCut" : 10,
+    "Common.Electrons.RequireLooseForOdd" : 1,
+    "Common.Electrons.TightID" : 0,
+    "Common.Electrons.TrkIsoCut" : -1,
+    "Common.Jets.ApplyID" : 1,
+    "Common.Jets.EtaCut" : 3,
+    "Common.Jets.PtCut" : 50,
+    "Common.Jets.TightID" : 0,
+    "Common.Muons.ApplyID" : 1,
+    "Common.Muons.CombIsoCut" : 0.15,
+    "Common.Muons.EtaCut" : 2.5,
+    "Common.Muons.PtCut" : 10,
+    "Common.Muons.RequireLooseForOdd" : 1,
+    "Common.Muons.TightID" : 1,
+    "Common.Muons.TrkIsoCut" : -1,
+    "Common.Photons.EcalIsoCut" : 4,
+    "Common.Photons.EcalIsoRel" : 0,
+    "Common.Photons.EtCut" : 25,
+    "Common.Photons.EtaEBMaxCut" : 1.479,
+    "Common.Photons.EtaEEMaxCut" : 2.5,
+    "Common.Photons.EtaEEMinCut" : 1.525,
+    "Common.Photons.HadOverEmCut" : 0.05,
+    "Common.Photons.HcalIsoCut" : 2,
+    "Common.Photons.HcalIsoRel" : 0,
+    "Common.Photons.IDReq" : 3,
+    "Common.Photons.R9Cut" : 0,
+    "Common.Photons.RequireLooseForOdd" : 1,
+    "Common.Photons.SigIhIhEBCut" : 0.015,
+    "Common.Photons.SigIhIhEECut" : 0.035,
+    "Common.Photons.TrackIsoCut" : 2,
+    "Common.Photons.TrackIsoRel" : 0,
+    "Common.Photons.UseID" : 1,
+    "Common.Taus.ApplyID" : 1,
+    "Common.Taus.ElecClean" : 0,
+    "Common.Taus.EtaCut" : 2.5,
+    "Common.Taus.JetClean" : 0,
+    "Common.Taus.MuonClean" : 0,
+    "Common.Taus.PtCut" : 20,
+    "Common.Taus.TightID" : 0,
+    "Gen.Electrons.EtaCut" : 999,
+    "Gen.Electrons.PtCut" : -1,
+    "Gen.Muons.EtaCut" : 999,
+    "Gen.Muons.PtCut" : -1,
+    "LogFileFormat" : "JSON",
+    "NT7.GenMatch.ElecPzLTReqForMatch" : 998,
+    "NT7.GenMatch.JetEtaLTReq" : 100,
+    "NT7.GenMatch.MuonPzLTReqForMatch" : 998,
+    "NT7.JetCorrType" : "MC",
+    "NT7.Smear.IsJetSmeared" : 0,
+    "NT7.Smear.SmearJetFactor" : 0,
+    "NT7.Smear.SmearJetNonGaussNorm" : 0,
+    "NT7.Smear.SmearJetRespFuncFileName" : "./Response.root",
+    "NT7.Smear.SmearJetType" : "pT",
+    "NT7.Xclean.ElecCcAssocElecReq" : 0,
+    "NT7.Xclean.JetCcAssocJetReq" : 0,
+    "NT7.Xclean.MuonCcAssocMuonReq" : 0,
+    "NT7.Xclean.PhotCcAssocPhotReq" : 0,
+    "Ntuple.Electrons.LooseID" : "EIDLoose",
+    "Ntuple.Electrons.Prefix" : "electron",
+    "Ntuple.Electrons.Suffix" : "Pat",
+    "Ntuple.Electrons.TightID" : "EIDTight",
+    "Ntuple.Jets.Prefix" : "ak5Jet",
+    "Ntuple.Jets.Suffix" : "Pat",
+    "Ntuple.Jets.Uncorrected" : 0,
+    "Ntuple.Muons.LooseID" : "IsGlobalMuon",
+    "Ntuple.Muons.Prefix" : "muon",
+    "Ntuple.Muons.Suffix" : "Pat",
+    "Ntuple.Muons.TightID" : "IDGlobalMuonPromptTight",
+    "Ntuple.Photons.Prefix" : "photon",
+    "Ntuple.Photons.Suffix" : "Pat",
+    "Ntuple.SecJets.Prefix" : "ak5JetPF2PAT",
+    "Ntuple.SecJets.Suffix" : "Pat",
+    "Ntuple.SecJets.Uncorrected" : 0,
+    "Ntuple.SecMuons.Prefix" : "muon",
+    "Ntuple.SecMuons.Suffix" : "PF",
+    "Ntuple.SecTaus.Prefix" : "tauHPS",
+    "Ntuple.SecTaus.Suffix" : "PF",
+    "Ntuple.Taus.LooseID" : "TauIdbyTaNCfrOnePercent",
+    "Ntuple.Taus.Prefix" : "tau",
+    "Ntuple.Taus.Suffix" : "Pat",
+    "Ntuple.Taus.TightID" : "TauIdbyTaNCfrTenthPercent",
+    "Ntuple.TerJets.Prefix" : "ak5JetJPT",
+    "Ntuple.TerJets.Suffix" : "Pat",
+    "Ntuple.TerJets.Uncorrected" : 0,
+    "Ntuple.Weight" : "User",
+    "XCleaning.ElectronJet" : 1,
+    "XCleaning.Electrons.CombIsoCut" : 0.15,
+    "XCleaning.Electrons.ElectronIsoTypePtCutoff" : 0,
+    "XCleaning.Electrons.ElectronJetDeltaR" : 0.5,
+    "XCleaning.Electrons.ElectronLooseIdRequired" : 1,
+    "XCleaning.Electrons.ElectronTightIdRequired" : 0,
+    "XCleaning.Electrons.EtaCut" : 2.5,
+    "XCleaning.Electrons.PtCut" : 10,
+    "XCleaning.Electrons.RequireLooseIdForInitialFilter" : 0,
+    "XCleaning.Electrons.TrkIsoCut" : -1,
+    "XCleaning.Jets.EtaCut" : 10,
+    "XCleaning.Jets.PtCut" : 10,
+    "XCleaning.MuonJet" : 1,
+    "XCleaning.Muons.CombIsoCut" : 0.15,
+    "XCleaning.Muons.EtaCut" : 2.5,
+    "XCleaning.Muons.ModifyJetEnergy" : 1,
+    "XCleaning.Muons.MuonIsoTypePtCutoff" : 0,
+    "XCleaning.Muons.MuonJetDeltaR" : 0.5,
+    "XCleaning.Muons.PtCut" : 10,
+    "XCleaning.Muons.RequireLooseIdForInitialFilter" : 0,
+    "XCleaning.Muons.TrkIsoCut" : -1,
+    "XCleaning.PhotonJet" : 1,
+    "XCleaning.Photons.CaloIsoCut" : 0.2,
+    "XCleaning.Photons.EtCut" : 25,
+    "XCleaning.Photons.EtaCut" : 2.5,
+    "XCleaning.Photons.EtaEBMaxCut" : 1.479,
+    "XCleaning.Photons.EtaEEMaxCut" : 2.5,
+    "XCleaning.Photons.EtaEEMinCut" : 1.525,
+    "XCleaning.Photons.IDReq" : 3,
+    "XCleaning.Photons.PhotonIsoTypePtCutoff" : 30,
+    "XCleaning.Photons.PhotonJetDeltaR" : 0.5,
+    "XCleaning.Photons.TrkIsoCut" : 2,
+    "XCleaning.Photons.UseID" : 1,
+    "XCleaning.ResolveConflicts" : 1,
+    "XCleaning.TauJet" : 0,
+    "XCleaning.Verbose" : 0
+  },
+  "Dataset Configuration" :
+  {
+    "CrossSection" : 1,
+    "File" : "",
+    "FileList" : [ "root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1046_2_tSP.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1047_2_uSs.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1048_2_0s4.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1049_2_5Yc.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_104_1_lvb.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1050_2_gVA.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1051_2_ZvL.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1052_2_82Q.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1053_2_jme.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1054_2_iFM.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1055_2_bEQ.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1056_2_5ay.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1057_2_BJu.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1058_2_XIV.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1059_1_BSw.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_105_0_x6A.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1060_1_5Q0.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1061_2_PDR.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1062_2_olw.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1063_2_pLE.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1064_2_8wd.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1065_2_OT5.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1066_2_9Do.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1067_2_LKg.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1068_1_arb.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1069_1_kCg.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_106_1_IoP.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1070_1_Wzh.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1071_2_Gww.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1072_1_7cJ.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1073_2_2ym.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1074_2_UzN.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1075_2_5qC.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1076_2_2Fr.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1077_2_d0W.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1078_2_iIm.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1079_2_5PK.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_107_0_na7.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1080_1_1uI.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1081_2_tZX.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1082_1_lCy.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1083_2_HYO.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1084_2_U8h.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1085_2_zQK.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1086_1_AAe.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1087_2_Qls.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1088_2_w6u.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1089_2_Fgl.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_108_1_8nP.root , root://xrootd.grid.hep.ph.ic.ac.uk//store/user/henning/ICF/automated/2011_11_11_14_03_49/HT.Run2011A-May10ReReco-v1.AOD/SusyCAF_Tree_1090_2_Chb.root" ],
+    "FirstEntry" : 0,
+    "JsonFile" : "../results_31_Jan_16/Data//AK5Calo_HTRun2011AB_2.json",
+    "LastEntry" : 0,
+    "LogFile" : "../results_31_Jan_16/Data//AK5Calo_HTRun2011AB_2.log",
+    "Name" : "HTRun2011AB",
+    "NtupleFormat" : "ICF",
+    "NtupleVersion" : 3,
+    "OutputFile" : "../results_31_Jan_16/Data//AK5Calo_HTRun2011AB_2.root",
+    "Reweight" : -1,
+    "Weight" : 1
+  },
+  "Weighting" : "Event weights will be set to constant value: 1.",
+  "Number of Events Processed" : 367756,
+  "Cut Flow" : 
+  {
+    "Tree Name" : "Data",
+    "JSON Filter: " : 
+    {
+      "efficiency" : 1,
+      "T" : 367756,
+      "eT" : 606.429,
+      "F" : 0,
+      "eF" : 0,
+      "MultiTrigger:   HLT_HT250_AlphaT0p53_v2  HLT_HT250_AlphaT0p53_v3  HLT_HT250_AlphaT0p53_v4  HLT_HT250_AlphaT0p53_v5  HLT_HT250_AlphaT0p53_v6  HLT_HT250_AlphaT0p54_v2  HLT_HT250_AlphaT0p54_v3  HLT_HT250_AlphaT0p54_v4  HLT_HT250_AlphaT0p55_v1  HLT_HT250_AlphaT0p62_v1  HLT_HT250_AlphaT0p62_v2" : 
+      {
+        "efficiency" : 0.00501691,
+        "T" : 1845,
+        "eT" : 42.9535,
+        "F" : 365911,
+        "eF" : 604.906,
+        "CommonMHTCut (make a cut on the Pt of vector sum of RecoCommonJets) " : 
+        {
+          "efficiency" : 0.385908,
+          "T" : 712,
+          "eT" : 26.6833,
+          "F" : 1133,
+          "eF" : 33.6601,
+          "Check if an event failed noise filtering criteria" : 
+          {
+            "efficiency" : 0.941011,
+            "T" : 670,
+            "eT" : 25.8844,
+            "F" : 42,
+            "eF" : 6.48074,
+            "Check if an event failed Good event selection" : 
+            {
+              "efficiency" : 1,
+              "T" : 670,
+              "eT" : 25.8844,
+              "F" : 0,
+              "eF" : 0,
+              "Veto Events with sum of cleaned rechits above 30 GeV " : 
+              {
+                "efficiency" : 0.968657,
+                "T" : 649,
+                "eT" : 25.4755,
+                "F" : 21,
+                "eF" : 4.58258,
+                " first Jet Eta < 2.5 rad): " : 
+                {
+                  "efficiency" : 0.975347,
+                  "T" : 633,
+                  "eT" : 25.1595,
+                  "F" : 16,
+                  "eF" : 4,
+                  "Second jet Pt > 100 GeV: " : 
+                  {
+                    "efficiency" : 0.491311,
+                    "T" : 311,
+                    "eT" : 17.6352,
+                    "F" : 322,
+                    "eF" : 17.9444,
+                    "Check if a jet failed loose quality criteria" : 
+                    {
+                      "efficiency" : 0.823151,
+                      "T" : 256,
+                      "eT" : 16,
+                      "F" : 55,
+                      "eF" : 7.4162,
+                      "Bad muon in a Jet" : 
+                      {
+                        "efficiency" : 0.980469,
+                        "T" : 251,
+                        "eT" : 15.843,
+                        "F" : 5,
+                        "eF" : 2.23607,
+                        "Check if a muon failed loose quality criteria" : 
+                        {
+                          "efficiency" : 0.944223,
+                          "T" : 237,
+                          "eT" : 15.3948,
+                          "F" : 14,
+                          "eF" : 3.74166,
+                          "Check if a electron failed loose quality criteria" : 
+                          {
+                            "efficiency" : 1,
+                            "T" : 237,
+                            "eT" : 15.3948,
+                            "F" : 0,
+                            "eF" : 0,
+                            "Check if a photon failed loose quality criteria" : 
+                            {
+                              "efficiency" : 1,
+                              "T" : 237,
+                              "eT" : 15.3948,
+                              "F" : 0,
+                              "eF" : 0,
+                              "NumComLeptons Operation (num e + mu unsigned int <= 0)" : 
+                              {
+                                "efficiency" : 0.936709,
+                                "T" : 222,
+                                "eT" : 14.8997,
+                                "F" : 15,
+                                "eF" : 3.87298,
+                                "Number of Common Photons unsigned int <= 0)" : 
+                                {
+                                  "efficiency" : 0.968468,
+                                  "T" : 215,
+                                  "eT" : 14.6629,
+                                  "F" : 7,
+                                  "eF" : 2.64575,
+                                  "Checking that  sum Vertex Pt / HT is  > 0.1 " : 
+                                  {
+                                    "efficiency" : 1,
+                                    "T" : 215,
+                                    "eT" : 14.6629,
+                                    "F" : 0,
+                                    "eF" : 0,
+                                    "HT 275 GeV " : 
+                                    {
+                                      "efficiency" : 0.986047,
+                                      "T" : 212,
+                                      "eT" : 14.5602,
+                                      "F" : 3,
+                                      "eF" : 1.73205,
+                                      "NumComJets Operation (num unsigned int = 2)" : 
+                                      {
+                                        "efficiency" : 0.00943396,
+                                        "T" : 2,
+                                        "eT" : 1.41421,
+                                        "F" : 210,
+                                        "eF" : 14.4914,
+                                        "Hadronic Common Plots (bins 2 to 2) " : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 2,
+                                          "eT" : 1.41421,
+                                          "F" : 0,
+                                          "eF" : 0
+                                        }
+                                      },
+                                      "NumComJets Operation (num unsigned int >= 3)" : 
+                                      {
+                                        "efficiency" : 0.990566,
+                                        "T" : 210,
+                                        "eT" : 14.4914,
+                                        "F" : 2,
+                                        "eF" : 1.41421,
+                                        "Hadronic Common Plots (bins 3 to 15) " : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 210,
+                                          "eT" : 14.4914,
+                                          "F" : 0,
+                                          "eF" : 0
+                                        }
+                                      },
+                                      "Dead ECAL cut 0.3 " : 
+                                      {
+                                        "efficiency" : 0.306604,
+                                        "T" : 65,
+                                        "eT" : 8.06226,
+                                        "F" : 147,
+                                        "eF" : 12.1244,
+                                        "HT less than375 GeV " : 
+                                        {
+                                          "efficiency" : 0.276923,
+                                          "T" : 18,
+                                          "eT" : 4.24264,
+                                          "F" : 47,
+                                          "eF" : 6.85565,
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0.111111,
+                                            "T" : 2,
+                                            "eT" : 1.41421,
+                                            "F" : 16,
+                                            "eF" : 4,
+                                            "Hadronic Common Plots (bins 1 to 2) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 2,
+                                              "eT" : 1.41421,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 0.888889,
+                                            "T" : 16,
+                                            "eT" : 4,
+                                            "F" : 2,
+                                            "eF" : 1.41421,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 16,
+                                              "eT" : 4,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        },
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.723077,
+                                          "T" : 47,
+                                          "eT" : 6.85565,
+                                          "F" : 18,
+                                          "eF" : 4.24264,
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 47,
+                                            "eF" : 6.85565,
+                                            "Hadronic Common Plots (bins 2 to 2) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 47,
+                                            "eT" : 6.85565,
+                                            "F" : 0,
+                                            "eF" : 0,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 47,
+                                              "eT" : 6.85565,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.0212766,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 46,
+                                            "eF" : 6.78233
+                                          }
+                                        }
+                                      },
+                                      "HT 375 GeV " : 
+                                      {
+                                        "efficiency" : 0.79717,
+                                        "T" : 169,
+                                        "eT" : 13,
+                                        "F" : 43,
+                                        "eF" : 6.55744,
+                                        "NumComJets Operation (num unsigned int = 2)" : 
+                                        {
+                                          "efficiency" : 0,
+                                          "T" : 0,
+                                          "eT" : 0,
+                                          "F" : 169,
+                                          "eF" : 13,
+                                          "Hadronic Common Plots (bins 2 to 2) " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          }
+                                        },
+                                        "NumComJets Operation (num unsigned int >= 3)" : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 169,
+                                          "eT" : 13,
+                                          "F" : 0,
+                                          "eF" : 0,
+                                          "Hadronic Common Plots (bins 3 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 169,
+                                            "eT" : 13,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          }
+                                        }
+                                      },
+                                      "Passing MHT over MET cut of: 1.25 " : 
+                                      {
+                                        "efficiency" : 0.103774,
+                                        "T" : 22,
+                                        "eT" : 4.69042,
+                                        "F" : 190,
+                                        "eF" : 13.784,
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.772727,
+                                          "T" : 17,
+                                          "eT" : 4.12311,
+                                          "F" : 5,
+                                          "eF" : 2.23607,
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 17,
+                                            "eT" : 4.12311,
+                                            "F" : 0,
+                                            "eF" : 0,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 17,
+                                              "eT" : 4.12311,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 17,
+                                            "eF" : 4.12311,
+                                            "Hadronic Common Plots (bins 2 to 2) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.117647,
+                                            "T" : 2,
+                                            "eT" : 1.41421,
+                                            "F" : 15,
+                                            "eF" : 3.87298
+                                          }
+                                        },
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.772727,
+                                          "T" : 17,
+                                          "eT" : 4.12311,
+                                          "F" : 5,
+                                          "eF" : 2.23607,
+                                          "HT less than475 GeV " : 
+                                          {
+                                            "efficiency" : 0.411765,
+                                            "T" : 7,
+                                            "eT" : 2.64575,
+                                            "F" : 10,
+                                            "eF" : 3.16228,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 7,
+                                              "eT" : 2.64575,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0.142857,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 6,
+                                              "eF" : 2.44949,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 1,
+                                                "T" : 1,
+                                                "eT" : 1,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 475 GeV " : 
+                                        {
+                                          "efficiency" : 0.454545,
+                                          "T" : 10,
+                                          "eT" : 3.16228,
+                                          "F" : 12,
+                                          "eF" : 3.4641,
+                                          "HT less than575 GeV " : 
+                                          {
+                                            "efficiency" : 0.5,
+                                            "T" : 5,
+                                            "eT" : 2.23607,
+                                            "F" : 5,
+                                            "eF" : 2.23607,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 5,
+                                              "eT" : 2.23607,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0.2,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 4,
+                                              "eF" : 2,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 1,
+                                                "T" : 1,
+                                                "eT" : 1,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 575 GeV " : 
+                                        {
+                                          "efficiency" : 0.227273,
+                                          "T" : 5,
+                                          "eT" : 2.23607,
+                                          "F" : 17,
+                                          "eF" : 4.12311,
+                                          "HT less than675 GeV " : 
+                                          {
+                                            "efficiency" : 0.6,
+                                            "T" : 3,
+                                            "eT" : 1.73205,
+                                            "F" : 2,
+                                            "eF" : 1.41421,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 3,
+                                              "eT" : 1.73205,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 3,
+                                              "eF" : 1.73205,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 675 GeV " : 
+                                        {
+                                          "efficiency" : 0.0909091,
+                                          "T" : 2,
+                                          "eT" : 1.41421,
+                                          "F" : 20,
+                                          "eF" : 4.47214,
+                                          "HT less than775 GeV " : 
+                                          {
+                                            "efficiency" : 0.5,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 1,
+                                              "eF" : 1,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 775 GeV " : 
+                                        {
+                                          "efficiency" : 0.0454545,
+                                          "T" : 1,
+                                          "eT" : 1,
+                                          "F" : 21,
+                                          "eF" : 4.58258,
+                                          "HT less than875 GeV " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 875 GeV " : 
+                                        {
+                                          "efficiency" : 0.0454545,
+                                          "T" : 1,
+                                          "eT" : 1,
+                                          "F" : 21,
+                                          "eF" : 4.58258,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "JSON Output: " : 
+      {
+        "efficiency" : 1,
+        "T" : 367756,
+        "eT" : 606.429,
+        "F" : 0,
+        "eF" : 0
+      }
+    }
+  }
+}  "Number of Events Processed" : 367756,
+  "Cut Flow" : 
+  {
+    "Tree Name" : "Data",
+    "JSON Filter: " : 
+    {
+      "efficiency" : 1,
+      "T" : 367756,
+      "eT" : 606.429,
+      "F" : 0,
+      "eF" : 0,
+      "MultiTrigger:   HLT_HT250_AlphaT0p53_v2  HLT_HT250_AlphaT0p53_v3  HLT_HT250_AlphaT0p53_v4  HLT_HT250_AlphaT0p53_v5  HLT_HT250_AlphaT0p53_v6  HLT_HT250_AlphaT0p54_v2  HLT_HT250_AlphaT0p54_v3  HLT_HT250_AlphaT0p54_v4  HLT_HT250_AlphaT0p55_v1  HLT_HT250_AlphaT0p62_v1  HLT_HT250_AlphaT0p62_v2" : 
+      {
+        "efficiency" : 0.00501691,
+        "T" : 1845,
+        "eT" : 42.9535,
+        "F" : 365911,
+        "eF" : 604.906,
+        "CommonMHTCut (make a cut on the Pt of vector sum of RecoCommonJets) " : 
+        {
+          "efficiency" : 0.385908,
+          "T" : 712,
+          "eT" : 26.6833,
+          "F" : 1133,
+          "eF" : 33.6601,
+          "Check if an event failed noise filtering criteria" : 
+          {
+            "efficiency" : 0.941011,
+            "T" : 670,
+            "eT" : 25.8844,
+            "F" : 42,
+            "eF" : 6.48074,
+            "Check if an event failed Good event selection" : 
+            {
+              "efficiency" : 1,
+              "T" : 670,
+              "eT" : 25.8844,
+              "F" : 0,
+              "eF" : 0,
+              "Veto Events with sum of cleaned rechits above 30 GeV " : 
+              {
+                "efficiency" : 0.968657,
+                "T" : 649,
+                "eT" : 25.4755,
+                "F" : 21,
+                "eF" : 4.58258,
+                " first Jet Eta < 2.5 rad): " : 
+                {
+                  "efficiency" : 0.975347,
+                  "T" : 633,
+                  "eT" : 25.1595,
+                  "F" : 16,
+                  "eF" : 4,
+                  "Second jet Pt > 100 GeV: " : 
+                  {
+                    "efficiency" : 0.491311,
+                    "T" : 311,
+                    "eT" : 17.6352,
+                    "F" : 322,
+                    "eF" : 17.9444,
+                    "Check if a jet failed loose quality criteria" : 
+                    {
+                      "efficiency" : 0.823151,
+                      "T" : 256,
+                      "eT" : 16,
+                      "F" : 55,
+                      "eF" : 7.4162,
+                      "Bad muon in a Jet" : 
+                      {
+                        "efficiency" : 0.980469,
+                        "T" : 251,
+                        "eT" : 15.843,
+                        "F" : 5,
+                        "eF" : 2.23607,
+                        "Check if a muon failed loose quality criteria" : 
+                        {
+                          "efficiency" : 0.944223,
+                          "T" : 237,
+                          "eT" : 15.3948,
+                          "F" : 14,
+                          "eF" : 3.74166,
+                          "Check if a electron failed loose quality criteria" : 
+                          {
+                            "efficiency" : 1,
+                            "T" : 237,
+                            "eT" : 15.3948,
+                            "F" : 0,
+                            "eF" : 0,
+                            "Check if a photon failed loose quality criteria" : 
+                            {
+                              "efficiency" : 1,
+                              "T" : 237,
+                              "eT" : 15.3948,
+                              "F" : 0,
+                              "eF" : 0,
+                              "NumComLeptons Operation (num e + mu unsigned int <= 0)" : 
+                              {
+                                "efficiency" : 0.936709,
+                                "T" : 222,
+                                "eT" : 14.8997,
+                                "F" : 15,
+                                "eF" : 3.87298,
+                                "Number of Common Photons unsigned int <= 0)" : 
+                                {
+                                  "efficiency" : 0.968468,
+                                  "T" : 215,
+                                  "eT" : 14.6629,
+                                  "F" : 7,
+                                  "eF" : 2.64575,
+                                  "Checking that  sum Vertex Pt / HT is  > 0.1 " : 
+                                  {
+                                    "efficiency" : 1,
+                                    "T" : 215,
+                                    "eT" : 14.6629,
+                                    "F" : 0,
+                                    "eF" : 0,
+                                    "HT 275 GeV " : 
+                                    {
+                                      "efficiency" : 0.986047,
+                                      "T" : 212,
+                                      "eT" : 14.5602,
+                                      "F" : 3,
+                                      "eF" : 1.73205,
+                                      "NumComJets Operation (num unsigned int = 2)" : 
+                                      {
+                                        "efficiency" : 0.00943396,
+                                        "T" : 2,
+                                        "eT" : 1.41421,
+                                        "F" : 210,
+                                        "eF" : 14.4914,
+                                        "Hadronic Common Plots (bins 2 to 2) " : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 2,
+                                          "eT" : 1.41421,
+                                          "F" : 0,
+                                          "eF" : 0
+                                        }
+                                      },
+                                      "NumComJets Operation (num unsigned int >= 3)" : 
+                                      {
+                                        "efficiency" : 0.990566,
+                                        "T" : 210,
+                                        "eT" : 14.4914,
+                                        "F" : 2,
+                                        "eF" : 1.41421,
+                                        "Hadronic Common Plots (bins 3 to 15) " : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 210,
+                                          "eT" : 14.4914,
+                                          "F" : 0,
+                                          "eF" : 0
+                                        }
+                                      },
+                                      "Dead ECAL cut 0.3 " : 
+                                      {
+                                        "efficiency" : 0.306604,
+                                        "T" : 65,
+                                        "eT" : 8.06226,
+                                        "F" : 147,
+                                        "eF" : 12.1244,
+                                        "HT less than375 GeV " : 
+                                        {
+                                          "efficiency" : 0.276923,
+                                          "T" : 18,
+                                          "eT" : 4.24264,
+                                          "F" : 47,
+                                          "eF" : 6.85565,
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0.111111,
+                                            "T" : 2,
+                                            "eT" : 1.41421,
+                                            "F" : 16,
+                                            "eF" : 4,
+                                            "Hadronic Common Plots (bins 1 to 2) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 2,
+                                              "eT" : 1.41421,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 0.888889,
+                                            "T" : 16,
+                                            "eT" : 4,
+                                            "F" : 2,
+                                            "eF" : 1.41421,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 16,
+                                              "eT" : 4,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        },
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.723077,
+                                          "T" : 47,
+                                          "eT" : 6.85565,
+                                          "F" : 18,
+                                          "eF" : 4.24264,
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 47,
+                                            "eF" : 6.85565,
+                                            "Hadronic Common Plots (bins 2 to 2) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 47,
+                                            "eT" : 6.85565,
+                                            "F" : 0,
+                                            "eF" : 0,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 47,
+                                              "eT" : 6.85565,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.0212766,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 46,
+                                            "eF" : 6.78233
+                                          }
+                                        }
+                                      },
+                                      "HT 375 GeV " : 
+                                      {
+                                        "efficiency" : 0.79717,
+                                        "T" : 169,
+                                        "eT" : 13,
+                                        "F" : 43,
+                                        "eF" : 6.55744,
+                                        "NumComJets Operation (num unsigned int = 2)" : 
+                                        {
+                                          "efficiency" : 0,
+                                          "T" : 0,
+                                          "eT" : 0,
+                                          "F" : 169,
+                                          "eF" : 13,
+                                          "Hadronic Common Plots (bins 2 to 2) " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          }
+                                        },
+                                        "NumComJets Operation (num unsigned int >= 3)" : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 169,
+                                          "eT" : 13,
+                                          "F" : 0,
+                                          "eF" : 0,
+                                          "Hadronic Common Plots (bins 3 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 169,
+                                            "eT" : 13,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          }
+                                        }
+                                      },
+                                      "Passing MHT over MET cut of: 1.25 " : 
+                                      {
+                                        "efficiency" : 0.103774,
+                                        "T" : 22,
+                                        "eT" : 4.69042,
+                                        "F" : 190,
+                                        "eF" : 13.784,
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.772727,
+                                          "T" : 17,
+                                          "eT" : 4.12311,
+                                          "F" : 5,
+                                          "eF" : 2.23607,
+                                          "NumComJets Operation (num unsigned int >= 3)" : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 17,
+                                            "eT" : 4.12311,
+                                            "F" : 0,
+                                            "eF" : 0,
+                                            "Hadronic Common Plots (bins 3 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 17,
+                                              "eT" : 4.12311,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "NumComJets Operation (num unsigned int = 2)" : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 17,
+                                            "eF" : 4.12311,
+                                            "Hadronic Common Plots (bins 2 to 2) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.117647,
+                                            "T" : 2,
+                                            "eT" : 1.41421,
+                                            "F" : 15,
+                                            "eF" : 3.87298
+                                          }
+                                        },
+                                        "HT 375 GeV " : 
+                                        {
+                                          "efficiency" : 0.772727,
+                                          "T" : 17,
+                                          "eT" : 4.12311,
+                                          "F" : 5,
+                                          "eF" : 2.23607,
+                                          "HT less than475 GeV " : 
+                                          {
+                                            "efficiency" : 0.411765,
+                                            "T" : 7,
+                                            "eT" : 2.64575,
+                                            "F" : 10,
+                                            "eF" : 3.16228,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 7,
+                                              "eT" : 2.64575,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0.142857,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 6,
+                                              "eF" : 2.44949,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 1,
+                                                "T" : 1,
+                                                "eT" : 1,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 475 GeV " : 
+                                        {
+                                          "efficiency" : 0.454545,
+                                          "T" : 10,
+                                          "eT" : 3.16228,
+                                          "F" : 12,
+                                          "eF" : 3.4641,
+                                          "HT less than575 GeV " : 
+                                          {
+                                            "efficiency" : 0.5,
+                                            "T" : 5,
+                                            "eT" : 2.23607,
+                                            "F" : 5,
+                                            "eF" : 2.23607,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 5,
+                                              "eT" : 2.23607,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0.2,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 4,
+                                              "eF" : 2,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 1,
+                                                "T" : 1,
+                                                "eT" : 1,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 575 GeV " : 
+                                        {
+                                          "efficiency" : 0.227273,
+                                          "T" : 5,
+                                          "eT" : 2.23607,
+                                          "F" : 17,
+                                          "eF" : 4.12311,
+                                          "HT less than675 GeV " : 
+                                          {
+                                            "efficiency" : 0.6,
+                                            "T" : 3,
+                                            "eT" : 1.73205,
+                                            "F" : 2,
+                                            "eF" : 1.41421,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 3,
+                                              "eT" : 1.73205,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 3,
+                                              "eF" : 1.73205,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 675 GeV " : 
+                                        {
+                                          "efficiency" : 0.0909091,
+                                          "T" : 2,
+                                          "eT" : 1.41421,
+                                          "F" : 20,
+                                          "eF" : 4.47214,
+                                          "HT less than775 GeV " : 
+                                          {
+                                            "efficiency" : 0.5,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 1,
+                                              "eT" : 1,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 1,
+                                              "eF" : 1,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 775 GeV " : 
+                                        {
+                                          "efficiency" : 0.0454545,
+                                          "T" : 1,
+                                          "eT" : 1,
+                                          "F" : 21,
+                                          "eF" : 4.58258,
+                                          "HT less than875 GeV " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Hadronic Common Plots (bins 2 to 15) " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            },
+                                            "CommonAlphaTCut " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0,
+                                              "Dumped event info  " : 
+                                              {
+                                                "efficiency" : 0,
+                                                "T" : 0,
+                                                "eT" : 0,
+                                                "F" : 0,
+                                                "eF" : 0
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "HT 875 GeV " : 
+                                        {
+                                          "efficiency" : 0.0454545,
+                                          "T" : 1,
+                                          "eT" : 1,
+                                          "F" : 21,
+                                          "eF" : 4.58258,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 1,
+                                            "eT" : 1,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 1,
+                                            "eF" : 1,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 0,
+                                              "T" : 0,
+                                              "eT" : 0,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "JSON Output: " : 
+      {
+        "efficiency" : 1,
+        "T" : 367756,
+        "eT" : 606.429,
+        "F" : 0,
+        "eF" : 0
+      }
+    }
+  }
+}
