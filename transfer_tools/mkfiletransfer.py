@@ -2,7 +2,6 @@
 
 import setupSUSY
 import data.Run2011.HT_Run2011AB as expr
-
 from subprocess import *
 import re
 
@@ -39,11 +38,12 @@ source = "srm://gfe02.grid.hep.ph.ic.ac.uk:8443/srm/managerv2?SFN=/pnfs/hep.ph.i
 # This is the target path. Currently set to IC DCACHE. Change!
 #target = "srm://gfe02.grid.hep.ph.ic.ac.uk/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/store/user/"
 #target = "srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/gpfs_phys/storm/cms/user/clucas/ICF/automated/2011_10_26_12_39_58/QCD_TuneZ2_HT-100To250_7TeV-madgraph.Summer11-PU_S4_START42_V11-v1.AODSIM/"
-target = "srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/cms/user/clucas/ICF/automated/2011_11_11_15_48_22/HT.Run2011A-05Aug2011-v1.AOD/"
+target = "srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/cms/user/clucas/ICF/automated/2011_11_11_15_48_22/"
 #target="srm://gfe02.grid.hep.ph.ic.ac.uk:8443/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/"
 
 def filename(s):
-    return s.split("/")[-1]
+    #return s.split("/")[-1]
+    return s.split("/")[-2]+"/"+s.split("/")[-1]
 
 def filename_bris(s):
     tmps=s.split("/")[4:]
@@ -55,14 +55,18 @@ def filename_bris(s):
 if __name__ == "__main__":
     files_to_transfer = [f for f in ps.File]
     template="%s%s %s%s"
+    #template="%s%s"
     for f1 in files_to_transfer:
         f1source=""
         if re.search("lcgui02",str(thismachine)) or re.search("soolin",str(thismachine)) or re.search("calgary",str(thismachine)) :
-            f1source=filename_bris(f1)
+            f1source=filename_bris(f1) 
         elif thismachine == "":
             print "no source files found"
         else :
             f1source=f1
         s = template % (source, f1source, target, filename(f1))
+        #s = template % (target, filename(f1))
+	
+	#print filename(f1)
 	print s    
 
