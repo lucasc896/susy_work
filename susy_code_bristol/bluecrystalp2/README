@@ -1,0 +1,25 @@
+-----README - BLUECRYSTALP2 - SUSYv2 ANALYSIS CODE-----
+
+written by Chris Lucas
+09/02/12
+
+This aims to document all of the changes to the SUSYv2 code necessary in order to use on
+the bristol HPC 'BlueCrystalp2'.
+
+- Changes to the configure.py file were made to include a bluecrystal option
+	NOTE: these will need to be changed once a centrally installed version of the CMS software
+	becomes available. The current iteration is based around a user-local install of the CMS
+	software and so will need to be changed pre-commit to svn
+
+- framework/python/icf/core.py, mainly with the qsub command. This must be changed at blue
+due to a different version of qsub being installed. The main difference is with the format of
+the '-t' option.
+
+- the psets containing the directories of the datasets must be changed. If running locally then
+the direct path (/gpfs_phys/storm/cms/user/clucas/ICF/automated/...) should be used. 
+Alternatively, if direct GRID submission is being used, then the srm-directory should be used 
+(check!).
+
+- If direct GRID submission is indeed employed, then the qsub command must be changed to
+something similar to glite-wms-job-submit. This will require a restructuring of the job
+submission process in order to produce a .jdl job file to be passed with this command.
