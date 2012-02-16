@@ -23,3 +23,7 @@ Alternatively, if direct GRID submission is being used, then the srm-directory s
 - If direct GRID submission is indeed employed, then the qsub command must be changed to
 something similar to glite-wms-job-submit. This will require a restructuring of the job
 submission process in order to produce a .jdl job file to be passed with this command.
+
+- In order for the samples to be accessable from blue crystal, all of the datasets must be copied
+from /gpfs_phys/storm/... to /gpfs_phys/cms-working/... This is due to issues with access rights
+to storm from bluecrystal.
