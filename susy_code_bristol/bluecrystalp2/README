@@ -13,7 +13,8 @@ the bristol HPC 'BlueCrystalp2'.
 
 - framework/python/icf/core.py, mainly with the qsub command. This must be changed at blue
 due to a different version of qsub being installed. The main difference is with the format of
-the '-t' option.
+the '-t' option. 
+"-t", "%d-%d:1"  --->  "-t", "%d-%d"
 
 - the psets containing the directories of the datasets must be changed. If running locally then
 the direct path (/gpfs_phys/storm/cms/user/clucas/ICF/automated/...) should be used. 
