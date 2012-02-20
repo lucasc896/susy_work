@@ -11,7 +11,7 @@ from libFrameworkSUSY import *
 from libHadronic import *
 from libWPol import *
 from libOneLepton import *
-from libzmeng import *
+from libbryn import *
 from icf.core import PSet,Analysis
 from time import strftime
 from icf.config import defaultConfig
@@ -437,7 +437,7 @@ def MakeDataTree(Threshold,Muon = None,Split = None):
       cutTreeData.TAttach(MHT_METCut,ZeroMuon)
 
       out.append(AddBinedHist(cutTree = cutTreeData,
-      OP = ("TauFakeB",genericPSet), cut = ZeroMuon,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = ZeroMuon,
       htBins = HTBins,TriggerDict = triggers,lab ="") )
 
   else:
@@ -450,7 +450,7 @@ def MakeDataTree(Threshold,Muon = None,Split = None):
       cutTreeData.TAttach(ZMassCut,PFMTCut30)
 
       out.append(AddBinedHist(cutTree = cutTreeData,
-      OP = ("TauFakeB",genericPSet), cut = PFMTCut30,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = PFMTCut30,
       htBins = HTBins,TriggerDict = (mu_triggers if Split == "Muon_All" else triggers),lab = "OneMuon_") )
          
       cutTreeData.TAttach(minDRMuonJetCut,DiMuon)
@@ -462,7 +462,7 @@ def MakeDataTree(Threshold,Muon = None,Split = None):
       # we arrange the HT bins so they are not repoduced though out threshold runs.
 
       out.append(AddBinedHist(cutTree = cutTreeData,
-      OP = ("TauFakeB",genericPSet), cut = ZMass_2Muons,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = ZMass_2Muons,
       htBins = HTBins,TriggerDict = (mu_triggers if Split == "Muon_All" else triggers),lab = "DiMuon_") )
     
   return (cutTreeData,secondJetET,out)
@@ -505,7 +505,7 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TauFakeB",genericPSet), cut = ZeroMuon,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = ZeroMuon,
       htBins = HTBins,TriggerDict = None,lab ="") )
 
   else:
@@ -518,7 +518,7 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(ZMassCut,PFMTCut30)
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TauFakeB",genericPSet), cut = PFMTCut30,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = PFMTCut30,
       htBins = HTBins,TriggerDict = None ,lab = "OneMuon_") )
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
@@ -531,7 +531,7 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(DiMuon,ZMass_2Muons)
     
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TauFakeB",genericPSet), cut = ZMass_2Muons,
+      OP = ("WeeklyUpdatePlots",genericPSet), cut = ZMass_2Muons,
       htBins = HTBins,TriggerDict = None ,lab = "DiMuon_") )
 
   
@@ -610,19 +610,19 @@ from montecarlo.Summer11.ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B
 
 # Signal samples
 
-from montecarlo.Summer11.CMSSM_Tanb10_1800_280 import *
-from montecarlo.Summer11.CMSSM_Tanb10_1800_280_NoWeight import *
-from montecarlo.Summer11.CMSSM_Tanb10_320_520 import *
-from montecarlo.Summer11.CMSSM_1800_280_Hadronic_Selection import *
+#from montecarlo.Summer11.CMSSM_Tanb10_1800_280 import *
+#from montecarlo.Summer11.CMSSM_Tanb10_1800_280_NoWeight import *
+#from montecarlo.Summer11.CMSSM_Tanb10_320_520 import *
+#from montecarlo.Summer11.CMSSM_1800_280_Hadronic_Selection import *
 
-Tanb10_1800_280_Sample = [ CMSSM_Tanb10_1800_280 ]
-Tanb10_320_520_Sample = [ CMSSM_Tanb10_320_520 ]
-Tanb10_1800_280_Sample_NoWeight = [ CMSSM_Tanb10_1800_280_NoWeight ]
+#Tanb10_1800_280_Sample = [ CMSSM_Tanb10_1800_280 ]
+#Tanb10_320_520_Sample = [ CMSSM_Tanb10_320_520 ]
+#Tanb10_1800_280_Sample_NoWeight = [ CMSSM_Tanb10_1800_280_NoWeight ]
 
  # QCD_Summer11_madgraph_All +
-from montecarlo.Summer11.QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1 import *
+#from montecarlo.Summer11.QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1 import *
 
-PU_S3_Sample = [ QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1]
+#PU_S3_Sample = [ QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1]
 
 
 DiBoson_Sample = [ WW_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1, 

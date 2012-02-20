@@ -1,0 +1,37 @@
+obj/PolTransforms.o obj/PolTransforms.d : src/common/PolTransforms.cc include/PolTransforms.hh \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TLorentzVector.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMath.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Rtypes.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/RConfig.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/RVersion.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/DllImport.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Rtypeinfo.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/snprintf.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/strlcpy.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TGenericClassInfo.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TSchemaHelper.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMathBase.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TError.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TVector3.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TVector2.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TObject.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TStorage.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TVersionCheck.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Riosfwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TBuffer.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrix.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixF.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixT.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixTBase.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TNamed.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TString.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TRefCnt.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixFBasefwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixDBasefwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TVectorFfwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TVectorDfwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixTUtils.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixFfwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixFUtils.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TMatrixFUtilsfwd.h \
+  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/TRotation.h

@@ -64,7 +64,7 @@ addCutFlowMC(anal_ak7_caloMC)
 outdir = "../results_"+strftime("%d_%b_%H")+"//Smear/"
 ensure_dir(outdir)
 
-anal_ak5_caloMC.Run(outdir,conf_ak5_caloMC,MC)
+anal_ak5_caloMC.Run(outdir,conf_ak5_caloMC,DiBoson_Sample)
 
 # anal_ak5_pfMC.Run("../results_"+strftime("%d_%b_%H")+"//Smear",conf_ak5_pfMC,MC)
 # anal_ak5_pfMC.Run("../results_"+strftime("%d_%b_%H")+"//Smear",conf_ak5_pfMC,[QCD_AllPtBins_7TeV_Pythia])
