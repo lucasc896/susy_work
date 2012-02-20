@@ -1,0 +1,756 @@
+qsub(1B)                              PBS                             qsub(1B)
+
+
+
+NNAAMMEE
+       qsub - submit pbs job
+
+SSYYNNOOPPSSIISS
+       qsub  [-a  date_time]  [-A  account_string] [-b secs] [-c interval] [-C
+       directive_prefix] [-d path] [-D path] [-e path] [-h] [-I] [-j join] [-k
+       keep] [-l resource_list] [-m mail_options] [-M user_list] [-N name] [-o
+       path]  [-p  priority]  [-q  destination]  [-r  c]  [-S  path_list]  [-t
+       num_jobs]   [-u   user_list]   [-v   variable_list]   [-V]   [-W  addi-
+       tional_attributes] [-X] [-z] [script]
+
+DDEESSCCRRIIPPTTIIOONN
+       To create a job is to submit an executable script to  a  batch  server.
+       The  batch  server  will  be the default server unless the _-_q option is
+       specified.  See discussion of PBS_DEFAULT under  Environment  Variables
+       below.   Typically, the script is a shell script which will be executed
+       by a command shell such as sh or csh.
+
+       Options on the qqssuubb command allow the specification of attributes which
+       affect the behavior of the job.
+
+       The  qsub  command will pass certain environment variables in the _V_a_r_i_-
+       _a_b_l_e___L_i_s_t attribute of the job.  These variables will be  available  to
+       the  job.  The value for the following variables will be taken from the
+       environment of the qsub  command:  HHOOMMEE,  LLAANNGG,  LLOOGGNNAAMMEE,  PPAATTHH,  MMAAIILL,
+       SSHHEELLLL,  and  TTZZ.   These values will be assigned to a new name which is
+       the current name prefixed with the string "PBS_O_".  For  example,  the
+       job  will have access to an environment variable named PPBBSS__OO__HHOOMMEE which
+       have the value of the variable HHOOMMEE in the qsub command environment.
+
+       In addition to the above, the following environment variables  will  be
+       available to the batch job.
+
+       PPBBSS__OO__HHOOSSTT
+              the name of the host upon which the qsub command is running.
+
+       PPBBSS__SSEERRVVEERR
+              the hostname of the pbs_server which qsub submits the job to.
+
+       PPBBSS__OO__QQUUEEUUEE
+              the name of the original queue to which the job was submitted.
+
+       PPBBSS__OO__WWOORRKKDDIIRR
+              the  absolute  path of the current working directory of the qsub
+              command.
+
+       PPBBSS__AARRRRAAYYIIDD
+              each member of a job array is assigned a unique identifier  (see
+              -t)
+
+       PPBBSS__EENNVVIIRROONNMMEENNTT
+              set  to  PPBBSS__BBAATTCCHH  to  indicate  the  job is a batch job, or to
+              PPBBSS__IINNTTEERRAACCTTIIVVEE to indicate the job is a  PBS  interactive  job,
+              see -I option.
+
+       PPBBSS__JJOOBBIIDD
+              the job identifier assigned to the job by the batch system.
+
+       PPBBSS__JJOOBBNNAAMMEE
+              the job name supplied by the user.
+
+       PPBBSS__NNOODDEEFFIILLEE
+              the  name  of the file contain the list of nodes assigned to the
+              job (for parallel and cluster systems).
+
+       PPBBSS__QQUUEEUUEE
+              the name of the queue from which the job is executed.
+
+OOPPTTIIOONNSS
+       -a date_time
+               Declares the time after which the job is  eligible  for  execu-
+               tion.
+
+               The      _d_a_t_e___t_i_m_e     argument     is     in     the     form:
+               [[[[[[[[CCCC]]YYYY]]MMMM]]DDDD]]hhhhmmmm[[..SSSS]]
+
+               Where CC is the first two digits of the year (the century),  YY
+               is  the second two digits of the year, MM is the two digits for
+               the month, DD is the day of the month, hh is the  hour,  mm  is
+               the minute, and the optional SS is the seconds.
+
+               If the month, MMMM, is not specified, it will default to the cur-
+               rent month if the specified day DDDD, is in the  future.   Other-
+               wise,  the  month  will be set to next month.  Likewise, if the
+               day, DDDD, is not specified, it will default to today if the time
+               hhhhmmmm  is  in  the  future.   Otherwise,  the day will be set to
+               tomorrow.  For example, if you submit a job at 11:15am  with  a
+               time  of  --aa  11111100,  the job will be eligible to run at 11:10am
+               tomorrow.
+
+       -A account_string
+               Defines the  account  string  associated  with  the  job.   The
+               _a_c_c_o_u_n_t___s_t_r_i_n_g  is  an  undefined  string  of characters and is
+               interpreted by the server which executes the job.  See  section
+               2.7.1 of the PBS ERS.
+
+       -b seconds
+               Defines  the maximum number of seconds qsub will block attempt-
+               ing to contact pbs_server.  If pbs_server is  down,  or  for  a
+               variety  of communication failures, qsub will continually retry
+               connecting to pbs_server for job submission.  This value  over-
+               rides  the CCLLIIEENNTTRREETTRRYY parameter in ttoorrqquuee..ccffgg..  This is a non-
+               portable TORQUE extension.  Portability-minded  users  can  use
+               the  PPBBSS__CCLLIIEENNTTRREETTRRYY  environmental variable.  A negative value
+               is interpreted as infinity.  The default is 0.
+
+       -c interval
+               Defines the interval at which the job will be checkpointed.  If
+               the job executes upon a host which does not support checkpoint,
+               this option will be ignored.
+
+               The _i_n_t_e_r_v_a_l argument is specified as:
+
+               n  No checkpointing is to be performed.
+
+               s  Checkpointing is to be performed only when the  server  exe-
+                  cuting the job is shutdown.
+
+               c  Checkpointing is to be performed at the default minimum time
+                  for the server executing the job.
+
+               c=minutes
+                  Checkpointing is to be performed at an interval of  _m_i_n_u_t_e_s,
+                  which  is  the integer number of minutes of CPU time used by
+                  the job.  This value must be greater than zero.
+
+       -C directive_prefix
+               Defines the prefix that declares a directive to the  qsub  com-
+               mand  within  the  script  file.   See  the paragraph on script
+               directives in the Extended Description section.
+
+               If the _-_C option is presented with a _d_i_r_e_c_t_i_v_e___p_r_e_f_i_x  argument
+               that is the null string, qsub will not scan the script file for
+               directives.
+
+       -d path Defines the working directory path to be used for the job.   If
+               the  _-_d  option is not specified, the default working directory
+               is the home directory.  This option sets the environment  vari-
+               able PBS_O_INITDIR.
+
+       -D path Defines the root directory to be used for the job.  This option
+               sets the environment variable PBS_O_ROOTDIR.
+
+       -e path Defines the path to be used for the standard  error  stream  of
+               the batch job.  The _p_a_t_h argument is of the form:
+                   [[hhoossttnnaammee::]]ppaatthh__nnaammee
+               where  hhoossttnnaammee is the name of a host to which the file will be
+               returned and ppaatthh__nnaammee is the path name on  that  host  in  the
+               syntax  recognized  by POSIX.  The argument will be interpreted
+               as follows:
+
+               ppaatthh__nnaammee
+                      Where path_name is not an absolute path name,  then  the
+                      qsub  command  will expand the path name relative to the
+                      current working directory of the command.   The  command
+                      will  supply  the name of the host upon which it is exe-
+                      cuting for the _h_o_s_t_n_a_m_e component.
+
+               hhoossttnnaammee::ppaatthh__nnaammee
+                      Where path_name is not an absolute path name,  then  the
+                      qsub  command  will not expand the path name relative to
+                      the current working directory of the command.  On deliv-
+                      ery  of  the  standard  error,  the  path  name  will be
+                      expanded relative to the user's home  directory  on  the
+                      hhoossttnnaammee system.
+
+               ppaatthh__nnaammee
+                      Where  path_name  specifies  an absolute path name, then
+                      the qsub will supply the name of the host on which it is
+                      executing for the _h_o_s_t_n_a_m_e.
+
+               hhoossttnnaammee::ppaatthh__nnaammee
+                      Where  path_name  specifies  an  absolute path name, the
+                      path will be used as specified.
+
+               If the _-_e option is not specified, the default  file  name  for
+               the  standard  error stream will be used.  The default name has
+               the following form:
+                   jjoobb__nnaammee..eesseeqquueennccee__nnuummbbeerr
+               where jjoobb__nnaammee is the name of  the  job,  see  _-_N  option,  and
+               sseeqquueennccee__nnuummbbeerr is the job number assigned when the job is sub-
+               mitted.
+
+       -h      Specifies that a user hold be applied to the job at  submission
+               time.
+
+       -I      Declares  that  the  job is to be run "interactively".  The job
+               will be queued and scheduled as any PBS  batch  job,  but  when
+               executed,  the standard input, output, and error streams of the
+               job are connected through qsub to the terminal session in which
+               qsub is running.  Interactive jobs are forced to not rerunable.
+               See the "Extended Description" paragraph for addition  informa-
+               tion of interactive jobs.
+
+       -j join Declares if the standard error stream of the job will be merged
+               with the standard output stream of the job.
+
+               An option argument value of ooee directs  that  the  two  streams
+               will  be  merged,  intermixed,  as  standard output.  An option
+               argument value of eeoo directs  that  the  two  streams  will  be
+               merged, intermixed, as standard error.
+
+               If  the  _j_o_i_n argument is nn or the option is not specified, the
+               two streams will be two separate files.
+
+       -k keep Defines which (if either) of standard output or standard  error
+               will  be  retained on the execution host.  If set for a stream,
+               this option overrides the path name for that  stream.   If  not
+               set, neither stream is retained on the execution host.
+
+               The  argument  is  either  the single letter "e" or "o", or the
+               letters "e" and "o" combined in either order.  Or the  argument
+               is the letter "n".
+
+               e  The  standard  error  stream is to retained on the execution
+                  host.  The  stream will be placed in the home  directory  of
+                  the  user  under  whose  user id the job executed.  The file
+                  name will be the default file name given  by:  jjoobb__nnaammee..eessee--
+                  qquueennccee where jjoobb__nnaammee is the name specified for the job, and
+                  sseeqquueennccee is the sequence number component of the job identi-
+                  fier.
+
+               o  The  standard  output stream is to retained on the execution
+                  host.  The  stream will be placed in the home  directory  of
+                  the  user  under  whose  user id the job executed.  The file
+                  name will be the default file name given  by:  jjoobb__nnaammee..oossee--
+                  qquueennccee where jjoobb__nnaammee is the name specified for the job, and
+                  sseeqquueennccee is the sequence number component of the job identi-
+                  fier.
+
+               eo Both  the standard output and standard error streams will be
+                  retained.
+
+               oe Both the standard output and standard error streams will  be
+                  retained.
+
+               n  Neither stream is retained.
+
+       -l resource_list
+               Defines  the  resources that are required by the job and estab-
+               lishes a limit to the amount of resource that can be  consumed.
+               If  not  set  for  a  generally available resource, such as CPU
+               time, the limit is infinite.  The _r_e_s_o_u_r_c_e___l_i_s_t argument is  of
+               the form:
+                   rreessoouurrccee__nnaammee[[==[[vvaalluuee]]]][[,,rreessoouurrccee__nnaammee[[==[[vvaalluuee]]]],,......]]
+
+       -m mail_options
+               Defines  the set of conditions under which the execution server
+               will send a mail message about the job.  The _m_a_i_l___o_p_t_i_o_n_s argu-
+               ment  is a string which consists of either the single character
+               "nn", or one or more of the characters "aa", "bb", and "ee".
+
+               If the character "nn" is specified, no mail will be sent.
+
+               For the letters "aa", "bb", and "ee":
+
+               a  mail is sent when the job is aborted by the batch system.
+
+               b  mail is sent when the job begins execution.
+
+               e  mail is sent when the job terminates.
+
+               If the _-_m option is not specified, mail will be sent if the job
+               is aborted.
+
+       -M user_list
+               Declares  the  list of users to whom mail is sent by the execu-
+               tion server when it sends mail about the job.
+
+               The _u_s_e_r___l_i_s_t argument is of the form:
+                   uusseerr[[@@hhoosstt]][[,,uusseerr[[@@hhoosstt]],,......]]
+               If unset, the list defaults to the submitting user at the  qsub
+               host, i.e. the job owner.
+
+       -N name Declares  a  name for the job.  The name specified may be up to
+               and including 15 characters in  length.   It  must  consist  of
+               printable,  non white space characters with the first character
+               alphabetic.
+
+               If the _-_N option is not specified, the job  name  will  be  the
+               base name of the job script file specified on the command line.
+               If no script file name was specified and the  script  was  read
+               from  the  standard  input,  then  the  job name will be set to
+               SSTTDDIINN.
+
+       -o path Defines the path to be used for the standard output  stream  of
+               the batch job.  The _p_a_t_h argument is of the form:
+                   [[hhoossttnnaammee::]]ppaatthh__nnaammee
+               where  hhoossttnnaammee is the name of a host to which the file will be
+               returned and ppaatthh__nnaammee is the path name on  that  host  in  the
+               syntax  recognized  by POSIX.  The argument will be interpreted
+               as follows:
+
+               ppaatthh__nnaammee
+                      Where path_name is not an absolute path name,  then  the
+                      qsub  command  will expand the path name relative to the
+                      current working directory of the command.   The  command
+                      will  supply  the name of the host upon which it is exe-
+                      cuting for the _h_o_s_t_n_a_m_e component.
+
+               hhoossttnnaammee::ppaatthh__nnaammee
+                      Where path_name is not an absolute path name,  then  the
+                      qsub  command  will not expand the path name relative to
+                      the current working directory of the command.  On deliv-
+                      ery  of  the  standard  output,  the  path  name will be
+                      expanded relative to the user's home  directory  on  the
+                      hhoossttnnaammee system.
+
+               ppaatthh__nnaammee
+                      Where  path_name  specifies  an absolute path name, then
+                      the qsub will supply the name of the host on which it is
+                      executing for the _h_o_s_t_n_a_m_e.
+
+               hhoossttnnaammee::ppaatthh__nnaammee
+                      Where  path_name  specifies  an  absolute path name, the
+                      path will be used as specified.
+
+               If the _-_o option is not specified, the default  file  name  for
+               the  standard output stream will be used.  The default name has
+               the following form:
+                   jjoobb__nnaammee..oosseeqquueennccee__nnuummbbeerr
+               where jjoobb__nnaammee is the name of  the  job,  see  _-_N  option,  and
+               sseeqquueennccee__nnuummbbeerr is the job number assigned when the job is sub-
+               mitted.
+
+       -p priority
+               Defines the priority of the job.  The _p_r_i_o_r_i_t_y argument must be
+               a integer between -1024 and +1023 inclusive.  The default is no
+               priority which is equivalent to a priority of zero.
+
+       -q destination
+               Defines the destination of the job.  The  _d_e_s_t_i_n_a_t_i_o_n  names  a
+               queue, a server, or a queue at a server.
+
+               The  qsub  command will submit the script to the server defined
+               by the _d_e_s_t_i_n_a_t_i_o_n argument.  If the destination is  a  _r_o_u_t_i_n_g
+               _q_u_e_u_e_,  the  job  may be routed by the server to a new destina-
+               tion.
+
+               If the _-_q option is not specified, the qsub command will submit
+               the  script  to  the default server.  See PBS_DEFAULT under the
+               Environment Variables section on this man page and the PBS  ERS
+               section 2.7.4, "Default Server".
+
+               If  the  _-_q  option is specified, it is in one of the following
+               three forms:
+                   qquueeuuee
+                   @@sseerrvveerr
+                   qquueeuuee@@sseerrvveerr
+
+               If the _d_e_s_t_i_n_a_t_i_o_n argument names a queue and does not  name  a
+               server,  the  job  will  be submitted to the named queue at the
+               default server.
+
+               If the _d_e_s_t_i_n_a_t_i_o_n argument names a server and does not name  a
+               queue,  the  job  will be submitted to the default queue at the
+               named server.
+
+               If the _d_e_s_t_i_n_a_t_i_o_n argument names both a queue  and  a  server,
+               the  job  will  be  submitted  to  the named queue at the named
+               server.
+
+       -r y|n  Declares whether the job is rerunable.  See the qqrreerruunn command.
+               The option argument is a single character, either yy or nn.
+
+               If  the argument is "yy", the job is rerunable.  If the argument
+               is "nn", the job is not rerunable.  The default  value  is  'y',
+               rerunable.
+
+       -S path_list
+               Declares the shell that interprets the job script.
+
+               The option argument _p_a_t_h___l_i_s_t is in the form:
+                   ppaatthh[[@@hhoosstt]][[,,ppaatthh[[@@hhoosstt]],,......]]
+               Only  one  path  may be specified for any host named.  Only one
+               path may be specified without the corresponding host name.  The
+               path  selected  will be the one with the host name that matched
+               the name of the execution host.  If no matching host is  found,
+               then  the  path  specified  without a host will be selected, if
+               present.
+
+               If the _-_S option is not specified, the option argument  is  the
+               null  string,  or  no entry from the _p_a_t_h___l_i_s_t is selected, the
+               execution will use the user's  login  shell  on  the  execution
+               host.
+
+       -t array_request
+               Specifies  the task ids of a job array.  Single task arrays are
+               allowed.
+
+               The _a_r_r_a_y___r_e_q_u_e_s_t argument is an integer id or a range of inte-
+               gers.  Multiple  ids  or  id  ranges can be combined in a comma
+               delimted list. Examples : -t 1-100 or -t 1,10,50-100
+
+       -u user_list
+               Defines the user name under which the job is to run on the exe-
+               cution system.
+
+               The _u_s_e_r___l_i_s_t argument is of the form:
+                   uusseerr[[@@hhoosstt]][[,,uusseerr[[@@hhoosstt]],,......]]
+               Only  one  user name may be given per specified host.  Only one
+               of the uusseerr specifications may be supplied without  the  corre-
+               sponding hhoosstt specification.  That user name will used for exe-
+               cution on any host not named in the argument list.   If  unset,
+               the user list defaults to the user who is running qsub.
+
+       -v variable_list
+               Expands  the list of environment variables that are exported to
+               the job.
+
+               In addition to the variables  described  in  the  "Description"
+               section  above,  _v_a_r_i_a_b_l_e___l_i_s_t names environment variables from
+               the qsub command environment which are made  available  to  the
+               job  when  it executes.  The _v_a_r_i_a_b_l_e___l_i_s_t is a comma separated
+               list of strings of the form vvaarriiaabbllee or vvaarriiaabbllee==vvaalluuee.   These
+               variables and their values are passed to the job.
+
+       -V      Declares  that  all environment variables in the qsub command's
+               environment are to be exported to the batch job.
+
+       -W additional_attributes
+               The -W option allows for the specification  of  additional  job
+               attributes.  The general syntax of the -W is in the form:
+                   --WW aattttrr__nnaammee==aattttrr__vvaalluuee[[,,aattttrr__nnaammee==aattttrr__vvaalluuee......]]
+               Note  if white space occurs anywhere within the option argument
+               string or the equal sign, "=", occurs within an _a_t_t_r_i_b_u_t_e___v_a_l_u_e
+               string,  then the string must be enclosed with either single or
+               double quote marks.
+
+               PBS currently supports the following attributes within  the  -W
+               option.
+
+               ddeeppeenndd==ddeeppeennddeennccyy__lliisstt
+               Defines the dependency between this and other jobs.  The _d_e_p_e_n_-
+               _d_e_n_c_y___l_i_s_t is in the form:
+               ttyyppee[[::aarrgguummeenntt[[::aarrgguummeenntt......]][[,,ttyyppee::aarrgguummeenntt......]].
+               The _a_r_g_u_m_e_n_t is either a numeric count or a PBS job id  accord-
+               ing  to _t_y_p_e _.  If argument is a count, it must be greater than
+               0.  If it is a job id and  not  fully  specified  in  the  form
+               sseeqq__nnuummbbeerr..sseerrvveerr..nnaammee,  it  will  be expanded according to the
+               default server rules which apply to job IDs on  most  commands.
+               If  _a_r_g_u_m_e_n_t  is  null  (the preceding colon need not be speci-
+               fied), the dependency of  the  corresponding  type  is  cleared
+               (unset).
+
+                   ssyynnccccoouunntt::ccoouunntt
+                       This  job  is the first in a set of jobs to be executed
+                       at the same time.  _C_o_u_n_t is the  number  of  additional
+                       jobs in the set.
+
+                   ssyynnccwwiitthh::jjoobbiidd
+                       This job is an additional member of a set of jobs to be
+                       executed at the same time.  In the above and  following
+                       dependency  types,  _j_o_b_i_d  is the job identifier of the
+                       first job in the set.
+
+                   aafftteerr::jjoobbiidd[[::jjoobbiidd......]]
+                       This job may be scheduled for execution  at  any  point
+                       after jobs _j_o_b_i_d have started execution.
+
+                   aafftteerrookk::jjoobbiidd[[::jjoobbiidd......]]
+                       This job may be scheduled for execution only after jobs
+                       _j_o_b_i_d have terminated with  no  errors.   See  the  csh
+                       warning under "Extended Description".
+
+                   aafftteerrnnoottookk::jjoobbiidd[[::jjoobbiidd......]]
+                       This job may be scheduled for execution only after jobs
+                       _j_o_b_i_d have terminated with errors.  See the csh warning
+                       under "Extended Description".
+
+                   aafftteerraannyy::jjoobbiidd[[::jjoobbiidd......]]
+                       This  job  may  be  scheduled  for execution after jobs
+                       _j_o_b_i_d have terminated, with or without errors.
+
+                   oonn::ccoouunntt
+                       This job may be scheduled  for  execution  after  ccoouunntt
+                       dependencies  on  other jobs have been satisfied.  This
+                       form is used in conjunction  with  one  of  the  bbeeffoorree
+                       forms, see below.
+
+                   bbeeffoorree::jjoobbiidd[[::jjoobbiidd......]]
+                       When  this  job has begun execution, then jobs jjoobbiidd......
+                       may begin.
+
+                   bbeeffoorreeookk::jjoobbiidd[[::jjoobbiidd......]]
+                       If this job terminates execution without  errors,  then
+                       jobs  jjoobbiidd......  may  begin.   See the csh warning under
+                       "Extended Description".
+
+                   bbeeffoorreennoottookk::jjoobbiidd[[::jjoobbiidd......]]
+                       If this job terminates execution with errors, then jobs
+                       jjoobbiidd......   may   begin.   See  the  csh  warning  under
+                       "Extended Description".
+
+                   bbeeffoorreeaannyy::jjoobbiidd[[::jjoobbiidd......]]
+                       When this job terminates execution, jobs  jjoobbiidd......  may
+                       begin.
+
+                       If  any  of  the bbeeffoorree forms are used, the jobs refer-
+                       enced by jjoobbiidd must have been submitted with  a  depen-
+                       dency type of oonn.
+
+                       If  any  of  the bbeeffoorree forms are used, the jobs refer-
+                       enced by jjoobbiidd must have the  same  owner  as  the  job
+                       being submitted.  Otherwise, the dependency is ignored.
+
+                   Error processing of the existence, state, or  condition  of
+                   the job on which the newly submitted job is a deferred ser-
+                   vice, i.e. the check is performed after the job is  queued.
+                   If an error is detected, the new job will be deleted by the
+                   server.  Mail will be sent to the job submitter stating the
+                   error.
+
+                   Dependency examples:
+                   qqssuubb --WW ddeeppeenndd==aafftteerrookk::112233..bbiigg..iirroonn..ccoomm //ttmmpp//ssccrriipptt
+                   qqssuubb      --WW      ddeeppeenndd==bbeeffoorree::223344..hhuunnkk11..ccoomm::223355..hhuunnkk11..ccoomm
+                   //ttmmpp//ssccrriipptt
+
+               ggrroouupp__lliisstt==gg__lliisstt
+               Defines the group name under which the job is  to  run  on  the
+               execution system.  The _g___l_i_s_t argument is of the form:
+               ggrroouupp[[@@hhoosstt]][[,,ggrroouupp[[@@hhoosstt]],,......]]
+               Only  one group name may be given per specified host.  Only one
+               of the ggrroouupp specifications may be supplied without the  corre-
+               sponding  hhoosstt  specification.   That  group name will used for
+               execution on any host not named in the argument list.   If  not
+               set,  the  _g_r_o_u_p___l_i_s_t defaults to the primary group of the user
+               under which the job will be run.
+
+               iinntteerraaccttiivvee==ttrruuee
+               If the interactive attribute is specified, the job is an inter-
+               active  job.  The -I option is a alternative method of specify-
+               ing this attribute.
+
+               ssttaaggeeiinn==ffiillee__lliisstt
+               ssttaaggeeoouutt==ffiillee__lliisstt
+               Specifies which files are staged (copied) in before  job  start
+               or staged out after the job completes execution.  On completion
+               of the job, all staged-in and staged-out files are removed from
+               the execution system.  The _f_i_l_e___l_i_s_t is in the form
+               llooccaall__ffiillee@@hhoossttnnaammee::rreemmoottee__ffiillee[[,,......]]
+               regardless  of  the direction of the copy.  The name llooccaall__ffiillee
+               is the name of the file on the system where the  job  executed.
+               It may be an absolute path or relative to the home directory of
+               the user.  The name rreemmoottee__ffiillee is the destination name on  the
+               host  specified by hhoossttnnaammee.  The name may be absolute or rela-
+               tive to the user's home directory on the destination host.  The
+               use of wildcards in the file name is not recommended.  The file
+               names map to a remote copy program (rcp) call on the  execution
+               system in the follow manner:
+               For stagein:   rcp hostname:remote_file local_file
+               For stageout:  rcp local_file hostname:remote_file
+               Data staging examples:
+               --WW ssttaaggeeiinn==//ttmmpp//iinnppuutt..ttxxtt@@hheeaaddnnooddee:://hhoommee//uusseerr//iinnppuutt..ttxxtt
+               --WW ssttaaggeeoouutt==//ttmmpp//oouuttppuutt..ttxxtt@@hheeaaddnnooddee:://hhoommee//uusseerr//oouuttppuutt..ttxxtt
+               If  TORQUE  has  been compiled with wordexp support, then vari-
+               ables can be used  in  the  specified  paths.   Currently  only
+               $PBS_JOBID, $HOME, and $TMPDIR are supported for stagein.
+
+               uummaasskk==XXXXXX
+               Sets  umask  used  to  create  stdout and stderr spool files in
+               pbs_mom spool directory
+
+       -X      Enables X11 forwarding.  The DISPLAY environment variable  must
+               be set.
+
+       -z      Directs  that  the qsub command is not to write the job identi-
+               fier assigned to the job to the command's standard output.
+
+
+OOPPEERRAANNDDSS
+       The qsub command accepts a _s_c_r_i_p_t operand  that  is  the  path  to  the
+       script  of the job.  If the path is relative, it will be expanded rela-
+       tive to the working directory of the qsub command.
+
+       If the _s_c_r_i_p_t operand is not provided or  the  operand  is  the  single
+       character  "-",  the qsub command reads the script from standard input.
+       When the script is being read from Standard Input, qsub will  copy  the
+       file to a temporary file.  This temporary file is passed to the library
+       interface routine pbs_submit.  The temporary file is  removed  by  qsub
+       after  pbs_submit  returns  or upon the receipt of a signal which would
+       cause qsub to terminate.
+
+SSTTAANNDDAARRDD IINNPPUUTT
+       The qsub command reads the script for the job from  standard  input  if
+       the _s_c_r_i_p_t operand is missing or is the single character "-".
+
+IINNPPUUTT FFIILLEESS
+       The _s_c_r_i_p_t file is read by the qsub command.  Qsub acts upon any direc-
+       tives found in the script.
+
+       When the job is created, a copy of the script file  is  made  and  that
+       copy cannot be modified.
+
+SSTTAANNDDAARRDD OOUUTTPPUUTT
+       Unless  the  _-_z  option  is set, the job identifier assigned to the job
+       will be written to standard output if the job is successfully  created.
+
+SSTTAANNDDAARRDD EERRRROORR
+       The  qsub command will write a diagnostic message to standard error for
+       each error occurrence.
+
+EENNVVIIRROONNMMEENNTT VVAARRIIAABBLLEESS
+       The values of some or all of the variables in the qsub command's  envi-
+       ronment are exported with the job, see the -v and -V options.
+
+       The  environment  variable  PPBBSS__DDEEFFAAUULLTT defines the name of the default
+       server.   Typically, it corresponds to the system name of the  host  on
+       which the server is running.  If PBS_DEFAULT is not set, the default is
+       defined by an administrator established file.
+
+       The environment variable PPBBSS__DDPPRREEFFIIXX determines the prefix string which
+       identifies directives in the script.
+
+       The  environment variable PPBBSS__CCLLIIEENNTTRREETTRRYY defines the maximum number of
+       seconds qsub will block.  See the -b option above.  Despite  the  name,
+       currently qsub is the only client that supports this option.
+
+EEXXTTEENNDDEEDD DDEESSCCRRIIPPTTIIOONN
+       Script Processing:
+
+       A  job  script  may  consist of PBS directives, comments and executable
+       statements.   A  PBS  directive  provides  a  way  of  specifying   job
+       attributes in addition to the command line options.  For example:
+              ::
+              ##PPBBSS --NN JJoobb__nnaammee
+              ##PPBBSS --ll wwaallllttiimmee==1100::3300,,mmeemm==332200kkbb
+              ##PPBBSS --mm bbee
+              ##
+              sstteepp11 aarrgg11 aarrgg22
+              sstteepp22 aarrgg33 aarrgg44
+
+
+       The qsub command scans the lines of the script file for directives.  An
+       initial line in the script that begins with the characters "#!" or  the
+       character  ":"  will  be  ignored and scanning will start with the next
+       line.  Scanning will continue until the first executable line, that  is
+       a  line that is not blank, not a directive line, nor a line whose first
+       non white space character is "#".  If directives  occur  on  subsequent
+       lines, they will be ignored.
+
+       A  line  in the script file will be processed as a directive to qsub if
+       and only if the string of characters starting with the first non  white
+       space  character  on  the  line and of the same length as the directive
+       prefix matches the directive prefix.
+
+       The remainder of the directive line consists of the options to qsub  in
+       the same syntax as they appear on the command line.  The option charac-
+       ter is to be preceded with the "-" character.
+
+       If an option is present in both a directive and on  the  command  line,
+       that option and its argument, if any, will be ignored in the directive.
+       The command line takes precedence.
+
+       If an option is present in a directive and not  on  the  command  line,
+       that  option  and  its argument, if any, will be processed as if it had
+       occurred on the command line.
+
+       The directive prefix string will be determined in order  of  preference
+       from:
+
+           The  value  of the _-_C option argument if the option is specified on
+           the command line.
+
+           The value of the environment variable PPBBSS__DDPPRREEFFIIXX if it is defined.
+
+           The four character string ##PPBBSS.
+
+       If the _-_C option is found in a directive in the script file, it will be
+       ignored.
+
+       User Authorization:
+
+       When the user submits a job from a system other than the one  on  which
+       the  PBS  Server is running, the name under which the job is to be exe-
+       cuted is selected according to the rules listed under  the  -u  option.
+       The user submitting the job must be authorized to run the job under the
+       execution user name.  This authorization is provided if
+
+              (1)  The host on which qsub is run is trusted by  the  execution
+                   host (see /etc/hosts.equiv),
+
+              (2)  The  execution  user has an .rhosts file naming the submit-
+                   ting user on the submitting host.
+
+       C-Shell .logout File:
+
+       The following warning applies for users of the c-shell,  csh.   If  the
+       job  is  executed  under  the csh and a _._l_o_g_o_u_t file exists in the home
+       directory in which the job executes, the exit status of the job is that
+       of  the .logout script, not the job script.  This may impact any inter-
+       job dependencies.  To preserve the job exit status, either  remove  the
+       .logout  file  or  place  the  following  line as the first line in the
+       .logout file
+          sseett EEXXIITTVVAALL == $$ssttaattuuss
+       and the following line as the last executable line in .logout
+          eexxiitt $$EEXXIITTVVAALL
+
+       Interactive Jobs:
+
+       If the _-_I option is specified on the command line or in a script direc-
+       tive,  or  if  the "interactive" job attribute declared true via the -W
+       option, --WW iinntteerraaccttiivvee==ttrruuee, either on the command line or in a  script
+       directive, the job is an interactive job.  The script will be processed
+       for directives, but will not be included with the job.   When  the  job
+       begins  execution, all input to the job is from the terminal session in
+       which qsub is running.
+
+       When an interactive job is submitted, the qsub command will not  termi-
+       nate when the job is submitted.  Qsub will remain running until the job
+       terminates, is aborted, or the user interrupts qsub with an SIGINT (the
+       control-C  key).   If  qsub  is interrupted prior to job start, it will
+       query if the user wishes to exit.  If the  user  response  "yes",  qsub
+       exits and the job is aborted.
+
+       One the interactive job has started execution, input to and output from
+       the job pass through qsub.  Keyboard generated interrupts are passed to
+       the  job.   Lines entered that begin with the tilde ('~') character and
+       contain special sequences are escaped by qsub.  The  recognized  escape
+       sequences are:
+
+              ~.     Qsub  terminates execution.  The batch job is also termi-
+                     nated.
+
+              ~susp  Suspend the qsub program if running under  the  C  shell.
+                     "susp" is the suspend character, usually CNTL-Z.
+
+              ~asusp Suspend  the  input  half  of qsub (terminal to job), but
+                     allow output to continue to  be  displayed.   Only  works
+                     under  the  C  shell.   "asusp"  is the auxiliary suspend
+                     character, usually CNTL-Y.
+
+
+EEXXIITT SSTTAATTUUSS
+       Upon successful processing, the qsub exit status will  be  a  value  of
+       zero.
+
+       If  the qsub command fails, the command exits with a value greater than
+       zero.
+
+SSEEEE AALLSSOO
+       qalter(1B),  qdel(1B),  qhold(1B),  qmove(1B),  qmsg(1B),   qrerun(1B),
+       qrls(1B),    qselect(1B),    qsig(1B),    qstat(1B),   pbs_connect(3B),
+       pbs_job_attributes(7B),                       pbs_queue_attributes(7B),
+       pbs_resources_irix5(7B),                         pbs_resources_sp2(7B),
+       pbs_resources_sunos4(7B),                    pbs_resources_unicos8(7B),
+       pbs_server_attributes(7B), and pbs_server(8B)
+
+
+
+
+Local                                                                 qsub(1B)
