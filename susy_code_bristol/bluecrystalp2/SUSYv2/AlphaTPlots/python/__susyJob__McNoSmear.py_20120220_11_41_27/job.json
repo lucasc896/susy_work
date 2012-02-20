@@ -1,0 +1,17 @@
+{
+  "analyses": [
+    {
+      "name": "AK5Calo", 
+      "results_dir": "../results_20_Feb_11//NoSmear/"
+    }
+  ], 
+  "jobs": [
+    [
+      "AK5Calo", 
+      0, 
+      0, 
+      0
+    ]
+  ], 
+  "script": "./McNoSmear.py"
+}
