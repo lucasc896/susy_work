@@ -16,10 +16,18 @@ due to a different version of qsub being installed. The main difference is with 
 the '-t' option. 
 "-t", "%d-%d:1"  --->  "-t", "%d-%d"
 
+- need to change the queue_select option to default to one of the bristol queues ('veryshort',
+'short','medium' or 'long')
+
 - the psets containing the directories of the datasets must be changed. If running locally then
 the direct path (/gpfs_phys/storm/cms/user/clucas/ICF/automated/...) should be used. 
 Alternatively, if direct GRID submission is being used, then the srm-directory should be used 
 (check!).
+
+- must change the definition of 'script_str' to include an extra line at the end of the job.sh
+file. This line is ignored using the PBS qsub and so must be included for use in bristol
+
+- any instance of ${SGE_TASK_ID} must be changed to ${PBS_ARRAYID}
 
 - If direct GRID submission is indeed employed, then the qsub command must be changed to
 something similar to glite-wms-job-submit. This will require a restructuring of the job
