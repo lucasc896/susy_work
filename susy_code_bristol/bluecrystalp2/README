@@ -29,6 +29,9 @@ file. This line is ignored using the PBS qsub and so must be included for use in
 
 - any instance of ${SGE_TASK_ID} must be changed to ${PBS_ARRAYID}
 
+- TEMPORARY: remove the two options '-e' and '-o', expecting an output to current working
+directory of the form 'McSmeared.py.o/e...'
+
 - If direct GRID submission is indeed employed, then the qsub command must be changed to
 something similar to glite-wms-job-submit. This will require a restructuring of the job
 submission process in order to produce a .jdl job file to be passed with this command.
