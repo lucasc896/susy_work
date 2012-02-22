@@ -6,10 +6,10 @@ echo "================================"
 #-----------------------------------------------------------------------------
 # Set your ROOTSYS and PYTHONDIR here
 export SUSY_WORKING_SW_DIR=$HOME/susy_work/SUSYv2
-MY_ROOTSYS='/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/'
+MY_ROOTSYS='/gpfs_phys/cms-working/software/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/'
 MY_PYTHONPATH=$SUSY_WORKING_SW_DIR/lib
-MY_LD_LIBRARY_PATH=$MY_ROOTSYS/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/libjpg/8b/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/python/2.6.4-cms14/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/boost/1.44.0-cms3/lib:~/cms/slc5_amd64_gcc434/external/gcc/4.3.4/lib64:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/xrootd/5.28.00d/lib:$SUSY_WORKING_SW_DIR/lib
-export PATH=/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/python/2.6.4-cms14/bin:$PATH
+MY_LD_LIBRARY_PATH=$MY_ROOTSYS/lib:/gpfs_phys/cms-working/software/slc5_amd64_gcc434/external/libjpg/8b/lib:/gpfs_phys/cms-working/software/slc5_amd64_gcc434/external/python/2.6.4-cms14/lib:/gpfs_phys/cms-working/software/slc5_amd64_gcc434/external/boost/1.44.0-cms3/lib:~/cms/slc5_amd64_gcc434/external/gcc/4.3.4/lib64:/gpfs_phys/cms-working/software/slc5_amd64_gcc434/external/xrootd/5.28.00d/lib:$SUSY_WORKING_SW_DIR/lib
+export PATH=/gpfs_phys/cms-working/software/slc5_amd64_gcc434/external/python/2.6.4-cms14/bin:$PATH
 #-----------------------------------------------------------------------------
 #
 #===============

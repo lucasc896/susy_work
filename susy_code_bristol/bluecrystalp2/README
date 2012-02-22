@@ -1,15 +1,12 @@
 -----README - BLUECRYSTALP2 - SUSYv2 ANALYSIS CODE-----
 
 written by Chris Lucas
-09/02/12
+Last Updated: 09/02/12
 
 This aims to document all of the changes to the SUSYv2 code necessary in order to use on
 the bristol HPC 'BlueCrystalp2'.
 
 - Changes to the configure.py file were made to include a bluecrystal option
-	NOTE: these will need to be changed once a centrally installed version of the CMS software
-	becomes available. The current iteration is based around a user-local install of the CMS
-	software and so will need to be changed pre-commit to svn
 
 - framework/python/icf/core.py, mainly with the qsub command. This must be changed at blue
 due to a different version of qsub being installed. The main difference is with the format of

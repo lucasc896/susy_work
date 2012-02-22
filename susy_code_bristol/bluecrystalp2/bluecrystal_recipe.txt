@@ -1,0 +1,23 @@
+-----RECIPE - BLUECRYSTALP2 - SUSYv2 ANALYSIS CODE-----
+
+written by Chris Lucas (chris.lucas@bristol.ac.uk)
+Last Updated: 22/02/12
+
+All CMS software required as prerequisites to run the SUSY code is located in
+/gpfs_phys/cms-working/software/
+The configure.py file has been modified to include this under a new option
+for "Bristol - Blue Crystal".
+After running the configure.py script and creating setup.sh, source this and
+build all necessary directories - framework, hadronic, AlphaTPlots, onelepton
+and WPol2 (remember that 'make -j4 -f Debug' will hugely speed this up!).
+
+Changes must be made to framework/python/icf/core.py in order to run on blue-
+crystal. These have all been documented in this readme:
+https://github.com/lucasc896/susy_work/blob/master/susy_code_bristol/bluecrystalp2/README
+
+Also mentioned in that document are the changes that must be made to the datasets
+and where they're stored. In order for access from bluecrystal, the datasets will
+need to be copied to /gpfs_phys/cms-working/...
+At IC grid tools are used to retrieve the datasets using xrootd, whereas at 
+Bristol we will directly access them through gpfs. Therefore the paths will 
+need to be changed in the pset files. 

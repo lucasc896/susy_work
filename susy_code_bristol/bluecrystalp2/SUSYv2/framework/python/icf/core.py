@@ -371,8 +371,8 @@ class Analysis:
         p = subprocess.Popen(["qsub",
                               "-q", queue,
                               "-t", "%d-%d" % (1, len(jobs["jobs"])),
-                              "-o", "%s/%s/output/" % (script_dir, dir_name),
-                              "-e", "%s/%s/output/" % (script_dir, dir_name),
+                              "-o", "%s/%s/output/stdout" % (script_dir, dir_name),
+                              "-e", "%s/%s/output/stderr" % (script_dir, dir_name),
                               "-N", job_name,
                               dir_name+"/job.sh"])
 
