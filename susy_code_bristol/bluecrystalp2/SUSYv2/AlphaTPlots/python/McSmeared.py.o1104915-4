@@ -1,0 +1,189 @@
+
+================================
+ Setting up your environment...
+================================
+-------------------------------------
+ROOTSYS is  /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/
+=====================================
+LD_LIBRARY_PATH is: /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23//lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/libjpg/8b/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/python/2.6.4-cms14/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/boost/1.44.0-cms3/lib:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/gcc/4.3.4/lib64:/gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/external/xrootd/5.28.00d/lib:/gpfs/cluster/phys/cl7359/susy_work/SUSYv2/lib
+PYTHONPATH is: /gpfs/cluster/phys/cl7359/cms/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23//lib:/gpfs/cluster/phys/cl7359/susy_work/SUSYv2/lib
+=====================================
+Set-up complete.
+=====================================
+
+375_475
+475_575
+575_675
+675_775
+775_875
+875
+Photons.UseID = True
+Taus.MuonClean = False
+Photons.EtaEEMaxCut = 2.5
+Photons.HcalIsoCut = 2.0
+Photons.HcalIsoRel = 0.0
+Taus.JetClean = False
+Muons.PtCut = 10.0
+Photons.HadOverEmCut = 0.05
+Taus.ApplyID = True
+Taus.EtaCut = 2.5
+Photons.SigIhIhEBCut = 0.015
+Electrons.ApplyID = True
+Electrons.PtCut = 10.0
+Jets.PtCut = 50.0
+Electrons.CombIsoCut = 0.15
+Muons.CombIsoCut = 0.15
+Photons.TrackIsoRel = 0.0
+Muons.TrkIsoCut = -1.0
+Jets.TightID = False
+Photons.RequireLooseForOdd = True
+Photons.IDReq = 3
+Photons.EcalIsoRel = 0.0
+ApplyXCleaning = True
+Electrons.TrkIsoCut = -1.0
+Photons.SigIhIhEECut = 0.035
+Taus.ElecClean = False
+Electrons.RequireLooseForOdd = True
+Jets.ApplyID = True
+Jets.EtaCut = 3.0
+Muons.TightID = True
+Muons.EtaCut = 2.5
+AlphaT.CalcWithEt = True
+Taus.PtCut = 20.0
+Electrons.TightID = False
+Electrons.EtaCut = 2.5
+Photons.EtaEBMaxCut = 1.479
+Photons.EtCut = 25.0
+Muons.ApplyID = True
+Photons.EcalIsoCut = 4.0
+Photons.R9Cut = 0.0
+Photons.TrackIsoCut = 2.0
+Photons.EtaEEMinCut = 1.525
+Taus.TightID = False
+Muons.RequireLooseForOdd = True
+Building ROOT dictionaries. Please wait...
+Initialising Analysis: AK5Calo
+Building ROOT dictionaries. Please wait...
+Initialising Analysis: AK5PF
+Building ROOT dictionaries. Please wait...
+Initialising Analysis: AK5JPT
+Building ROOT dictionaries. Please wait...
+Initialising Analysis: AK7Calo
+Batch running mode
+['/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_45_3_L4X.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_46_1_7qj.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_47_3_qa6.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_48_2_m3V.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_49_1_Ahg.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_4_1_YDl.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_50_1_E7b.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_51_1_ars.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_52_0_QaJ.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_53_0_OpC.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_54_0_tpS.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_55_0_Uw7.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_56_0_mNM.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_57_0_iVL.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_58_0_AKc.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_59_0_3d4.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_5_1_tMz.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_60_0_2HE.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_61_1_6Eg.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_62_0_4D6.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_63_2_nnQ.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_64_0_6AY.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_65_0_hlp.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_66_0_aSg.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_67_0_Dos.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_68_0_Adb.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_69_0_ArJ.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_6_1_vrM.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_70_0_R3k.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_71_0_xK1.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_72_0_YYw.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_73_0_jtw.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_74_0_Q6Y.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_75_0_Hyw.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_76_0_lMn.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_77_0_fRn.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_78_0_9Gy.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_79_0_YhY.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_7_1_Poo.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_80_0_6o4.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_81_0_QXq.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_82_0_nXq.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_83_0_KFS.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_84_0_UP0.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_85_0_LI7.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_86_0_i1G.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_87_0_voH.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_88_0_vMS.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_89_0_YZK.root', '/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_8_1_31i.root']
+==================================================
+Running Analysis: AK5Calo
+==================================================
+On 1 sample(s):
+	ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1		4.29pb 
+==================================================
+Total number of events in the ntuple = 988040
+Setting mLastEntry to match input tree
+[CHAIN] At Entry: 0
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_45_3_L4X.root
+Secondary jet collection: ak5JetPF2PAT    Pat
+Tertiary jet collection: ak5JetJPT   Pat
+Event weights will be calculated for constant number of events: 4171045. Weighted to 100pb^-1. Weight = 0.00010278.
+[CHAIN] At Entry: 20000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_46_1_7qj.root
+[CHAIN] At Entry: 40000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_47_3_qa6.root
+[CHAIN] At Entry: 60000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_48_2_m3V.root
+[CHAIN] At Entry: 80000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_49_1_Ahg.root
+[CHAIN] At Entry: 100000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_4_1_YDl.root
+[CHAIN] At Entry: 120000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_50_1_E7b.root
+[CHAIN] At Entry: 140000
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_51_1_ars.root
+[CHAIN] At Entry: 148040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_52_0_QaJ.root
+[CHAIN] At Entry: 168040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_53_0_OpC.root
+[CHAIN] At Entry: 188040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_54_0_tpS.root
+[CHAIN] At Entry: 208040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_55_0_Uw7.root
+[CHAIN] At Entry: 228040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_56_0_mNM.root
+[CHAIN] At Entry: 248040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_57_0_iVL.root
+[CHAIN] At Entry: 268040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_58_0_AKc.root
+[CHAIN] At Entry: 288040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_59_0_3d4.root
+[CHAIN] At Entry: 308040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_5_1_tMz.root
+[CHAIN] At Entry: 328040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_60_0_2HE.root
+[CHAIN] At Entry: 348040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_61_1_6Eg.root
+[CHAIN] At Entry: 368040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_62_0_4D6.root
+[CHAIN] At Entry: 388040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_63_2_nnQ.root
+[CHAIN] At Entry: 408040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_64_0_6AY.root
+[CHAIN] At Entry: 428040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_65_0_hlp.root
+[CHAIN] At Entry: 448040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_66_0_aSg.root
+[CHAIN] At Entry: 468040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_67_0_Dos.root
+[CHAIN] At Entry: 488040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_68_0_Adb.root
+[CHAIN] At Entry: 508040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_69_0_ArJ.root
+[CHAIN] At Entry: 528040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_6_1_vrM.root
+[CHAIN] At Entry: 548040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_70_0_R3k.root
+[CHAIN] At Entry: 568040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_71_0_xK1.root
+[CHAIN] At Entry: 588040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_72_0_YYw.root
+[CHAIN] At Entry: 608040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_73_0_jtw.root
+[CHAIN] At Entry: 628040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_74_0_Q6Y.root
+[CHAIN] At Entry: 648040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_75_0_Hyw.root
+[CHAIN] At Entry: 668040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_76_0_lMn.root
+[CHAIN] At Entry: 688040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_77_0_fRn.root
+[CHAIN] At Entry: 708040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_78_0_9Gy.root
+[CHAIN] At Entry: 728040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_79_0_YhY.root
+[CHAIN] At Entry: 748040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_7_1_Poo.root
+[CHAIN] At Entry: 768040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_80_0_6o4.root
+[CHAIN] At Entry: 788040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_81_0_QXq.root
+[CHAIN] At Entry: 808040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_82_0_nXq.root
+[CHAIN] At Entry: 828040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_83_0_KFS.root
+[CHAIN] At Entry: 848040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_84_0_UP0.root
+[CHAIN] At Entry: 868040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_85_0_LI7.root
+[CHAIN] At Entry: 888040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_86_0_i1G.root
+[CHAIN] At Entry: 908040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_87_0_voH.root
+[CHAIN] At Entry: 928040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_88_0_vMS.root
+[CHAIN] At Entry: 948040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_89_0_YZK.root
+[CHAIN] At Entry: 968040
+[CHAIN] File: /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_8_1_31i.root
+---------------------------------------------------------------
+Dataset info recorded in: ../results_21_Feb_14//Smear//AK5Calo_ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1_4.log
+Total events processed by all operations: 101.55074999
+---------------------------------------------------------------
+[Manager::~Manager] Analysis has taken 475 seconds to process 988040 events at an average rate of 2080 events/second

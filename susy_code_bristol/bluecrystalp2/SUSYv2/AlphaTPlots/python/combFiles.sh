@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cd ../results/Data
+cd ../results_31_Jan_16/Data
 hadd AK5Calo_Jets.root *.root &
 cd ../Data37
 hadd AK5Calo_Jets.root *.root &

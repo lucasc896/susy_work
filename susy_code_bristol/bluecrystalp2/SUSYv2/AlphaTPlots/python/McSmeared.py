@@ -64,7 +64,11 @@ addCutFlowMC(anal_ak7_caloMC)
 outdir = "../results_"+strftime("%d_%b_%H")+"//Smear/"
 ensure_dir(outdir)
 
+#ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1.File=ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1.File[0:5]
+
 anal_ak5_caloMC.Run(outdir,conf_ak5_caloMC,DiBoson_Sample)
+#anal_ak5_caloMC.Run(outdir,conf_ak5_caloMC,[ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1])
+
 
 # anal_ak5_pfMC.Run("../results_"+strftime("%d_%b_%H")+"//Smear",conf_ak5_pfMC,MC)
 # anal_ak5_pfMC.Run("../results_"+strftime("%d_%b_%H")+"//Smear",conf_ak5_pfMC,[QCD_AllPtBins_7TeV_Pythia])

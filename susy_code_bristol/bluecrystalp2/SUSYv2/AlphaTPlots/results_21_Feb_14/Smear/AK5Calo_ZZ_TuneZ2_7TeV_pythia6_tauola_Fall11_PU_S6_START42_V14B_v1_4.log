@@ -1,0 +1,523 @@
+{
+  "Dataset" : "ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1",
+  "Configuration" :
+  {
+    "Common.AlphaT.CalcWithEt" : 1,
+    "Common.ApplyXCleaning" : 1,
+    "Common.Electrons.ApplyID" : 1,
+    "Common.Electrons.CombIsoCut" : 0.15,
+    "Common.Electrons.EtaCut" : 2.5,
+    "Common.Electrons.PtCut" : 10,
+    "Common.Electrons.RequireLooseForOdd" : 1,
+    "Common.Electrons.TightID" : 0,
+    "Common.Electrons.TrkIsoCut" : -1,
+    "Common.Jets.ApplyID" : 1,
+    "Common.Jets.EtaCut" : 3,
+    "Common.Jets.PtCut" : 50,
+    "Common.Jets.TightID" : 0,
+    "Common.Muons.ApplyID" : 1,
+    "Common.Muons.CombIsoCut" : 0.15,
+    "Common.Muons.EtaCut" : 2.5,
+    "Common.Muons.PtCut" : 10,
+    "Common.Muons.RequireLooseForOdd" : 1,
+    "Common.Muons.TightID" : 1,
+    "Common.Muons.TrkIsoCut" : -1,
+    "Common.Photons.EcalIsoCut" : 4,
+    "Common.Photons.EcalIsoRel" : 0,
+    "Common.Photons.EtCut" : 25,
+    "Common.Photons.EtaEBMaxCut" : 1.479,
+    "Common.Photons.EtaEEMaxCut" : 2.5,
+    "Common.Photons.EtaEEMinCut" : 1.525,
+    "Common.Photons.HadOverEmCut" : 0.05,
+    "Common.Photons.HcalIsoCut" : 2,
+    "Common.Photons.HcalIsoRel" : 0,
+    "Common.Photons.IDReq" : 3,
+    "Common.Photons.R9Cut" : 0,
+    "Common.Photons.RequireLooseForOdd" : 1,
+    "Common.Photons.SigIhIhEBCut" : 0.015,
+    "Common.Photons.SigIhIhEECut" : 0.035,
+    "Common.Photons.TrackIsoCut" : 2,
+    "Common.Photons.TrackIsoRel" : 0,
+    "Common.Photons.UseID" : 1,
+    "Common.Taus.ApplyID" : 1,
+    "Common.Taus.ElecClean" : 0,
+    "Common.Taus.EtaCut" : 2.5,
+    "Common.Taus.JetClean" : 0,
+    "Common.Taus.MuonClean" : 0,
+    "Common.Taus.PtCut" : 20,
+    "Common.Taus.TightID" : 0,
+    "Gen.Electrons.EtaCut" : 999,
+    "Gen.Electrons.PtCut" : -1,
+    "Gen.Muons.EtaCut" : 999,
+    "Gen.Muons.PtCut" : -1,
+    "LogFileFormat" : "JSON",
+    "NT7.GenMatch.ElecPzLTReqForMatch" : 998,
+    "NT7.GenMatch.JetEtaLTReq" : 100,
+    "NT7.GenMatch.MuonPzLTReqForMatch" : 998,
+    "NT7.JetCorrType" : "MC",
+    "NT7.Smear.IsJetSmeared" : 0,
+    "NT7.Smear.SmearJetFactor" : 0,
+    "NT7.Smear.SmearJetNonGaussNorm" : 0,
+    "NT7.Smear.SmearJetRespFuncFileName" : "./Response.root",
+    "NT7.Smear.SmearJetType" : "pT",
+    "NT7.Xclean.ElecCcAssocElecReq" : 0,
+    "NT7.Xclean.JetCcAssocJetReq" : 0,
+    "NT7.Xclean.MuonCcAssocMuonReq" : 0,
+    "NT7.Xclean.PhotCcAssocPhotReq" : 0,
+    "Ntuple.Electrons.LooseID" : "EIDLoose",
+    "Ntuple.Electrons.Prefix" : "electron",
+    "Ntuple.Electrons.Suffix" : "Pat",
+    "Ntuple.Electrons.TightID" : "EIDTight",
+    "Ntuple.Jets.Prefix" : "ak5Jet",
+    "Ntuple.Jets.Suffix" : "Pat",
+    "Ntuple.Jets.Uncorrected" : 0,
+    "Ntuple.Muons.LooseID" : "IsGlobalMuon",
+    "Ntuple.Muons.Prefix" : "muon",
+    "Ntuple.Muons.Suffix" : "Pat",
+    "Ntuple.Muons.TightID" : "IDGlobalMuonPromptTight",
+    "Ntuple.Photons.Prefix" : "photon",
+    "Ntuple.Photons.Suffix" : "Pat",
+    "Ntuple.SecJets.Prefix" : "ak5JetPF2PAT",
+    "Ntuple.SecJets.Suffix" : "Pat",
+    "Ntuple.SecJets.Uncorrected" : 0,
+    "Ntuple.SecMuons.Prefix" : "muon",
+    "Ntuple.SecMuons.Suffix" : "PF",
+    "Ntuple.SecTaus.Prefix" : "tauHPS",
+    "Ntuple.SecTaus.Suffix" : "PF",
+    "Ntuple.Taus.LooseID" : "TauIdbyTaNCfrOnePercent",
+    "Ntuple.Taus.Prefix" : "tau",
+    "Ntuple.Taus.Suffix" : "Pat",
+    "Ntuple.Taus.TightID" : "TauIdbyTaNCfrTenthPercent",
+    "Ntuple.TerJets.Prefix" : "ak5JetJPT",
+    "Ntuple.TerJets.Suffix" : "Pat",
+    "Ntuple.TerJets.Uncorrected" : 0,
+    "Ntuple.Weight" : "User",
+    "XCleaning.ElectronJet" : 1,
+    "XCleaning.Electrons.CombIsoCut" : 0.15,
+    "XCleaning.Electrons.ElectronIsoTypePtCutoff" : 0,
+    "XCleaning.Electrons.ElectronJetDeltaR" : 0.5,
+    "XCleaning.Electrons.ElectronLooseIdRequired" : 1,
+    "XCleaning.Electrons.ElectronTightIdRequired" : 0,
+    "XCleaning.Electrons.EtaCut" : 2.5,
+    "XCleaning.Electrons.PtCut" : 10,
+    "XCleaning.Electrons.RequireLooseIdForInitialFilter" : 0,
+    "XCleaning.Electrons.TrkIsoCut" : -1,
+    "XCleaning.Jets.EtaCut" : 10,
+    "XCleaning.Jets.PtCut" : 10,
+    "XCleaning.MuonJet" : 1,
+    "XCleaning.Muons.CombIsoCut" : 0.15,
+    "XCleaning.Muons.EtaCut" : 2.5,
+    "XCleaning.Muons.ModifyJetEnergy" : 1,
+    "XCleaning.Muons.MuonIsoTypePtCutoff" : 0,
+    "XCleaning.Muons.MuonJetDeltaR" : 0.5,
+    "XCleaning.Muons.PtCut" : 10,
+    "XCleaning.Muons.RequireLooseIdForInitialFilter" : 0,
+    "XCleaning.Muons.TrkIsoCut" : -1,
+    "XCleaning.PhotonJet" : 1,
+    "XCleaning.Photons.CaloIsoCut" : 0.2,
+    "XCleaning.Photons.EtCut" : 25,
+    "XCleaning.Photons.EtaCut" : 2.5,
+    "XCleaning.Photons.EtaEBMaxCut" : 1.479,
+    "XCleaning.Photons.EtaEEMaxCut" : 2.5,
+    "XCleaning.Photons.EtaEEMinCut" : 1.525,
+    "XCleaning.Photons.IDReq" : 3,
+    "XCleaning.Photons.PhotonIsoTypePtCutoff" : 30,
+    "XCleaning.Photons.PhotonJetDeltaR" : 0.5,
+    "XCleaning.Photons.TrkIsoCut" : 2,
+    "XCleaning.Photons.UseID" : 1,
+    "XCleaning.ResolveConflicts" : 1,
+    "XCleaning.TauJet" : 0,
+    "XCleaning.Verbose" : 0
+  },
+  "Dataset Configuration" :
+  {
+    "CrossSection" : 4.287,
+    "Events" : 4171045,
+    "File" : "",
+    "FileList" : [ "/gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_45_3_L4X.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_46_1_7qj.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_47_3_qa6.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_48_2_m3V.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_49_1_Ahg.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_4_1_YDl.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_50_1_E7b.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_51_1_ars.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_52_0_QaJ.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_53_0_OpC.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_54_0_tpS.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_55_0_Uw7.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_56_0_mNM.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_57_0_iVL.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_58_0_AKc.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_59_0_3d4.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_5_1_tMz.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_60_0_2HE.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_61_1_6Eg.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_62_0_4D6.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_63_2_nnQ.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_64_0_6AY.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_65_0_hlp.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_66_0_aSg.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_67_0_Dos.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_68_0_Adb.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_69_0_ArJ.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_6_1_vrM.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_70_0_R3k.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_71_0_xK1.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_72_0_YYw.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_73_0_jtw.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_74_0_Q6Y.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_75_0_Hyw.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_76_0_lMn.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_77_0_fRn.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_78_0_9Gy.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_79_0_YhY.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_7_1_Poo.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_80_0_6o4.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_81_0_QXq.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_82_0_nXq.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_83_0_KFS.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_84_0_UP0.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_85_0_LI7.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_86_0_i1G.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_87_0_voH.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_88_0_vMS.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_89_0_YZK.root , /gpfs_phys/cms-working/clucas/samples/python/montecarlo/Summer11/2012_01_16_10_13_13/ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1/SusyCAF_Tree_8_1_31i.root" ],
+    "FirstEntry" : 0,
+    "JsonFile" : "../results_21_Feb_14//Smear//AK5Calo_ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1_4.json",
+    "LastEntry" : 0,
+    "LogFile" : "../results_21_Feb_14//Smear//AK5Calo_ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1_4.log",
+    "Name" : "ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1",
+    "NtupleFormat" : "ICF",
+    "NtupleVersion" : 3,
+    "OutputFile" : "../results_21_Feb_14//Smear//AK5Calo_ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1_4.root",
+    "Reweight" : -1,
+    "Weight" : -1
+  },
+  "Weighting" : "Event weights will be calculated for constant number of events: 4171045. Weighted to 100pb^-1. Weight = 0.00010278.",
+  "Number of Events Processed" : 101.551,
+  "Cut Flow" : 
+  {
+    "Tree Name" : "MC",
+    "HT 250 GeV " : 
+    {
+      "efficiency" : 0.0891259,
+      "T" : 9.05081,
+      "eT" : 0.0304999,
+      "F" : 92.4999,
+      "eF" : 0.0975046,
+      "Check if an event failed noise filtering criteria" : 
+      {
+        "efficiency" : 0.996139,
+        "T" : 9.01586,
+        "eT" : 0.0304409,
+        "F" : 0.0349452,
+        "eF" : 0.00189517,
+        "Check if an event failed Good event selection" : 
+        {
+          "efficiency" : 0.996284,
+          "T" : 8.98236,
+          "eT" : 0.0303843,
+          "F" : 0.0335063,
+          "eF" : 0.00185574,
+          "Veto Events with sum of cleaned rechits above 30 GeV " : 
+          {
+            "efficiency" : 0.990262,
+            "T" : 8.89489,
+            "eT" : 0.030236,
+            "F" : 0.0874658,
+            "eF" : 0.00299829,
+            " first Jet Eta < 2.5 rad): " : 
+            {
+              "efficiency" : 0.968582,
+              "T" : 8.61543,
+              "eT" : 0.0297573,
+              "F" : 0.279459,
+              "eF" : 0.00535936,
+              "Second jet Pt > 100 GeV: " : 
+              {
+                "efficiency" : 0.494011,
+                "T" : 4.25612,
+                "eT" : 0.0209152,
+                "F" : 4.35931,
+                "eF" : 0.0211672,
+                "Check if a jet failed loose quality criteria" : 
+                {
+                  "efficiency" : 0.999469,
+                  "T" : 4.25386,
+                  "eT" : 0.0209096,
+                  "F" : 0.00226116,
+                  "eF" : 0.000482081,
+                  "Bad muon in a Jet" : 
+                  {
+                    "efficiency" : 0.988668,
+                    "T" : 4.20565,
+                    "eT" : 0.0207908,
+                    "F" : 0.0482038,
+                    "eF" : 0.00222585,
+                    "Check if a electron failed loose quality criteria" : 
+                    {
+                      "efficiency" : 1,
+                      "T" : 4.20565,
+                      "eT" : 0.0207908,
+                      "F" : 0,
+                      "eF" : 0,
+                      "Check if a photon failed loose quality criteria" : 
+                      {
+                        "efficiency" : 1,
+                        "T" : 4.20565,
+                        "eT" : 0.0207908,
+                        "F" : 0,
+                        "eF" : 0,
+                        "NumComElectrons Operation (num unsigned int <= 0)" : 
+                        {
+                          "efficiency" : 0.967106,
+                          "T" : 4.06731,
+                          "eT" : 0.020446,
+                          "F" : 0.138342,
+                          "eF" : 0.00377078,
+                          "Number of Common Photons unsigned int <= 0)" : 
+                          {
+                            "efficiency" : 0.996867,
+                            "T" : 4.05457,
+                            "eT" : 0.0204139,
+                            "F" : 0.0127447,
+                            "eF" : 0.00114451,
+                            "Checking that  sum Vertex Pt / HT is  > 0.1 " : 
+                            {
+                              "efficiency" : 0.999975,
+                              "T" : 4.05447,
+                              "eT" : 0.0204137,
+                              "F" : 0.00010278,
+                              "eF" : 0.00010278,
+                              "HT 275 GeV " : 
+                              {
+                                "efficiency" : 0.90869,
+                                "T" : 3.68425,
+                                "eT" : 0.0194594,
+                                "F" : 0.370214,
+                                "eF" : 0.00616851,
+                                "Dead ECAL cut 0.3 " : 
+                                {
+                                  "efficiency" : 0.313619,
+                                  "T" : 1.15545,
+                                  "eT" : 0.0108976,
+                                  "F" : 2.5288,
+                                  "eF" : 0.0161217,
+                                  "Passing MHT over MET cut of: 1.25 " : 
+                                  {
+                                    "efficiency" : 0.586906,
+                                    "T" : 0.678142,
+                                    "eT" : 0.00834862,
+                                    "F" : 0.47731,
+                                    "eF" : 0.00700414,
+                                    "NumComMuons Operation (num unsigned int <= 0)" : 
+                                    {
+                                      "efficiency" : 0.945135,
+                                      "T" : 0.640936,
+                                      "eT" : 0.00811637,
+                                      "F" : 0.0372064,
+                                      "eF" : 0.00195552,
+                                      "HT 375 GeV " : 
+                                      {
+                                        "efficiency" : 0.506735,
+                                        "T" : 0.324785,
+                                        "eT" : 0.00577766,
+                                        "F" : 0.316151,
+                                        "eF" : 0.00570035,
+                                        "HT less than475 GeV " : 
+                                        {
+                                          "efficiency" : 0.550633,
+                                          "T" : 0.178837,
+                                          "eT" : 0.00428729,
+                                          "F" : 0.145948,
+                                          "eF" : 0.00387305,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 0.178837,
+                                            "eT" : 0.00428729,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.0781609,
+                                            "T" : 0.0139781,
+                                            "eT" : 0.00119861,
+                                            "F" : 0.164859,
+                                            "eF" : 0.00411634,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 0.0139781,
+                                              "eT" : 0.00119861,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "HT 475 GeV " : 
+                                      {
+                                        "efficiency" : 0.22771,
+                                        "T" : 0.145948,
+                                        "eT" : 0.00387305,
+                                        "F" : 0.494988,
+                                        "eF" : 0.00713267,
+                                        "HT less than575 GeV " : 
+                                        {
+                                          "efficiency" : 0.532394,
+                                          "T" : 0.0777017,
+                                          "eT" : 0.00282598,
+                                          "F" : 0.0682459,
+                                          "eF" : 0.00264846,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 0.0777017,
+                                            "eT" : 0.00282598,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.0595238,
+                                            "T" : 0.0046251,
+                                            "eT" : 0.000689469,
+                                            "F" : 0.0730766,
+                                            "eF" : 0.00274059,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 0.0046251,
+                                              "eT" : 0.000689469,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "HT 575 GeV " : 
+                                      {
+                                        "efficiency" : 0.106479,
+                                        "T" : 0.0682459,
+                                        "eT" : 0.00264846,
+                                        "F" : 0.57269,
+                                        "eF" : 0.0076721,
+                                        "HT less than675 GeV " : 
+                                        {
+                                          "efficiency" : 0.504518,
+                                          "T" : 0.0344313,
+                                          "eT" : 0.00188118,
+                                          "F" : 0.0338146,
+                                          "eF" : 0.00186426,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 0.0344313,
+                                            "eT" : 0.00188118,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.0238806,
+                                            "T" : 0.00082224,
+                                            "eT" : 0.000290706,
+                                            "F" : 0.0336091,
+                                            "eF" : 0.00185859,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 0.00082224,
+                                              "eT" : 0.000290706,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "HT 675 GeV " : 
+                                      {
+                                        "efficiency" : 0.0527582,
+                                        "T" : 0.0338146,
+                                        "eT" : 0.00186426,
+                                        "F" : 0.607121,
+                                        "eF" : 0.00789936,
+                                        "HT less than775 GeV " : 
+                                        {
+                                          "efficiency" : 0.455927,
+                                          "T" : 0.015417,
+                                          "eT" : 0.00125879,
+                                          "F" : 0.0183976,
+                                          "eF" : 0.0013751,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 0.015417,
+                                            "eT" : 0.00125879,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.00666667,
+                                            "T" : 0.00010278,
+                                            "eT" : 0.00010278,
+                                            "F" : 0.0153142,
+                                            "eF" : 0.00125459,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 0.00010278,
+                                              "eT" : 0.00010278,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "HT 775 GeV " : 
+                                      {
+                                        "efficiency" : 0.0287043,
+                                        "T" : 0.0183976,
+                                        "eT" : 0.0013751,
+                                        "F" : 0.622538,
+                                        "eF" : 0.00799903,
+                                        "HT less than875 GeV " : 
+                                        {
+                                          "efficiency" : 0.430168,
+                                          "T" : 0.00791406,
+                                          "eT" : 0.000901891,
+                                          "F" : 0.0104836,
+                                          "eF" : 0.00103803,
+                                          "Hadronic Common Plots (bins 2 to 15) " : 
+                                          {
+                                            "efficiency" : 1,
+                                            "T" : 0.00791406,
+                                            "eT" : 0.000901891,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          },
+                                          "CommonAlphaTCut " : 
+                                          {
+                                            "efficiency" : 0.025974,
+                                            "T" : 0.00020556,
+                                            "eT" : 0.000145353,
+                                            "F" : 0.0077085,
+                                            "eF" : 0.000890101,
+                                            "Dumped event info  " : 
+                                            {
+                                              "efficiency" : 1,
+                                              "T" : 0.00020556,
+                                              "eT" : 0.000145353,
+                                              "F" : 0,
+                                              "eF" : 0
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "HT 875 GeV " : 
+                                      {
+                                        "efficiency" : 0.0163566,
+                                        "T" : 0.0104836,
+                                        "eT" : 0.00103803,
+                                        "F" : 0.630453,
+                                        "eF" : 0.00804971,
+                                        "Hadronic Common Plots (bins 2 to 15) " : 
+                                        {
+                                          "efficiency" : 1,
+                                          "T" : 0.0104836,
+                                          "eT" : 0.00103803,
+                                          "F" : 0,
+                                          "eF" : 0
+                                        },
+                                        "CommonAlphaTCut " : 
+                                        {
+                                          "efficiency" : 0,
+                                          "T" : 0,
+                                          "eT" : 0,
+                                          "F" : 0.0104836,
+                                          "eF" : 0.00103803,
+                                          "Dumped event info  " : 
+                                          {
+                                            "efficiency" : 0,
+                                            "T" : 0,
+                                            "eT" : 0,
+                                            "F" : 0,
+                                            "eF" : 0
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -244,6 +244,7 @@ class Analysis:
 
 
     def batch_status(self, dir_name):
+    	print "\n\n ENTERED BATCH STATUS \n\n"
         import glob
         try:
             n = int(dir_name)
@@ -332,7 +333,9 @@ class Analysis:
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
         info=p.communicate()
+        #print " \n\n\n >>>>>> INFO: ", info, "\n\n\n"
         params=self.get_params(info)
+        #print " \n\n\n >>>>>> PARAMS: ", params, "\n\n\n"
         #needs to be plugged into Alex's method to feed this json file back to analysis.py
         jobs = self.job_splitter(params,self.options.files_per_job)
         job_name = self.jobName()
@@ -353,12 +356,13 @@ class Analysis:
         susy_working_dir = os.environ["SUSY_WORKING_SW_DIR"]
         script_dir = os.getcwd()
         script_name = sys.argv[0]
-        script_str = "#!/bin/sh\nsource %s/setup.sh\ncd %s\n%s -j %s -J ${SGE_TASK_ID} -S %s"
+        script_str = "#!/bin/sh\nsource %s/setup.sh\ncd %s\n%s -j %s -J ${PBS_ARRAYID} -S %s\n"
+        #defines what will be in the job.sh file
         open(dir_name+"/job.sh","w").write(script_str %(susy_working_dir,
                                                         script_dir,
                                                         script_name,
                                                         dir_name+"/job.json",
-                                                        dir_name+"/status/${SGE_TASK_ID}"
+                                                        dir_name+"/status/${PBS_ARRAYID}"
                                                         )
                                            )
         queue=self.options.queue_select
@@ -371,16 +375,8 @@ class Analysis:
                               "-e", "%s/%s/output/" % (script_dir, dir_name),
                               "-N", job_name,
                               dir_name+"/job.sh"])
-        print len(jobs["jobs"])
+
         
-       # print "\n\n\n >>>>>>> Command: ", ["qsub",
-       #                       "-q", queue,
-       #                       "-t", "%d-%d:1" % (1, len(jobs["jobs"])),
-       #                       "-o", "%s/%s/output/" % (script_dir, dir_name),
-       #                       "-e", "%s/%s/output/" % (script_dir, dir_name),
-       #                       "-N", job_name,
-       #                       dir_name+"/job.sh"], "\n\n"
-                              
     	if p.wait() == 0:
             print "%d jobs submitted successfuly" % len(jobs["jobs"])
         else:
@@ -448,7 +444,7 @@ class Analysis:
          parser.add_option("-J", "--job-id", action="store", type="int", default=None, help='Job ID to run within JSON job file')
          parser.add_option("-b", "--batch",action="store_true", default=False, help='Run batch mode')
          parser.add_option("-n",type="int",default=-1,dest='files_per_job',help='Specify the number of files per jobs when running batch mode')
-	 parser.add_option("-q",type="string",default="short",dest='queue_select',help='Specify which que your job should submit to: veryshort, short, medium or long')
+         parser.add_option("-q",type="string",default="short",dest='queue_select',help='Specify which que your job should submit to: veryshort, short, medium or long')
          parser.add_option("-r", "--run-nfiles-only", type="int", metavar = "NFILES",
                            default = -1, dest = "run_nfiles_only",
                            help="Run on the first N of the files only (useful for quick tests).")

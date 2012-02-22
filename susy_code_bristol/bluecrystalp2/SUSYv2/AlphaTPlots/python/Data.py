@@ -15,7 +15,7 @@ from ra1objectid.ra3PhotonId_cff import *
 vbtfMuonId_cff = Muon_IDFilter( vbtfmuonidps.ps()  )
 vbtfElectronIdFilter = Electron_IDFilter( vbtfelectronidWP95ps.ps() )
 ra3PhotonIdFilter    = Photon_IDFilter( ra3photonidps.ps() )
-PreScaleWeights      = PreScaleReweighting(datatriggerps.ps())
+#PreScaleWeights      = PreScaleReweighting(datatriggerps.ps())
 
 cutTree,blah,l = MakeDataTree(100.)
 
@@ -52,6 +52,7 @@ from data.Run2011.RA1ToBurn import *
 from data.Run2011.HT42_incomplete import *
 from data.Run2011.HT_Run2011A import *
 from data.Run2011.HTRun2011AB import *
+
 test = PSet(
 Name = "test",
 Format = ("ICF",3),
@@ -59,4 +60,4 @@ Weight = 1.0,
 File = "../../Ntuples/375_newFormat.root")
 outdir = "../results_"+strftime("%d_%b_%H")+"/Data/"
 ensure_dir(outdir)
-anal_ak5_caloData.Run(outdir,conf_ak5_caloData,[HTRun2011AB])#HT_Run2011A])
+anal_ak5_caloData.Run(outdir,conf_ak5_caloData,[HT_Run2011AB])#HT_Run2011A])
