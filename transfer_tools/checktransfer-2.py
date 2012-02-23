@@ -3,6 +3,19 @@
 import subprocess
 import commands
 
+# by Chris Lucas
+# last updated: 23/02/12
+
+### ---------------------------------------------- ###
+# To run this script (from this directory):
+# 1. change mkfiletransfer.py accordingly for the dataset being transferred
+# 2. ./checktransfer-2.py
+# 3. any mistransferred files will have their errors printed at termination
+# 4. running ./mkfiletransfer.py will give the arguements for lcg-cp to
+#    fix these problem files
+# 5. run ./checktransfer-2.py again to confirm consistency of dataset
+### ---------------------------------------------- ###
+
 good_set=True
 bad_files="\n 		>>>>>> FILE ERRORS >>>>>> \n\n"
 
@@ -32,7 +45,7 @@ def checkf(command_temp, evnum):
     else:
 		pass
 	
-p=commands.getstatusoutput("./mkfiletransfer.py")
+p=commands.getstatusoutput("./mkfiletransfer2.py")
 output_lines = p[1].split("\n")
 
 print "\n>>>>>>  Checking consistency of transferred files..."

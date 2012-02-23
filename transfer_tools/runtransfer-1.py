@@ -2,12 +2,38 @@
 
 import subprocess
 import commands
+import datetime
+
+# by Chris Lucas
+# last updated: 23/02/12
+
+### ---------------------------------------------- ###
+# To run this script (from this directory):
+# 1. mkdir sample_transfers
+# 2. touch sample_transfers/<transfername>.txt
+# 3. change mkfiletransfer.py accordingly for the dataset being transferred
+# 4. voms-proxy-init -voms cms
+# 5. ./runtransfer-1.py
+# 6. Upon completion, use checktransfer-2.py
+### ---------------------------------------------- ###
+
+
+fileName = 'sample_transfers/<transfername>.txt'
 
 def copyf(command_temp):
     args=command_temp.split(" ")
     cmd=["lcg-cp",args[0],args[1]]
-    print cmd
+    print datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), cmd
+    f = open(fileName, 'r')
+    for line in f:
+    	if args[1] in line:
+    		print "\n >>>> Skipping: File Already Copied \n"
+    		return
     subprocess.call(cmd)
+    f.close()
+    f = open(fileName, 'a')
+    f.write("%s\n" % args[1])
+    f.close()
     print "---------------\n\n"
     
 def checkf(command_temp):
@@ -34,6 +60,7 @@ def checkf(command_temp):
 p=commands.getstatusoutput("./mkfiletransfer.py")
 
 output_lines = p[1].split("\n")
+
 
 
 # run loop over mkfiletransfer output to copy files

@@ -5,15 +5,9 @@ import data.Run2011.HT_Run2011AB as expr
 from subprocess import *
 import re
 
-
 thismachine=Popen(["hostname"], shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True).communicate()
 
-
 print str(thismachine)
-
-#print a
-
-#import samples.QCD_EMBCE_PSet as expr
 
 # Procedure:
 # ==========================
@@ -31,15 +25,12 @@ print str(thismachine)
 
 
 ps = expr.HT_Run2011AB
+
 # This is the source path. Leave as is for CASTOR.
-#source = "srm://srm-cms.cern.ch/srm/managerv2?SFN="
 source = "srm://gfe02.grid.hep.ph.ic.ac.uk:8443/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/"
-#source = "srm://gfe02.grid.hep.ph.ic.ac.uk/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/store/user/"
-# This is the target path. Currently set to IC DCACHE. Change!
-#target = "srm://gfe02.grid.hep.ph.ic.ac.uk/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/store/user/"
-#target = "srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/gpfs_phys/storm/cms/user/clucas/ICF/automated/2011_10_26_12_39_58/QCD_TuneZ2_HT-100To250_7TeV-madgraph.Summer11-PU_S4_START42_V11-v1.AODSIM/"
+
+# This is the target path (don't forget a trailing '/')
 target = "srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/cms/user/clucas/ICF/automated/2011_11_11_15_48_22/"
-#target="srm://gfe02.grid.hep.ph.ic.ac.uk:8443/srm/managerv2?SFN=/pnfs/hep.ph.ic.ac.uk/data/cms/"
 
 def filename(s):
     #return s.split("/")[-1]
@@ -66,7 +57,5 @@ if __name__ == "__main__":
             f1source=f1
         s = template % (source, f1source, target, filename(f1))
         #s = template % (target, filename(f1))
-	
-	#print filename(f1)
 	print s    
 
