@@ -4,9 +4,18 @@ import subprocess
 import commands
 import datetime
 
-fileName = 'sample_transfers/run2011AB.txt'
+### Run: voms-proxy-init -voms cms -vomslife 20:00
+
+## Make sure to change the fileName to something unique for the sample being transferred
+
+
+fileName = 'sample_transfers/DYJetsToLL_TuneZ2_IC.txt'
 bad_files = "\n 		>>>>>> FILE ERRORS >>>>>> \n\n"
 
+cmd1 = ["touch", fileName]
+subprocess.call(cmd1)
+
+print " >>>>>> Opening file: ", fileName
 f = open(fileName, 'r')
 fileContent = f.read()
 f.close()
@@ -53,7 +62,7 @@ def checkf(command_temp, evnum):
 		print check1
 		good_trans==False
 		for i in range(len(check1)):
-			bad_files=bad_files+check2[i]
+			bad_files=bad_files+check1[i]
 		bad_files=bad_files+"\n"
 		return good_trans
     
@@ -67,17 +76,28 @@ def checkf(command_temp, evnum):
 		pass  
 	return good_trans
 
-p=commands.getstatusoutput("./mkfiletransfer.py")
+
+def fileWrite(fileContent_tmp):
+	f=open(fileName, 'w')
+	print "\n >>>>>>> Writing to file: ", fileName, "\n\n"
+	for j in range(len(fileContent_tmp)):
+		f.write(fileContent_tmp[j]+"\n")
+	f.close()
+
+
+p=commands.getstatusoutput("./mkfiletransfer2.py")
 output_lines = p[1].split("\n")
 
 # note, skips the first line of the mkfiletransfer output
 for i in range(1, len(output_lines)):
 	copyf(output_lines[i], fileContent)
-	checkf(output_lines[i], i)
+	#checkf(output_lines[i], i)
 	if checkf(output_lines[i], i):
 		fileContent.append(output_lines[i].split(" ")[1])
 	else:
 		print "bad transfer"
+	if i%100==0:
+		fileWrite(fileContent)
 		
 print bad_files
 
