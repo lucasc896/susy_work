@@ -158,13 +158,24 @@ skim = SkimOp(skim_ps.ps())
 
 #Plot the common plots!
 
-genericPSet = PSet(
+genericPSet_post = PSet(
 DirName      = "275_325Gev",
 MinObjects   = 2,
 MaxObjects   = 15,
 minDR = 0.4 ,
 mCut = 2.0 ,
 StandardPlots     = True,
+PrePlots	= False,
+)
+
+genericPSet_pre = PSet(
+DirName      = "test",
+MinObjects   = 2,
+MaxObjects   = 15,
+minDR = 0.4 ,
+mCut = 2.0 ,
+StandardPlots     = False,
+PrePlots	= True,
 )
 
 def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
@@ -253,8 +264,8 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
 ####
 NoiseFilt= OP_HadronicHBHEnoiseFilter()
 GoodVertexMonster = OP_GoodEventSelection()
-ht250_Trigger = RECO_CommonHTCut(250.)
-recHitCut = OP_SumRecHitPtCut(30.)
+#ht250_Trigger = RECO_CommonHTCut(250.)
+#recHitCut = OP_SumRecHitPtCut(30.)
 LeadingJetEta = OP_FirstJetEta(2.5)
 oddJet = OP_OddJet()
 oddMuon = OP_OddMuon()
@@ -264,13 +275,13 @@ badMuonInJet = OP_BadMuonInJet()
 numComElectrons = OP_NumComElectrons("<=",0)
 numComPhotons = OP_NumComPhotons("<=",0)
 VertexPtOverHT = OP_SumVertexPtOverHT(0.1)
-htCut275 = RECO_CommonHTCut(275.)
+#htCut275 = RECO_CommonHTCut(275.)
 DeadEcalCutMC =   OP_DeadECALCut(0.3,0.3,0.5,30.,10,0,"./deadRegionList_START38_V12.txt")
 MHTCut = OP_CommonMHTCut(0.)
 MHT_METCut = OP_MHToverMET(1.25,50.)
 DiJet5 = OP_NumComJets("==",2)
 ZeroMuon = OP_NumComMuons("<=",0)
-recHitCut = OP_SumRecHitPtCut(30.)
+#recHitCut = OP_SumRecHitPtCut(30.)
 ZeroMuon = OP_NumComMuons("<=",0)
 json_ouput = JSONOutput("filtered")
 OneMuon = OP_NumComMuons("==",1)
@@ -281,6 +292,37 @@ ZMass_2Muons = RECO_2ndMuonMass(25.0, 91.2, True, "OS")
 minDRMuonJetCut = RECO_MuonJetDRCut(0.5)
 minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.5)
 Mu45PtCut = OP_UpperMuPtCut(1000.0)
+
+#NoiseFilt= OP_HadronicHBHEnoiseFilter()
+#GoodVertexMonster = OP_GoodEventSelection()
+ht250_Trigger = RECO_CommonHTCut(0.)
+recHitCut = OP_SumRecHitPtCut(0.)
+#LeadingJetEta = OP_FirstJetEta(0.)
+#oddJet = OP_OddJet()
+#oddMuon = OP_OddMuon()
+#oddElectron = OP_OddElectron()
+#oddPhoton = OP_OddPhoton()
+#badMuonInJet = OP_BadMuonInJet()
+#numComElectrons = OP_NumComElectrons("<=",0)
+#numComPhotons = OP_NumComPhotons("<=",0)
+#VertexPtOverHT = OP_SumVertexPtOverHT(0.)
+htCut275 = RECO_CommonHTCut(0.)
+#DeadEcalCutMC =   OP_DeadECALCut(0.,0.,0.,0.,0,0,"./deadRegionList_START38_V12.txt")
+#MHTCut = OP_CommonMHTCut(0.)
+#MHT_METCut = OP_MHToverMET(0.,0.)
+#DiJet5 = OP_NumComJets("==",2)
+#ZeroMuon = OP_NumComMuons("<=",0)
+recHitCut = OP_SumRecHitPtCut(0.)
+#ZeroMuon = OP_NumComMuons("<=",0)
+#json_ouput = JSONOutput("filtered")
+#OneMuon = OP_NumComMuons("==",0)
+#ZMassCut = RECO_2ndMuonMass(0., 0., False, "all")
+#PFMTCut30 = RECO_PFMTCut(0.)
+#DiMuon = OP_NumComMuons("==",00)
+#ZMass_2Muons = RECO_2ndMuonMass(0., 0., True, "OS")
+#minDRMuonJetCut = RECO_MuonJetDRCut(0.)
+#minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.)
+#Mu45PtCut = OP_UpperMuPtCut(0.)
 
 
 #Second MC!
@@ -293,6 +335,7 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
   if int(Threshold) is 100 and Split == "Muon_All" : HTBins = [375+100*i for i in range(6)]
   if int(Threshold) is 73 : HTBins = [275.,325.]
   if int(Threshold) is 86 : HTBins = [325.,375.]
+
   secondJetET = OP_SecondJetEtCut(Threshold)
   cutTreeMC = Tree("MC")
   cutTreeMC.Attach(ht250_Trigger)
@@ -320,8 +363,8 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet), cut = ZeroMuon,
-      htBins = HTBins,TriggerDict = None,lab ="") )
+      OP = ("TruthAnalysis",genericPSet_post), cut = ZeroMuon,
+      htBins = HTBins,TriggerDict = None,lab ="") )  
 
   else:
       if Split == "Muon_All":
@@ -333,11 +376,11 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(ZMassCut,PFMTCut30)
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet), cut = PFMTCut30,
+      OP = ("TruthAnalysis",genericPSet_post), cut = PFMTCut30,
       htBins = HTBins,TriggerDict = None ,lab = "OneMuon_") )
 
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet), cut = PFMTCut30,
+      OP = ("TruthAnalysis",genericPSet_post), cut = PFMTCut30,
       htBins = HTBins,TriggerDict = None ,lab = "OneMuonWeek_") )
 
 
@@ -346,10 +389,9 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
       cutTreeMC.TAttach(DiMuon,ZMass_2Muons)
     
       out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet), cut = ZMass_2Muons,
+      OP = ("TruthAnalysis",genericPSet_post), cut = ZMass_2Muons,
       htBins = HTBins,TriggerDict = None ,lab = "DiMuon_") )
-
-  
+      
   return (cutTreeMC,secondJetET,out)
 
 
@@ -394,3 +436,35 @@ PSet(GoodVertexWeights = [1.0, 0.071182041228993354, 0.3788533298983548, 0.70212
 
 vertex_reweight_PUS6 = GoodVertexReweighting(
 PSet(GoodVertexWeights =[1.0, 0.6747792521746856, 1.0448420078821972, 1.3055015002285708, 1.3983895957384924, 1.4093911155782819, 1.3850308438481276, 1.3018072225453758, 1.1623455679439036, 1.0517773707737472, 0.89838694986924372, 0.76765214151467354, 0.63185640954246791, 0.49262105848611853, 0.42787145593782405, 0.3847054078776958, 0.35778382190253444, 0.34148368315539618, 0.28535617241618649, 0.24963682196802897, 0.15231738209843554, 0.10766396055685283, 0.066294358386045707, 0.039350814964675719, 0.071293966061105704] ).ps())
+
+
+
+# Here are the Summer 11 MC samples!!!
+
+from montecarlo.Summer11.DYJetsToLL_TuneZ2_M_50_7TeV_madgraph_tauola_Summer11_PU_S4_START42_V11_v1_V15_03_14_jetCorrections_L1FastJet_L2Relative_L3Absolute_jetCollections_ak5calo_ak5pf_hbheNoiseFilterDefaultIsoReq_1 import *
+from montecarlo.Summer11.ZJetsToNuNu_50_HT_100_7TeV_madgraph_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.ZJetsToNuNu_100_HT_200_7TeV_madgraph_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.ZJetsToNuNu_200_HT_inf_7TeV_madgraph_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.QCD_Summer11_madgraph_All import *
+from montecarlo.Summer11.TTJets_TuneZ2_7TeV_madgraph_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.WJetsToLNu_TuneZ2_7TeV_madgraph_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.WJetsToLNu_250_HT_300_TuneZ2_7TeV_madgraph_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.WJetsToLNu_300_HT_inf_TuneZ2_7TeV_madgraph_tauola_Summer11_PU_S4_START42_V11_v1_V15_03_19_jetCorrections_L1FastJet_L2Relative_L3Absolute_jetCollections_ak5calo_ak5pf_hbheNoiseFilterDefaultIsoReq_1 import *
+from montecarlo.Summer11.T_TuneZ2_t_channel_7TeV_powheg_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.T_TuneZ2_tW_channel_DR_7TeV_powheg_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.Tbar_TuneZ2_t_channel_7TeV_powheg_tauola_Summer11_PU_S4_START42_V11_v1 import *
+from montecarlo.Summer11.Tbar_TuneZ2_tW_channel_DR_7TeV_powheg_tauola_Summer11_PU_S4_START42_V11_v1 import *
+
+# PU S6
+from montecarlo.Summer11.WW_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1 import *
+from montecarlo.Summer11.WZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1 import *
+from montecarlo.Summer11.ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1 import *
+
+# Some Fall 11 or Spring 12 (not sure which)
+from montecarlo.Summer11.QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1 import *
+	
+
+DiBoson_sample = [WW_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1,
+					WZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1,
+					ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1]
+
