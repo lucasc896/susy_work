@@ -124,7 +124,7 @@ bool TruthAnalysis::isbquark( Event::Data& ev, const Event::GenObject& gobj ){
 	  //looks for a b-quark
     if( fabs( gobj.GetID() ) == 5 ){ 
 
-      if( gobj.Pt() > 0 && fabs( gobj.Eta() ) < 15. ){
+      if( gobj.Pt() > 0. && fabs( gobj.Eta() ) < 15. ){
 	  	isbquark = true;
 	  } //pt and eta
     } //ID

@@ -11,10 +11,10 @@ from ra1objectid.vbtfElectronId_cff import *
 from ra1objectid.vbtfMuonId_cff import *
 from ra1objectid.ra3PhotonId_cff import *
 
-vbtfMuonId_cff = Muon_IDFilter( vbtfmuonidps.ps()  )
-cutTreeMC,junkVar,l = MakeMCTree(100.)
-vbtfElectronIdFilter = Electron_IDFilter( vbtfelectronidWP95ps.ps() )
-ra3PhotonIdFilter    = Photon_IDFilter( ra3photonidps.ps() )
+vbtfMuonId_cff 			= Muon_IDFilter( vbtfmuonidps.ps()  )
+cutTreeMC,junkVar,l 	= MakeMCTree(100.)
+vbtfElectronIdFilter	= Electron_IDFilter( vbtfelectronidWP95ps.ps() )
+ra3PhotonIdFilter    	= Photon_IDFilter( ra3photonidps.ps() )
 
 def addCutFlowMC(b) :
 #  b.AddWeightFilter("Weight", vertex_reweight)
@@ -24,16 +24,16 @@ def addCutFlowMC(b) :
   b+=cutTreeMC
 
 #AK5 Calo
-conf_ak5_caloMC = deepcopy(defaultConfig) #as defined in framework
-conf_ak5_caloMC.Ntuple = deepcopy(ak5_calo) #as defined in bG
-conf_ak5_caloMC.XCleaning = deepcopy(default_cc) #as defined in bG
-conf_ak5_caloMC.Common = deepcopy(default_common) #as defined in bG
+conf_ak5_caloMC 			= deepcopy(defaultConfig) #as defined in framework
+conf_ak5_caloMC.Ntuple 		= deepcopy(ak5_calo) #as defined in bG
+conf_ak5_caloMC.XCleaning 	= deepcopy(default_cc) #as defined in bG
+conf_ak5_caloMC.Common 		= deepcopy(default_common) #as defined in bG
 conf_ak5_caloMC.Common.print_out()
 
-anal_ak5_caloMC=Analysis("AK5Calo") #creates an instance of the class 'Analysis' called 'AK5Calo'
+anal_ak5_caloMC = Analysis("AK5Calo") #creates an instance of the class 'Analysis' called 'AK5Calo'
 addCutFlowMC(anal_ak5_caloMC)
 
-outDir = "../results_"+strftime("%d_%b_%H")+"//TruthAnalysis_test5/"
+outDir = "../results_"+strftime("%d_%b_%H")+"//TruthAnalysis_test3/"
 ensure_dir(outDir)
 
 from montecarlo.Summer11.QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1 import *

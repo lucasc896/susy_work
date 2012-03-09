@@ -191,6 +191,7 @@ def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
   out.append(op)
   cutTree.TAttach(cut,op)
   alpha = OP_CommonAlphaTCut(0.55)
+  #alpha = OP_CommonAlphaTCut(0.)
   dump = EventDump()
   skim_ps=PSet(
     SkimName = "myskim",
@@ -222,7 +223,9 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
         if int(lower) == 475 and upper is None: continue
         if int(lower) == 675 and upper is None: continue
         # print "continue should have happened now"
+        #lower_chris = 0.
         lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
+        #lowerCut = eval("RECO_CommonHTCut(%d)"%lower_chris)
         triggerps = PSet(Verbose = False,
         UsePreScaledTriggers = False,
         Triggers = [])
@@ -234,7 +237,9 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
         cutTree.TAttach(cut,Trigger)
         cutTree.TAttach(Trigger,lowerCut)
         if upper:
+          #upper_chris = 2000.
           upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
+          #upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper_chris)
           out.append(upperCut)
           cutTree.TAttach(lowerCut,upperCut)
         pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
@@ -247,10 +252,14 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
         if int(lower) == 475 and upper is None: continue
         if int(lower) == 675 and upper is None: continue
         # print "continue should have happened now"
+        #lower_chris = 0.
         lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
+        #lowerCut = eval("RECO_CommonHTCut(%d)"%lower_chris)
         out.append(lowerCut)
         cutTree.TAttach(cut,lowerCut)
         if upper:
+          #upper_chris = 2000.
+          #upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper_chris)
           upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
           out.append(upperCut)
           cutTree.TAttach(lowerCut,upperCut)
@@ -361,11 +370,9 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
   cutTreeMC.TAttach(DeadEcalCutMC,MHT_METCut)
   if Muon == None:
       cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
-
       out.append(AddBinedHist(cutTree = cutTreeMC,
       OP = ("TruthAnalysis",genericPSet_post), cut = ZeroMuon,
       htBins = HTBins,TriggerDict = None,lab ="") )  
-
   else:
       if Split == "Muon_All":
           cutTreeMC.TAttach(MHT_METCut,Mu45PtCut)
