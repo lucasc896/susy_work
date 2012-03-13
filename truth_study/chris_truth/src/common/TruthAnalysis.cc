@@ -11,6 +11,7 @@
 #include "JetData.hh"
 #include "TMath.h"
 #include "GenObject.hh"
+#include "GenMatrixBin.hh"
 
 using namespace Operation;
 
@@ -21,8 +22,7 @@ dirName_( ps.Get<std::string>("DirName") ),
 nMin_( ps.Get<int>("MinObjects") ),
 nMax_( ps.Get<int>("MaxObjects") ),
 
-StandardPlots_( ps.Get<bool>("StandardPlots") ),
-PrePlots_( ps.Get<bool>("PrePlots") )
+StandardPlots_( ps.Get<bool>("StandardPlots") )
 
    {}
    
@@ -41,17 +41,17 @@ void TruthAnalysis::Start( Event::Data& ev) {
 //definition of the BookHistos() private function
 void TruthAnalysis::BookHistos() {
 	if ( StandardPlots_ ) { StandardPlots(); }
-	if ( PrePlots_ ) { PrePlots(); }
-} //don't really follow why this needs to be done
+}
 
 //definition of the Process public function
 bool TruthAnalysis::Process ( Event::Data& ev ) {
 	if ( StandardPlots_ ) { StandardPlots(ev); }
+return true;
 }
 
 //definition the printout tool
 std::ostream& TruthAnalysis::Description( std::ostream& ostrm ) {
-  ostrm << "Hadronic Common Plots ";
+  ostrm << "Truth b multiplicity plots";
   ostrm << "(bins " << nMin_ << " to " << nMax_ << ") ";
   return ostrm;
 }
@@ -59,23 +59,14 @@ std::ostream& TruthAnalysis::Description( std::ostream& ostrm ) {
 
 void TruthAnalysis::StandardPlots() {
 
-	BookHistArray( postbmulti,
-    "No. of b quarks post-selection",
+	BookHistArray( bmulti,
+    "No. of b quarks",
     ";b multiplicity;# count",
-    10, 0, 10,
-    1, 0, 1, true );
-    
+    8, 0, 8,
+    1, 0, 1, true );   
+
 }
 
-void TruthAnalysis::PrePlots() {
-
-	BookHistArray( prebmulti,
-    "No. of b quarks pre-selection",
-    ";b multiplicity;# count",
-    10, 0, 10,
-    1, 0, 1, true );	
-    
-}
 
 bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	unsigned int nobjkt = ev.CommonObjects().size();
@@ -83,20 +74,7 @@ bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	if ( StandardPlots_ ) {
     //When nobj >= nMin_
     	if( nobjkt >= nMin_ && nobjkt <= nMax_){
-      			postbmulti[0]->			Fill(Hasbquark(ev));
-	    }// if obj >= nMin
-	} //StandardPlots_
-	
-	return true;
-}
-
-bool TruthAnalysis::PrePlots( Event::Data& ev ) {
-	unsigned int nobjkt = ev.CommonObjects().size();
-
-	if ( PrePlots_ ) {
-    //When nobj >= nMin_
-    	if( nobjkt >= nMin_ && nobjkt <= nMax_){
-      			prebmulti[0]->			Fill(Hasbquark(ev));
+      			bmulti[0]->			Fill(Hasbquark(ev));
 	    }// if obj >= nMin
 	} //StandardPlots_
 	
@@ -105,6 +83,8 @@ bool TruthAnalysis::PrePlots( Event::Data& ev ) {
 
 int TruthAnalysis::Hasbquark( Event::Data& ev ) {
 	int num_bquark = 0;
+	
+	//need to change code here to include the GenMatrixBin module
 	
 	//loop over gen object event content
 	for( std::vector<Event::GenObject>::const_iterator igen = ev.GenParticles().begin(); igen != ev.GenParticles().end(); ++igen ) {
@@ -117,18 +97,14 @@ int TruthAnalysis::Hasbquark( Event::Data& ev ) {
 }
 
 bool TruthAnalysis::isbquark( Event::Data& ev, const Event::GenObject& gobj ){
-  bool isbquark=false;
 
-    //is on-shell
-  if( gobj.GetStatus() == 3 ) {
-	  //looks for a b-quark
-    if( fabs( gobj.GetID() ) == 5 ){ 
+  if( gobj.GetStatus()==3 ){ //only status3 objects considered
+  	 if( fabs( gobj.GetID() )==5 ){ //only b-quarks considered
+  		if( gobj.Pt() > 0. && fabs( gobj.Eta() ) < 15. ){
+	  		return true;
+	  	}	
+	 }  
+  }
 
-      if( gobj.Pt() > 0. && fabs( gobj.Eta() ) < 15. ){
-	  	isbquark = true;
-	  } //pt and eta
-    } //ID
-  } //Status
-
-  return isbquark;
+  return false;
 }

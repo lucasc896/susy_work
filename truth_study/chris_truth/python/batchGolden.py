@@ -158,25 +158,15 @@ skim = SkimOp(skim_ps.ps())
 
 #Plot the common plots!
 
-genericPSet_post = PSet(
+genericPSet = PSet(
 DirName      = "275_325Gev",
 MinObjects   = 2,
 MaxObjects   = 15,
 minDR = 0.4 ,
 mCut = 2.0 ,
-StandardPlots     = True,
-PrePlots	= False,
+StandardPlots     = True
 )
 
-genericPSet_pre = PSet(
-DirName      = "test",
-MinObjects   = 2,
-MaxObjects   = 15,
-minDR = 0.4 ,
-mCut = 2.0 ,
-StandardPlots     = False,
-PrePlots	= True,
-)
 
 def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
   """docstring for makePlotOp"""
@@ -191,23 +181,9 @@ def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
   out.append(op)
   cutTree.TAttach(cut,op)
   alpha = OP_CommonAlphaTCut(0.55)
-  #alpha = OP_CommonAlphaTCut(0.)
-  dump = EventDump()
-  skim_ps=PSet(
-    SkimName = "myskim",
-    DropBranches = False,
-    Branches = [
-        " keep * "
-        ]
-  )
-  skim = SkimOp(skim_ps.ps())
-  # out.append(skim)
-  # out.append(skim_ps)
+
   cutTree.TAttach(cut,alpha)
-  cutTree.TAttach(alpha,dump)
-  # cutTree.TAttach(alpha,skim)
   out.append(alpha)
-  out.append(dump)
   return out
   pass
   
@@ -215,56 +191,26 @@ def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
 def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = None,lab = ""):
   """docstring for AddBinedHist"""
   out = []
-  if TriggerDict is not None:
-      for lower,upper in zip(htBins,htBins[1:]+[None]):
-        # print "Lower , Upper =", lower , upper
-        if int(lower) == 325 and upper is None: continue
-        if int(lower) == 375 and upper is None: continue
-        if int(lower) == 475 and upper is None: continue
-        if int(lower) == 675 and upper is None: continue
-        # print "continue should have happened now"
-        #lower_chris = 0.
-        lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
-        #lowerCut = eval("RECO_CommonHTCut(%d)"%lower_chris)
-        triggerps = PSet(Verbose = False,
-        UsePreScaledTriggers = False,
-        Triggers = [])
-        triggerps.Triggers = TriggerDict["%d%s"%(lower, "_%d"%upper if upper else "")]
-        Trigger = OP_MultiTrigger( triggerps.ps() )
-        out.append(triggerps)
-        out.append(Trigger)
-        out.append(lowerCut)
-        cutTree.TAttach(cut,Trigger)
-        cutTree.TAttach(Trigger,lowerCut)
-        if upper:
-          #upper_chris = 2000.
-          upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
-          #upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper_chris)
-          out.append(upperCut)
-          cutTree.TAttach(lowerCut,upperCut)
-        pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
-        out.append(pOps) 
-  else:
-      for lower,upper in zip(htBins,htBins[1:]+[None]):
-        # print "Lower , Upper =", lower , upper
-        if int(lower) == 325 and upper is None: continue
-        if int(lower) == 375 and upper is None: continue
-        if int(lower) == 475 and upper is None: continue
-        if int(lower) == 675 and upper is None: continue
-        # print "continue should have happened now"
-        #lower_chris = 0.
-        lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
-        #lowerCut = eval("RECO_CommonHTCut(%d)"%lower_chris)
-        out.append(lowerCut)
-        cutTree.TAttach(cut,lowerCut)
-        if upper:
-          #upper_chris = 2000.
-          #upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper_chris)
-          upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
-          out.append(upperCut)
-          cutTree.TAttach(lowerCut,upperCut)
-        pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
-        out.append(pOps)
+  
+  for lower,upper in zip(htBins,htBins[1:]+[None]):
+    # print "Lower , Upper =", lower , upper
+    if int(lower) == 325 and upper is None: continue
+    if int(lower) == 375 and upper is None: continue
+    if int(lower) == 475 and upper is None: continue
+    if int(lower) == 675 and upper is None: continue
+    # print "continue should have happened now"
+    lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
+    out.append(lowerCut)
+    #cutTree.TAttach(cut,lowerCut)
+    if upper:
+      upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
+      out.append(upperCut)
+      #cutTree.TAttach(lowerCut,upperCut)
+    #pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
+  temp_cut = cut
+  pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = temp_cut, label = "%s_b-multiplicity"%(lab))
+  out.append(pOps) 
+  
   return out
   pass
 
@@ -274,7 +220,8 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
 NoiseFilt= OP_HadronicHBHEnoiseFilter()
 GoodVertexMonster = OP_GoodEventSelection()
 #ht250_Trigger = RECO_CommonHTCut(250.)
-#recHitCut = OP_SumRecHitPtCut(30.)
+ht250_Trigger = RECO_CommonHTCut(0.) #changed by Chris
+recHitCut = OP_SumRecHitPtCut(30.)
 LeadingJetEta = OP_FirstJetEta(2.5)
 oddJet = OP_OddJet()
 oddMuon = OP_OddMuon()
@@ -284,13 +231,13 @@ badMuonInJet = OP_BadMuonInJet()
 numComElectrons = OP_NumComElectrons("<=",0)
 numComPhotons = OP_NumComPhotons("<=",0)
 VertexPtOverHT = OP_SumVertexPtOverHT(0.1)
-#htCut275 = RECO_CommonHTCut(275.)
+htCut275 = RECO_CommonHTCut(275.)
 DeadEcalCutMC =   OP_DeadECALCut(0.3,0.3,0.5,30.,10,0,"./deadRegionList_START38_V12.txt")
 MHTCut = OP_CommonMHTCut(0.)
 MHT_METCut = OP_MHToverMET(1.25,50.)
 DiJet5 = OP_NumComJets("==",2)
 ZeroMuon = OP_NumComMuons("<=",0)
-#recHitCut = OP_SumRecHitPtCut(30.)
+recHitCut = OP_SumRecHitPtCut(30.)
 ZeroMuon = OP_NumComMuons("<=",0)
 json_ouput = JSONOutput("filtered")
 OneMuon = OP_NumComMuons("==",1)
@@ -302,40 +249,8 @@ minDRMuonJetCut = RECO_MuonJetDRCut(0.5)
 minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.5)
 Mu45PtCut = OP_UpperMuPtCut(1000.0)
 
-#NoiseFilt= OP_HadronicHBHEnoiseFilter()
-#GoodVertexMonster = OP_GoodEventSelection()
-ht250_Trigger = RECO_CommonHTCut(0.)
-recHitCut = OP_SumRecHitPtCut(0.)
-#LeadingJetEta = OP_FirstJetEta(0.)
-#oddJet = OP_OddJet()
-#oddMuon = OP_OddMuon()
-#oddElectron = OP_OddElectron()
-#oddPhoton = OP_OddPhoton()
-#badMuonInJet = OP_BadMuonInJet()
-#numComElectrons = OP_NumComElectrons("<=",0)
-#numComPhotons = OP_NumComPhotons("<=",0)
-#VertexPtOverHT = OP_SumVertexPtOverHT(0.)
-htCut275 = RECO_CommonHTCut(0.)
-#DeadEcalCutMC =   OP_DeadECALCut(0.,0.,0.,0.,0,0,"./deadRegionList_START38_V12.txt")
-#MHTCut = OP_CommonMHTCut(0.)
-#MHT_METCut = OP_MHToverMET(0.,0.)
-#DiJet5 = OP_NumComJets("==",2)
-#ZeroMuon = OP_NumComMuons("<=",0)
-recHitCut = OP_SumRecHitPtCut(0.)
-#ZeroMuon = OP_NumComMuons("<=",0)
-#json_ouput = JSONOutput("filtered")
-#OneMuon = OP_NumComMuons("==",0)
-#ZMassCut = RECO_2ndMuonMass(0., 0., False, "all")
-#PFMTCut30 = RECO_PFMTCut(0.)
-#DiMuon = OP_NumComMuons("==",00)
-#ZMass_2Muons = RECO_2ndMuonMass(0., 0., True, "OS")
-#minDRMuonJetCut = RECO_MuonJetDRCut(0.)
-#minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.)
-#Mu45PtCut = OP_UpperMuPtCut(0.)
-
-
 #Second MC!
-def MakeMCTree(Threshold, Muon = None,Split = None):
+def MakeMCTree(Threshold, Split = None):
   out = []
 
   HTBins = []
@@ -344,21 +259,27 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
   if int(Threshold) is 100 and Split == "Muon_All" : HTBins = [375+100*i for i in range(6)]
   if int(Threshold) is 73 : HTBins = [275.,325.]
   if int(Threshold) is 86 : HTBins = [325.,375.]
-
+  
   secondJetET = OP_SecondJetEtCut(Threshold)
+
   cutTreeMC = Tree("MC")
   cutTreeMC.Attach(ht250_Trigger)
-  cutTreeMC.TAttach(ht250_Trigger,NoiseFilt)
+  
+  #plot first for the pre-selection sample
+  out.append(AddBinedHist(cutTree = cutTreeMC,
+      OP = ("TruthAnalysis",genericPSet), cut = ht250_Trigger,
+      htBins = HTBins,TriggerDict = None,lab ="before_cuts"))
+
+ 
+  cutTreeMC.TAttach(ht250_Trigger,NoiseFilt) #if true on ht250 then go on to noisefilt
   cutTreeMC.TAttach(NoiseFilt,GoodVertexMonster)
+  
   cutTreeMC.TAttach(GoodVertexMonster,recHitCut)
   cutTreeMC.TAttach(recHitCut,LeadingJetEta)
   cutTreeMC.TAttach(LeadingJetEta,secondJetET)
   cutTreeMC.TAttach(secondJetET,oddJet)
   cutTreeMC.TAttach(oddJet,badMuonInJet)
-  cutTreeMC.TAttach(badMuonInJet,
-  #oddMuon)
-  #cutTreeMC.TAttach(oddMuon,
-  oddElectron)
+  cutTreeMC.TAttach(badMuonInJet,oddElectron)
   cutTreeMC.TAttach(oddElectron,oddPhoton)
   cutTreeMC.TAttach(oddPhoton,numComElectrons)
   cutTreeMC.TAttach(numComElectrons,numComPhotons)
@@ -366,84 +287,15 @@ def MakeMCTree(Threshold, Muon = None,Split = None):
   cutTreeMC.TAttach(VertexPtOverHT,htCut275)
   cutTreeMC.TAttach(htCut275,DeadEcalCutMC)
  
-  #Here be plots after all the cuts!!
   cutTreeMC.TAttach(DeadEcalCutMC,MHT_METCut)
-  if Muon == None:
-      cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
-      out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = ZeroMuon,
-      htBins = HTBins,TriggerDict = None,lab ="") )  
-  else:
-      if Split == "Muon_All":
-          cutTreeMC.TAttach(MHT_METCut,Mu45PtCut)
-          cutTreeMC.TAttach(Mu45PtCut,minDRMuonJetCut)
-      else: cutTreeMC.TAttach(MHT_METCut,minDRMuonJetCut)
-      cutTreeMC.TAttach(minDRMuonJetCut,OneMuon)
-      cutTreeMC.TAttach(OneMuon,ZMassCut)
-      cutTreeMC.TAttach(ZMassCut,PFMTCut30)
-
-      out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = PFMTCut30,
-      htBins = HTBins,TriggerDict = None ,lab = "OneMuon_") )
-
-      out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = PFMTCut30,
-      htBins = HTBins,TriggerDict = None ,lab = "OneMuonWeek_") )
-
-
-
-      cutTreeMC.TAttach(minDRMuonJetCut,DiMuon)
-      cutTreeMC.TAttach(DiMuon,ZMass_2Muons)
-    
-      out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = ZMass_2Muons,
-      htBins = HTBins,TriggerDict = None ,lab = "DiMuon_") )
+  cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
+  
+  #plot again for post-selection sample
+  out.append(AddBinedHist(cutTree = cutTreeMC,
+      OP = ("TruthAnalysis",genericPSet), cut = ZeroMuon,
+      htBins = HTBins,TriggerDict = None,lab ="after_cuts") )  # apply a TruthAnalysis instance to 'cutTree' at the truth leg of 'cut'. passes that particular instance with the 'label' which is appended to the directory in the root file
       
   return (cutTreeMC,secondJetET,out)
-
-
-# Define the custom muon ID
-
-mu_id_higher = PSet(
-    doJetLoop = False,
-    MuID = "Tight",
-    MinPt = 10.,
-    MaxEta = 2.1,
-    MaxIsolation = 0.1,
-    DRMuJet = 0.3,
-    MaxGlbTrkDxy = 0.02,
-    MinGlbTrkNumOfValidHits = 11,
-    SegMatch2GlbMu = 1,
-    PixelHitsOnInrTrk = 1,
-    MaxInrTrkDz = 1.
-        )
-
-
-mu_id_lower = PSet(
-    doJetLoop = False,
-    MuID = "Tight",
-    MinPt = 10.,
-    MaxEta = 2.5,
-    MaxIsolation = 0.1,
-    DRMuJet = 0.3,
-    MaxGlbTrkDxy = 0.02,
-    MinGlbTrkNumOfValidHits = 11,
-    SegMatch2GlbMu = 1,
-    PixelHitsOnInrTrk = 1,
-    MaxInrTrkDz = 1.
-        )
-
-
-
-vertex_reweight_PUS4 = GoodVertexReweighting(
-PSet(GoodVertexWeights = [1.0, 0.071182041228993354, 0.3788533298983548, 0.70212224756460717, 0.95912926863057879,
- 1.1063323506805849, 1.1826257455177471, 1.2297382718782017, 1.2772830447358376, 1.4266446590805815, 1.5732065775636328, 
- 1.8401056375971667, 2.1784909215394999, 2.506266882602076, 3.3335988825191176, 4.687787057503483, 6.8602191807881647, 
- 11.198474011060968, 14.883466002768214, 20.878255333866864, 1.0, 1.0, 1.0, 1.0, 1.0]).ps())
-
-vertex_reweight_PUS6 = GoodVertexReweighting(
-PSet(GoodVertexWeights =[1.0, 0.6747792521746856, 1.0448420078821972, 1.3055015002285708, 1.3983895957384924, 1.4093911155782819, 1.3850308438481276, 1.3018072225453758, 1.1623455679439036, 1.0517773707737472, 0.89838694986924372, 0.76765214151467354, 0.63185640954246791, 0.49262105848611853, 0.42787145593782405, 0.3847054078776958, 0.35778382190253444, 0.34148368315539618, 0.28535617241618649, 0.24963682196802897, 0.15231738209843554, 0.10766396055685283, 0.066294358386045707, 0.039350814964675719, 0.071293966061105704] ).ps())
-
 
 
 # Here are the Summer 11 MC samples!!!
@@ -470,6 +322,7 @@ from montecarlo.Summer11.ZZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B
 # Some Fall 11 or Spring 12 (not sure which)
 from montecarlo.Summer11.QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1 import *
 	
+QCD_BLep_sample = [QCD_BLepEnriched_TuneZ2_7TeV_pythia6_evtgen_Summer11_PU_S3_START42_V11_v1]
 
 DiBoson_sample = [WW_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1,
 					WZ_TuneZ2_7TeV_pythia6_tauola_Fall11_PU_S6_START42_V14B_v1,

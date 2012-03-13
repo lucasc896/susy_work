@@ -161,4 +161,5 @@ obj/TruthAnalysis.o obj/TruthAnalysis.d : src/common/TruthAnalysis.cc include/Tr
   /gpfs_phys/cms-working/software/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Math/GenVector/BoostX.h \
   /gpfs_phys/cms-working/software/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Math/GenVector/BoostY.h \
   /gpfs_phys/cms-working/software/slc5_amd64_gcc434/lcg/root/5.27.06b-cms23/include/Math/GenVector/BoostZ.h \
-  ../framework/include/JetData.hh ../framework/include/GenObject.hh
+  ../framework/include/JetData.hh ../framework/include/GenObject.hh \
+  ../framework/include/GenMatrixBin.hh ../framework/include/EventData.hh
