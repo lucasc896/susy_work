@@ -63,7 +63,14 @@ void TruthAnalysis::StandardPlots() {
     "No. of b quarks",
     ";b multiplicity;# count",
     8, 0, 8,
-    1, 0, 1, true );   
+    1, 0, 1, true );
+    
+    BookHistArray( susy_scan,
+    "test",
+    ";;",
+    1000, 0, 1000,
+    1000, 0, 1000,
+    1, 0, 1, true );
 
 }
 
@@ -71,11 +78,33 @@ void TruthAnalysis::StandardPlots() {
 bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	unsigned int nobjkt = ev.CommonObjects().size();
 
+    double M0 = 0.;
+    double M12 = 0.;
+    double MChi = 0.;
+
+    if(ev.M0.enabled()){
+      M0 = ev.M0();
+    }
+    if(ev.MG.enabled()){
+      M0 = ev.MG();
+    }
+    if(ev.M12.enabled()){
+      M12 = ev.M12();
+    }
+    if(ev.MLSP.enabled()){
+      M12 = ev.MLSP();
+    }
+    if(ev.MChi.enabled()){
+      MChi = ev.MChi();
+    }	
+
 	if ( StandardPlots_ ) {
     //When nobj >= nMin_
     	if( nobjkt >= nMin_ && nobjkt <= nMax_){
       			bmulti[0]->			Fill(Hasbquark(ev));
 	    }// if obj >= nMin
+	
+	susy_scan[0]-> Fill(M0, M12);
 	} //StandardPlots_
 	
 	return true;

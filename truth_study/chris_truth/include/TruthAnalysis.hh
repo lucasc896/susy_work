@@ -38,6 +38,7 @@ namespace Operation {
     bool 	isbquark( Event::Data&, const Event::GenObject& );
 
 	std::vector<TH1D*>  bmulti;
+	std::vector<TH2D*>  susy_scan;
 
   };
 
