@@ -66,18 +66,26 @@ void TruthAnalysis::StandardPlots() {
     1, 0, 1, true );
     
     BookHistArray( susy_scan,
-    "test",
-    ";;",
-    1000, 0, 1000,
-    1000, 0, 1000,
+    "mSUGRA_Scan_Plane",
+    ";m0;m0.5",
+    139, 220, 3000,
+    45, 100, 1000,
     1, 0, 1, true );
+
+    BookHistArray( scan_bmulti,
+    "mSUGRA_Scan_Plane_b-quark_Multiplicity",
+    ";m0;m0.5",
+    139, 220, 3000,
+    45, 100, 1000,
+    4, 0, 1, false );    
 
 }
 
 
 bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	unsigned int nobjkt = ev.CommonObjects().size();
-
+	int numb = Hasbquark(ev);
+	
     double M0 = 0.;
     double M12 = 0.;
     double MChi = 0.;
@@ -101,10 +109,15 @@ bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	if ( StandardPlots_ ) {
     //When nobj >= nMin_
     	if( nobjkt >= nMin_ && nobjkt <= nMax_){
-      			bmulti[0]->			Fill(Hasbquark(ev));
+      			bmulti[0]->			Fill( numb );
+      			if ( numb == 0){ scan_bmulti[0]->	Fill( M0,M12,1 );}
+      			if ( numb == 1){ scan_bmulti[1]->	Fill( M0,M12,1 );}
+				if ( numb == 2){ scan_bmulti[2]->	Fill( M0,M12,1 );}
+				if ( numb <= 2){ scan_bmulti[3]->	Fill( M0,M12,1 );}
+
 	    }// if obj >= nMin
 	
-	susy_scan[0]-> Fill(M0, M12);
+	susy_scan[0]-> Fill( M0,M12,1 );
 	} //StandardPlots_
 	
 	return true;

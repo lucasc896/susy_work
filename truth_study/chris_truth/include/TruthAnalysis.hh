@@ -39,6 +39,7 @@ namespace Operation {
 
 	std::vector<TH1D*>  bmulti;
 	std::vector<TH2D*>  susy_scan;
+	std::vector<TH2D*>  scan_bmulti;
 
   };
 
