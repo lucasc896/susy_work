@@ -14,6 +14,8 @@ from icf.config import defaultConfig
 from icf.utils import json_to_pset
 from copy import deepcopy
 
+from validation.cutCounters_cff import * #TW for convenience...
+
 def ensure_dir(path):
 	try:
 		os.makedirs(path)
@@ -238,15 +240,15 @@ def MakeMCTree(Threshold, Split = None):
 
   cutTreeMC = Tree("MC")
   #new initial cut here
-  cutTreeMC.Attach(initial_cut_zero)
+  cutTreeMC.Attach(count_total)
   
   #plot first for the pre-selection sample
   out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_pre), cut = initial_cut_zero,
+      OP = ("TruthAnalysis",genericPSet_pre), cut = count_total,
       TriggerDict = None,lab ="before_cuts"))
       
   # start filling cut tree with pre-selection cuts
-  cutTreeMC.TAttach(initial_cut_zero,ht250_Trigger)
+  cutTreeMC.TAttach(count_total,ht250_Trigger)
   cutTreeMC.TAttach(ht250_Trigger,NoiseFilt) #if true on ht250 then go on to noisefilt
   cutTreeMC.TAttach(NoiseFilt,GoodVertexMonster)
   
