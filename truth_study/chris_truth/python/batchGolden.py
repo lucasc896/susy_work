@@ -170,7 +170,7 @@ StandardPlots     = True
 )
 
 
-def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
+def makePlotOp(OP = (), cutTree = None, cut = None, label = "", selection = ""):
   """docstring for makePlotOp"""
   out = []
   if OP[1] != None:
@@ -182,20 +182,48 @@ def makePlotOp(OP = (), cutTree = None, cut = None, label = ""):
     op = eval(OP[0])
   out.append(op)
   cutTree.TAttach(cut,op)
-
-  return out
-  pass
   
+  alpha = OP_CommonAlphaTCut(0.55)
   
-def AddBinedHist(cutTree = None, OP = (), cut = None, TriggerDict = None,lab = ""):
-  """docstring for AddBinedHist"""
-  out = []
-  temp_cut = cut
-  pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = temp_cut, label = "%s"%(lab))
-  out.append(pOps) 
+  if (selection == "full"):
+  	cutTree.TAttach(cut,alpha)
+  	out.append(alpha)
   
   return out
   pass
+  
+  
+def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [], TriggerDict = None,lab = "", selection = ""):
+	"""docstring for AddBinedHist"""
+	out = []
+	if (selection == "none"):
+		temp_cut = cut
+		pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = temp_cut, label = "%s"%(lab))
+		out.append(pOps)
+	elif ((selection == "pre") or (selection == "full")):
+		for lower,upper in zip(htBins,htBins[1:]+[None]):
+			if int(lower) == 325 and upper is None: continue
+			if int(lower) == 375 and upper is None: continue
+			if int(lower) == 475 and upper is None: continue
+			if int(lower) == 675 and upper is None: continue
+			lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
+			out.append(lowerCut)
+			cutTree.TAttach(cut, lowerCut)
+			print lower, "\n\n", upper, "\n\n"
+			if upper:
+				upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
+				out.append(upperCut)
+				cutTree.TAttach(lowerCut,upperCut)
+				print "\n\nUPPER\n\n"
+			if (selection == "pre"):
+  				pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""), selection = "pre")
+  				out.append(pOps)
+  				print selection, " BOOBS \n\n"
+  			elif (selection == "full"):
+  				pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""), selection = "full")
+  				out.append(pOps)
+  	return out
+  	pass
 
 ####
 # Define some Cuts
@@ -235,8 +263,12 @@ Mu45PtCut = OP_UpperMuPtCut(1000.0)
 #Second MC!
 def MakeMCTree(Threshold, Split = None):
   out = []
-  
+
   secondJetET = OP_SecondJetEtCut(Threshold)
+
+  HTBins = []
+
+  if int(Threshold) is 100 and Split == None : HTBins = [375+100*i for i in range(6)]
 
   cutTreeMC = Tree("MC")
   #new initial cut here
@@ -245,7 +277,7 @@ def MakeMCTree(Threshold, Split = None):
   #plot first for the pre-selection sample
   out.append(AddBinedHist(cutTree = cutTreeMC,
       OP = ("TruthAnalysis",genericPSet_pre), cut = count_total,
-      TriggerDict = None,lab ="before_cuts"))
+      htBins = HTBins, TriggerDict = None,lab ="before_cuts", selection = "none"))
       
   # start filling cut tree with pre-selection cuts
   cutTreeMC.TAttach(count_total,ht250_Trigger)
@@ -267,20 +299,18 @@ def MakeMCTree(Threshold, Split = None):
   # fill plots for pre-selection
   out.append(AddBinedHist(cutTree = cutTreeMC,
       OP = ("TruthAnalysis",genericPSet_post), cut = htCut275,
-      TriggerDict = None,lab ="preselection_cuts") )
+      htBins = HTBins, TriggerDict = None,lab ="preselection_cuts", selection = "pre") )
   
   # perform final cuts
   cutTreeMC.TAttach(htCut275,DeadEcalCutMC)
   cutTreeMC.TAttach(DeadEcalCutMC,MHT_METCut)
   cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
-  alpha = OP_CommonAlphaTCut(0.55)
-  cutTreeMC.TAttach(ZeroMuon,alpha)
-  out.append(alpha)
   
   #plot again for post-selection sample
   out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = alpha,
-      TriggerDict = None,lab ="fullselection_cuts") )
+      OP = ("TruthAnalysis",genericPSet_post), cut = ZeroMuon,
+      htBins = HTBins, TriggerDict = None,lab ="fullselection_cuts", selection = "full"
+      ) )
       
   return (cutTreeMC,secondJetET,out)
 
