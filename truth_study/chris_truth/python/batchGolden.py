@@ -183,12 +183,6 @@ def makePlotOp(OP = (), cutTree = None, cut = None, label = "", selection = ""):
   out.append(op)
   cutTree.TAttach(cut,op)
   
-  alpha = OP_CommonAlphaTCut(0.55)
-  
-  if (selection == "full"):
-  	cutTree.TAttach(cut,alpha)
-  	out.append(alpha)
-  
   return out
   pass
   
@@ -214,12 +208,9 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [], TriggerDict =
 				upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
 				out.append(upperCut)
 				cutTree.TAttach(lowerCut,upperCut)
-			if (selection == "pre"):
-  				pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""), selection = "pre")
-  				out.append(pOps)
-  			elif (selection == "full"):
-  				pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""), selection = "full")
-  				out.append(pOps)
+  			pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""), selection = "pre")
+  			out.append(pOps)
+
   	return out
   	pass
 
@@ -257,6 +248,11 @@ ZMass_2Muons = RECO_2ndMuonMass(25.0, 91.2, True, "OS")
 minDRMuonJetCut = RECO_MuonJetDRCut(0.5)
 minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.5)
 Mu45PtCut = OP_UpperMuPtCut(1000.0)
+alpha = OP_CommonAlphaTCut(0.55)
+
+#extra...?
+
+DiJet5 = OP_NumComJets("==",2)
 
 #Second MC!
 def MakeMCTree(Threshold, Split = None):
@@ -303,10 +299,11 @@ def MakeMCTree(Threshold, Split = None):
   cutTreeMC.TAttach(htCut275,DeadEcalCutMC)
   cutTreeMC.TAttach(DeadEcalCutMC,MHT_METCut)
   cutTreeMC.TAttach(MHT_METCut,ZeroMuon)
+  cutTreeMC.TAttach(ZeroMuon, alpha)
   
   #plot again for post-selection sample
   out.append(AddBinedHist(cutTree = cutTreeMC,
-      OP = ("TruthAnalysis",genericPSet_post), cut = ZeroMuon,
+      OP = ("TruthAnalysis",genericPSet_post), cut = alpha,
       htBins = HTBins, TriggerDict = None,lab ="fullselection_cuts", selection = "full"
       ) )
       
