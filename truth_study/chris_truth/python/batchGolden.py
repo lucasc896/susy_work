@@ -220,7 +220,6 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [], TriggerDict =
 NoiseFilt= OP_HadronicHBHEnoiseFilter()
 GoodVertexMonster = OP_GoodEventSelection()
 ht250_Trigger = RECO_CommonHTCut(250.)
-initial_cut_zero = RECO_CommonHTCut(0.) #introduced by Chris
 recHitCut = OP_SumRecHitPtCut(30.)
 LeadingJetEta = OP_FirstJetEta(2.5)
 oddJet = OP_OddJet()
@@ -248,11 +247,10 @@ ZMass_2Muons = RECO_2ndMuonMass(25.0, 91.2, True, "OS")
 minDRMuonJetCut = RECO_MuonJetDRCut(0.5)
 minDRMuonJetCutDiMuon = RECO_MuonJetDRCut(0.5)
 Mu45PtCut = OP_UpperMuPtCut(1000.0)
-alpha = OP_CommonAlphaTCut(0.55)
+alpha = OP_HadAlphaTCut(0.55)
 
 #extra...?
 
-DiJet5 = OP_NumComJets("==",2)
 
 #Second MC!
 def MakeMCTree(Threshold, Split = None):
@@ -262,8 +260,10 @@ def MakeMCTree(Threshold, Split = None):
 
   HTBins = []
 
-  if int(Threshold) is 100 and Split == None : HTBins = [375+100*i for i in range(6)]
-
+  if int(Threshold) is 100 and Split == None : HTBins = [375.+100*i for i in range(6)]
+  if int(Threshold) is 73 and Split == None : HTBins = [275.,325.]
+  if int(Threshold) is 86 and Split == None : HTBins = [325.,375.]
+  
   cutTreeMC = Tree("MC")
   #new initial cut here
   cutTreeMC.Attach(count_total)
@@ -293,7 +293,7 @@ def MakeMCTree(Threshold, Split = None):
   # fill plots for pre-selection
   out.append(AddBinedHist(cutTree = cutTreeMC,
       OP = ("TruthAnalysis",genericPSet_post), cut = htCut275,
-      htBins = HTBins, TriggerDict = None,lab ="preselection_cuts", selection = "pre") )
+      htBins = HTBins, TriggerDict = None,lab ="preselection_cuts_", selection = "pre") )
   
   # perform final cuts
   cutTreeMC.TAttach(htCut275,DeadEcalCutMC)
@@ -304,7 +304,7 @@ def MakeMCTree(Threshold, Split = None):
   #plot again for post-selection sample
   out.append(AddBinedHist(cutTree = cutTreeMC,
       OP = ("TruthAnalysis",genericPSet_post), cut = alpha,
-      htBins = HTBins, TriggerDict = None,lab ="fullselection_cuts", selection = "full"
+      htBins = HTBins, TriggerDict = None,lab ="fullselection_cuts_", selection = "full"
       ) )
       
   return (cutTreeMC,secondJetET,out)
