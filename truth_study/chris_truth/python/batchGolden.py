@@ -203,7 +203,7 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [], TriggerDict =
 			lowerCut = eval("RECO_CommonHTCut(%d)"%lower)
 			out.append(lowerCut)
 			cutTree.TAttach(cut, lowerCut)
-			print lower, "\n\n", upper, "\n\n"
+			print lower, upper
 			if upper:
 				upperCut =  eval("RECO_CommonHTLessThanCut(%d)"%upper)
 				out.append(upperCut)

@@ -8,7 +8,7 @@
   found. A good example of a recursive function.
 
   Can be run from a bash prompt as well:
-    root -b -l -q "saveHistograms.C(\"aFile.root\",\"gif\",640,480)"
+    root -b -l -q "saveHistograms.C(\"aFile.root\",\"png\",960,720)"
 
   Michael B. Anderson
   May 23, 2008

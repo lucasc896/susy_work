@@ -64,7 +64,7 @@ void TruthAnalysis::StandardPlots() {
     ";m0;m0.5",
     150, 0, 3000,
     51, 0, 1020,
-    1, 0, 1, true );
+    2, 0, 1, true );
 
 	BookHistArray( bmulti_0pt,
 	"b-multipicity_0gev_pt_cut",
@@ -113,23 +113,14 @@ bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 	int numb[3];
     double M0 = 0.;
     double M12 = 0.;
-    double MChi = 0.;
 
     if(ev.M0.enabled()){
       M0 = ev.M0();
     }
-    if(ev.MG.enabled()){
-      M0 = ev.MG();
-    }
     if(ev.M12.enabled()){
       M12 = ev.M12();
     }
-    if(ev.MLSP.enabled()){
-      M12 = ev.MLSP();
-    }
-    if(ev.MChi.enabled()){
-      MChi = ev.MChi();
-    }	
+
     
     // set pt-cuts here
 	numb[0] = Hasbquark(ev, 0.);
@@ -157,6 +148,7 @@ bool TruthAnalysis::StandardPlots( Event::Data& ev ) {
 			
 	    }// if obj >= nMin
 	} //StandardPlots_
+	susy_scan[1]->Fill(M0,M12, 1);
 	
 	return true;
 }
