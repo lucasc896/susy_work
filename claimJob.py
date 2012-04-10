@@ -224,7 +224,7 @@ def get_options(name) :
     option = {}
     timestamp = '_'.join(['%02d'% i for i in datetime.datetime.now().timetuple()[:6]])
     print "Choose output site:"
-    for site in ["CASTOR","CAF","LONDON","OSETHACK"] : print '\t'+site
+    for site in ["CASTOR","CAF","LONDON","OSETHACK", "FNAL"] : print '\t'+site
     option["SITE"] = raw_input("\t> ")
     option["SERVER"] = True if raw_input('Run Jobs via Server? [y/n]  ') in ['Y','y',1] else False
     option["SPLIT"] = True if job['jsonls'] and raw_input('Split by run with multicrab? [y/n]') in  ['Y','y',1] else False
