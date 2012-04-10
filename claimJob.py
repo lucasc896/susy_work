@@ -91,7 +91,7 @@ def setup_crab(job,option) :
                            "DBS_URL": "http://cmsdbsprod.cern.ch/cms_dbs_ph_analysis_02/servlet/DBSServlet",
                            "EXTRA": "[CRAB]\nserver_name=slc5ucsd\n[GRID]\nse_white_list=T1,T2\nce_white_list=T1,T2\n"},
               "FNAL" : {"SE":"T3_US_FNAL",
-              			"FULL_PATH":"/pnfs/cms/WAX/11/store/user/lpcsusyra1/%(USER)s/%(RPATH)s" % option,
+              			"FULL_RPATH":"/pnfs/cms/WAX/11/store/user/lpcsusyra1/%(USER)s/%(RPATH)s" % option,
               			"USER_REMOTE":"%(RPATH)s",
               			"SCHEDULER":"glidein",
                         "DBS_URL": option["DBS_URL"],
