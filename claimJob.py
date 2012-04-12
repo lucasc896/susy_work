@@ -90,9 +90,9 @@ def setup_crab(job,option) :
                            "SCHEDULER":"glidein",
                            "DBS_URL": "http://cmsdbsprod.cern.ch/cms_dbs_ph_analysis_02/servlet/DBSServlet",
                            "EXTRA": "[CRAB]\nserver_name=slc5ucsd\n[GRID]\nse_white_list=T1,T2\nce_white_list=T1,T2\n"},
-              "FNAL" : {"SE":"T3_US_FNAL",
+              "FNAL" : {"SE":"cmssrm.fnal.gov",
               			"FULL_RPATH":"/pnfs/cms/WAX/11/store/user/lpcsusyra1/%(USER)s/%(RPATH)s" % option,
-              			"USER_REMOTE":"%(RPATH)s",
+              			"USER_REMOTE":"/store/user/lpcsusyra1/%(USER)s/%(RPATH)s",
               			"SCHEDULER":"glidein",
                         "DBS_URL": option["DBS_URL"],
                         "EXTRA":""}
@@ -113,15 +113,46 @@ events_per_job=20000'''
     
     option["DBS_URL"] = ("dbs_url="+option["DBS_URL"]) if option["DBS_URL"] else ""
 
-    if option["SITE"] != "LONDON" and option["SITE"]!="OSETHACK":
+    if option["SITE"] != "LONDON" and option["SITE"]!="OSETHACK" and option["SITE"]!="FNAL":
         setup_output_dirs(option)
     if not option["SPLIT"] and job['jsonls'] :
         file = open("%(PATH)s/jsonls.txt"%option,"w")
         print>>file,str(job['jsonls']).replace("'",'"')
         file.close()
+	if option["SITE"]=="FNAL":
+		crabfile = open("%(PATH)s/crab.cfg"%option,"w")
+		print>>crabfile,'''
+[CMSSW]
+get_edm_output = 1
+%(EVENTS)s
+pset=SusyCAF_Tree_cfg.py
+datasetpath=%(DATASET)s
+use_parent=%(USE_PARENT)s
+%(DBS_URL)s
 
-    crabfile = open("%(PATH)s/crab.cfg"%option,"w")
-    print>>crabfile,'''
+[GRID]
+virtual_organization=cms
+ce_white_list=%(WHITELIST)s
+
+[USER]
+copy_data = 1
+storage_element=%(SE)s
+storage_path = /srm/managerv2?SFN=11
+user_remote_dir=%(USER_REMOTE)s
+check_user_remote_dir = 0
+
+[CRAB]
+cfg=crab.cfg
+scheduler=%(SCHEDULER)s
+use_server=%(SERVER)d
+jobtype=cmssw
+
+%(EXTRA)s
+'''% option
+    	crabfile.close()
+    else:
+    	crabfile = open("%(PATH)s/crab.cfg"%option,"w")
+    	print>>crabfile,'''
 [CMSSW]
 get_edm_output = 1
 %(EVENTS)s
@@ -147,7 +178,7 @@ jobtype=cmssw
 
 %(EXTRA)s
 '''% option
-    crabfile.close()
+    	crabfile.close()
     return
 
 
