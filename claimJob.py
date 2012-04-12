@@ -91,12 +91,11 @@ def setup_crab(job,option) :
                            "DBS_URL": "http://cmsdbsprod.cern.ch/cms_dbs_ph_analysis_02/servlet/DBSServlet",
                            "EXTRA": "[CRAB]\nserver_name=slc5ucsd\n[GRID]\nse_white_list=T1,T2\nce_white_list=T1,T2\n"},
               "FNAL" : {"SE":"cmssrm.fnal.gov",
-              			"FULL_RPATH":"/pnfs/cms/WAX/11/store/user/lpcsusyra1/%(USER)s/%(RPATH)s" % option,
-              			"USER_REMOTE":"/store/user/lpcsusyra1/%(USER)s/%(RPATH)s",
-              			"SCHEDULER":"glidein",
+              		"FULL_RPATH":"/pnfs/cms/WAX/11/store/user/lpcsusyra1/%(USER)s/%(RPATH)s" % option,
+              		"USER_REMOTE":"/store/user/lpcsusyra1/%(USER)s/%(RPATH)s",
+              		"SCHEDULER":"glidein",
                         "DBS_URL": option["DBS_URL"],
                         "EXTRA":""}
-              			
              }
              
     option["INITIAL"] = option["USER"][0]
@@ -119,9 +118,9 @@ events_per_job=20000'''
         file = open("%(PATH)s/jsonls.txt"%option,"w")
         print>>file,str(job['jsonls']).replace("'",'"')
         file.close()
-	if option["SITE"]=="FNAL":
-		crabfile = open("%(PATH)s/crab.cfg"%option,"w")
-		print>>crabfile,'''
+    if option["SITE"]=="FNAL":
+	crabfile = open("%(PATH)s/crab.cfg"%option,"w")
+	print>>crabfile,'''
 [CMSSW]
 get_edm_output = 1
 %(EVENTS)s
@@ -149,7 +148,7 @@ jobtype=cmssw
 
 %(EXTRA)s
 '''% option
-    	crabfile.close()
+	crabfile.close()
     else:
     	crabfile = open("%(PATH)s/crab.cfg"%option,"w")
     	print>>crabfile,'''
