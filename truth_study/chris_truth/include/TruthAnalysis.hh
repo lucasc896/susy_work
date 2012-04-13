@@ -34,16 +34,12 @@ namespace Operation {
     
     void 	StandardPlots();
     bool 	StandardPlots( Event::Data& );
-    int 	Hasbquark( Event::Data&, float );
-    bool 	isbquark( Event::Data&, const Event::GenObject&, float);
+    int 	Hasbquark( Event::Data& );
+    bool 	isbquark( Event::Data&, const Event::GenObject&);
 
 	std::vector<TH2D*>	susy_scan;	
-	std::vector<TH1D*>	bmulti_0pt;
-	std::vector<TH1D*>	bmulti_50pt;
-	std::vector<TH1D*>	bmulti_100pt;	
-	std::vector<TH2D*>  scan_bmulti_0pt;
-	std::vector<TH2D*>	scan_bmulti_50pt;
-	std::vector<TH2D*>	scan_bmulti_100pt;
+	std::vector<TH1D*>	bmulti;	
+	std::vector<TH2D*>  scan_bmulti;
 	
   };
 
