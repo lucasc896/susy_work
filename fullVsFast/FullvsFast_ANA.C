@@ -4,16 +4,20 @@ void fullVsFast::BookHistos(){
 
 	nBJets1DHist 	= new TH1D("BJet Multiplicity", "BJet Multiplicity", 16, 0, 16);
 	nJets1DHist 	= new TH1D("Jet Multiplicity", "Jet Multiplicity", 16, 0, 16);
-	HT1DHist		= new TH1D("HT Distribution", "HT Distribution", 1500, 0., 1500.);
+	HT1DHist		= new TH1D("HT Distribution", "HT Distribution", 750, 0., 1500.);
 	MHTMET1DHist	= new TH1D("MHT over MET Distribution", "MHT over MET Distribution", 1000,0.,10.);
-	MHT1DHist		= new TH1D("MHT Distribution", "MHT Distribution", 1500, 0., 1500.);
-	alphaT1DHist	= new TH1D("#alpha_{T} Distribution", "#alpha_{T} Distribution", 1000,0.,10.);
+	MHT1DHist		= new TH1D("MHT Distribution", "MHT Distribution", 750, 0., 1500.);
+	alphaT1DHist	= new TH1D("#alpha_{T} Distribution", "#alpha_{T} Distribution", 800,0.,10.);
+	bJetPt1DHist	= new TH1D("BJet pT Distribution", "BJet pT Distribution", 500, 0., 1000.);
+	bJetEta1DHist	= new TH1D("BJet #eta Distribution", "BJet #eta Distribution", 200, -10., 10.);
+	bJetPhi1DHist	= new TH1D("BJet #phi Distribution", "BJet #phi Distribution", 200, -4, 4);
+	leadJetPt1DHist	= new TH1D("Leading Jet Pt Distribution", "Leading Jet Pt Distribution", 500, 0., 1000.);
+	muonPhi1DHist	= new TH1D("Muon phi", "Muon phi", 200, 0., 6.5);
 
 }
 
-TH1D* fullVsFast::getBJetMultiHist(TFile* inFile, std::vector<TString> vHTBins){
+TH1D* fullVsFast::getBJetMultiHist(TFile* inFile, std::vector<TString> vHTBins, float scaleF){
 	//want to get the plots nbjet_CommJetgeq2_h_<N>;1
-	std::cout << "Getting BJet Multiplicity" << std::endl;
 
 	TCanvas c1;
 	std::vector<TFile*> vInFiles;
@@ -38,13 +42,14 @@ TH1D* fullVsFast::getBJetMultiHist(TFile* inFile, std::vector<TString> vHTBins){
 		nBJets1DHist->Add(h);
 	}
 
+	nBJets1DHist->Scale(scaleF);
+
 	return nBJets1DHist;
 
 }
 
-TH1D* fullVsFast::getJetMultiHist(TFile* inFile, std::vector<TString> vHTBins){
+TH1D* fullVsFast::getJetMultiHist(TFile* inFile, std::vector<TString> vHTBins, float scaleF){
 	//want to get the plots njet_CommJetgeq2_h_<N>;1
-	std::cout << "Getting Jet Multiplicity" << std::endl;
 
 	TCanvas c1;
 	std::vector<TFile*> vInFiles;
@@ -69,133 +74,34 @@ TH1D* fullVsFast::getJetMultiHist(TFile* inFile, std::vector<TString> vHTBins){
 		nJets1DHist->Add(h1);
 	}
 
+	nJets1DHist->Scale(scaleF);
+
 	return nJets1DHist;
 
 }
 
-TH1D* fullVsFast::getHTHist(TFile* inFile, std::vector<TString> vHTBins){
-	//want to get the plots HT_CommJetgeq2_h_<N>;1
-	std::cout << "Getting HT Distribution" << std::endl;
 
-	TCanvas c1;
+TH1D* fullVsFast::getGenericObjHist(TFile* inFile, std::vector<TString> vHTBins, TString histName, float scaleF, TH2D* h2D, TH1D* h1D, float normF, float binOffset){
+
 	std::vector<TFile*> vInFiles;
 	std::vector<TString> hNames;
-
-	playHist2D factor=playHist2D();
-
-	//this appears to be only including the last plot...
+	playHist2D factor=playHist2D(); //create playHist2D with default constructor
 
 	vInFiles.push_back(inFile);
-
-	//load histograms into vector
-	TString histName = "HT_CommJetgeq2_h_all;1";
 	hNames.push_back(histName);
 
+	h1D->Reset("ICES");
 
-	HT2DHist = factor.addHistForDiffFoldersAndFiles2D(vInFiles,vHTBins, hNames.at(0));
-
-	for(int i=0;i<HT2DHist->GetXaxis()->GetNbins();i++){
-		for(int j=0;j<HT2DHist->GetYaxis()->GetNbins();j++){
-			float normF = 1500./1500.;
-			HT1DHist->Fill((i+1)*normF,HT2DHist->GetBinContent(i+1,j+1));
+	h2D = factor.addHistForDiffFoldersAndFiles2D(vInFiles,vHTBins, hNames.at(0));
+	for(int i=0;i<h2D->GetXaxis()->GetNbins();i++){
+		for(int j=0;j<h2D->GetYaxis()->GetNbins();j++){
+			h1D->Fill( ((i+1)*normF)-binOffset, h2D->GetBinContent(i+1,j+1) );
 		}
 	}
 
-	return HT1DHist;
+	h1D->Scale(scaleF);
 
-}
-
-TH1D* fullVsFast::getMHTMETHist(TFile* inFile, std::vector<TString> vHTBins){
-
-	//want to get the plots MHToverMET_CommJetgeq2_h_<N>;1
-	std::cout << "Getting MHT over MET Distribution" << std::endl;
-
-	TCanvas c1;
-	std::vector<TFile*> vInFiles;
-	std::vector<TString> hNames;
-
-	playHist2D factor=playHist2D();
-
-
-	vInFiles.push_back(inFile);
-	//load histograms into vector
-	TString histName = "MHToverMET_CommJetgeq2_h_all;1";
-	hNames.push_back(histName);
-
-	//
-	MHTMET2DHist = factor.addHistForDiffFoldersAndFiles2D(vInFiles,vHTBins, hNames.at(0));
-
-	for(int i=0;i<MHTMET2DHist->GetXaxis()->GetNbins();i++){
-		for(int j=0;j<MHTMET2DHist->GetYaxis()->GetNbins();j++){
-			float normF = 10./1000.;
-			MHTMET1DHist->Fill((i+1)*normF,MHTMET2DHist->GetBinContent(i+1,j+1));
-		}
-	}
-
-	return MHTMET1DHist;
-
-}
-
-TH1D* fullVsFast::getMHTHist(TFile* inFile, std::vector<TString> vHTBins){
-
-	//want to get the plots MHT_CommJetgeq2_h_<N>;1
-	std::cout << "Getting MHT Distribution" << std::endl;
-
-	TCanvas c1;
-	std::vector<TFile*> vInFiles;
-	std::vector<TString> hNames;
-
-	playHist2D factor=playHist2D();
-
-
-	vInFiles.push_back(inFile);
-	//load histograms into vector
-	TString histName = "MHT_CommJetgeq2_h_all;1";
-	hNames.push_back(histName);
-
-	//
-	MHT2DHist = factor.addHistForDiffFoldersAndFiles2D(vInFiles,vHTBins, hNames.at(0));
-
-	for(int i=0;i<MHT2DHist->GetXaxis()->GetNbins();i++){
-		for(int j=0;j<MHT2DHist->GetYaxis()->GetNbins();j++){
-			float normF = 1500./1500.;
-			MHT1DHist->Fill((i+1)*normF,MHT2DHist->GetBinContent(i+1,j+1));
-		}
-	}
-
-	return MHT1DHist;
-
-}
-
-TH1D* fullVsFast::getAlphaTHist(TFile* inFile, std::vector<TString> vHTBins){
-	//want to get the plots AlphaT_CommJetgeq2_h_<N>;1
-	std::cout << "Getting AlphaT Distribution" << std::endl;
-
-	TCanvas c1;
-	std::vector<TFile*> vInFiles;
-	std::vector<TString> hNames;
-
-	playHist2D factor=playHist2D();
-
-	//this appears to be only including the last plot...
-
-	vInFiles.push_back(inFile);
-
-	//load histograms into vector
-	TString histName = "AlphaT_CommJetgeq2_h_all;1";
-	hNames.push_back(histName);
-
-
-	alphaT2DHist = factor.addHistForDiffFoldersAndFiles2D(vInFiles,vHTBins, hNames.at(0));
-
-	for(int i=0;i<alphaT2DHist->GetXaxis()->GetNbins();i++){
-		for(int j=0;j<alphaT2DHist->GetYaxis()->GetNbins();j++){
-			float normF = 10./1000.;
-			alphaT1DHist->Fill((i+1)*normF,alphaT2DHist->GetBinContent(i+1,j+1));
-		}
-	}
-
-	return alphaT1DHist;
+	return h1D;
 
 }
 
@@ -204,50 +110,161 @@ TH1D* fullVsFast::getAlphaTHist(TFile* inFile, std::vector<TString> vHTBins){
 void fullVsFast::runAnalysis(){
 
 	TCanvas c2;
-	TString inFileName;
+	TString inFileNameFull, inFileNameFast;
 	std::vector<TString> vHTBins;
 
-	inFileName = "/Users/cl7359/SUSY/FastvsFullStudy/data_files/AK5Calo_SMS_T1ttttProtoScan_Mgluino_350to1200_mLSP_0to400_8TeV_Pythia6Z_StoreResults_PU_START52_V5_FullSim_v1_V17_pre4_taus_0_jetCorrections_L1FastJet_L2Relative_L3Absolute_L2L3Residual_jetCollections_ak5calo_ak5pf_clucasJob108_all.root";
+	inFileNameFull = "/Users/cl7359/SUSY/FastvsFullStudy/data_files/T1tttt_fullSim_allbins.root";
+	inFileNameFast = "/Users/cl7359/SUSY/FastvsFullStudy/data_files/T1tttt_fastSim_allbins.root";
 
-	TFile *inFile = TFile::Open(inFileName, "r");
+	TFile *inFileFull = TFile::Open(inFileNameFull, "r");
+	TFile *inFileFast = TFile::Open(inFileNameFast, "r");
 
 	BookHistos();
 
 	//fill vectors
-	//vHTBins->push_back("275-325");
-	//vHTBins->push_back("325-375");
-	vHTBins.push_back("375-475");
-	vHTBins.push_back("475-575");
-	vHTBins.push_back("575-675");
-	vHTBins.push_back("675-775");
-	vHTBins.push_back("775-875");
+	vHTBins.push_back("275-325");
+	vHTBins.push_back("325_375");
+	vHTBins.push_back("375_475");
+	vHTBins.push_back("475_575");
+	vHTBins.push_back("575_675");
+	vHTBins.push_back("675_775");
+	vHTBins.push_back("775_875");
 	vHTBins.push_back("875");
 
+	//calculate scaling factor for full->fast event size
+	float fullToFastScale = 3346000./550600.;
 
-	TH1D* h1 = getAlphaTHist(inFile, vHTBins);
-	h1->GetXaxis()->SetRangeUser(0,1);
-	h1->Draw();
+
+	TH1D aT1 = *getGenericObjHist(inFileFull, vHTBins, "AlphaT_CommJetgeq2_h_all;1", fullToFastScale, alphaT2DHist, alphaT1DHist, 1./100.);
+	aT1.SetLineColor(kBlue);
+	aT1.GetXaxis()->SetRangeUser(0,1);
+	aT1.Draw();
+
+	TH1D aT2 = *getGenericObjHist(inFileFast, vHTBins, "AlphaT_CommJetgeq2_h_all;1", 1., alphaT2DHist, alphaT1DHist, 1./100.);
+	aT2.SetLineColor(kRed);
+	aT2.GetXaxis()->SetRangeUser(0,1);
+	aT2.Draw("SAME");
 
 	c2.Print("Output.pdf(");
 
-	getBJetMultiHist(inFile, vHTBins)->Draw();
+
+
+	TH1D bJM1 = *getBJetMultiHist(inFileFull, vHTBins, fullToFastScale);
+	bJM1.SetLineColor(kBlue);
+	bJM1.GetXaxis()->SetRangeUser(0,10);
+	bJM1.Draw();
+
+	TH1D bJM2 = *getBJetMultiHist(inFileFast, vHTBins, 1.);
+	bJM2.SetLineColor(kRed);
+	bJM2.GetXaxis()->SetRangeUser(0,10);
+
+	bJM2.Draw();
+	bJM1.Draw("SAME");
+
 	c2.Print("Output.pdf");
 
-	getJetMultiHist(inFile, vHTBins)->Draw();
+
+
+	TH1D jM1 = *getJetMultiHist(inFileFull, vHTBins, fullToFastScale);
+	jM1.SetLineColor(kBlue);
+	jM1.Draw();
+
+	TH1D jM2 = *getJetMultiHist(inFileFast, vHTBins, 1.);
+	jM2.SetLineColor(kRed);
+	jM2.Draw();
+	jM1.Draw("SAME");
+
 	c2.Print("Output.pdf");
 
-	getHTHist(inFile, vHTBins)->Draw();
+
+
+	TH1D bJPt1 = *getGenericObjHist(inFileFull, vHTBins, "bjetPt_CommJetgeq2_h__all;1", fullToFastScale, bJetPt2DHist, bJetPt1DHist);
+	bJPt1.SetLineColor(kBlue);
+	bJPt1.Draw();
+
+	TH1D bJPt2 = *getGenericObjHist(inFileFast, vHTBins, "bjetPt_CommJetgeq2_h__all;1", 1., bJetPt2DHist, bJetPt1DHist);
+	bJPt2.SetLineColor(kRed);
+	bJPt2.Draw("SAME");
+
 	c2.Print("Output.pdf");
 
-	getMHTHist(inFile, vHTBins)->Draw();
+
+
+	TH1D bJEta1 = *getGenericObjHist(inFileFull, vHTBins, "bjetEta_CommJetgeq2_h__all;1", fullToFastScale, bJetEta2DHist, bJetEta1DHist, 1./10., 10.);
+	bJEta1.SetLineColor(kBlue);
+	bJEta1.GetXaxis()->SetRangeUser(-5,5);
+	bJEta1.Draw();
+
+	TH1D bJEta2 = *getGenericObjHist(inFileFast, vHTBins, "bjetEta_CommJetgeq2_h__all;1", 1., bJetEta2DHist, bJetEta1DHist, 1./10., 10.);
+	bJEta2.SetLineColor(kRed);
+	bJEta2.GetXaxis()->SetRangeUser(-5,5);
+	bJEta2.Draw("SAME");
+
 	c2.Print("Output.pdf");
 
-	getMHTMETHist(inFile, vHTBins)->Draw();
+
+
+	TH1D bJPhi1 = *getGenericObjHist(inFileFull, vHTBins, "bjetPhi_CommJetgeq2_h__all;1", fullToFastScale, bJetPhi2DHist, bJetPhi1DHist, 6.5/200.);
+	bJPhi1.SetLineColor(kBlue);
+	bJPhi1.GetXaxis()->SetRangeUser(-0.1,3.5);
+	bJPhi1.Draw();
+
+	TH1D bJPhi2 = *getGenericObjHist(inFileFast, vHTBins, "bjetPhi_CommJetgeq2_h__all;1", 1.1, bJetPhi2DHist, bJetPhi1DHist, 6.5/200.);
+	bJPhi2.SetLineColor(kRed);
+	bJPhi2.GetXaxis()->SetRangeUser(-0.1,3.5);
+	bJPhi2.Draw("SAME");
+
+	c2.Print("Output.pdf");
+
+
+
+	TH1D leadJPt1 = *getGenericObjHist(inFileFull, vHTBins, "leadJetPt_CommJetgeq2_h__all;1", fullToFastScale, leadJetPt2DHist, leadJetPt1DHist);
+	leadJPt1.SetLineColor(kBlue);
+
+
+	TH1D leadJPt2 = *getGenericObjHist(inFileFast, vHTBins, "leadJetPt_CommJetgeq2_h__all;1", 1.1, leadJetPt2DHist, leadJetPt1DHist);
+	leadJPt2.SetLineColor(kRed);
+	leadJPt2.Draw();
+	leadJPt1.Draw("SAME");
+
+	c2.Print("Output.pdf");
+
+
+
+	TH1D HT1 = *getGenericObjHist(inFileFull, vHTBins, "HT_CommJetgeq2_h_all;1", fullToFastScale, HT2DHist, HT1DHist);
+	HT1.SetLineColor(kBlue);
+	HT1.Draw();
+
+	TH1D HT2 = *getGenericObjHist(inFileFast, vHTBins, "HT_CommJetgeq2_h_all;1", 1.1, HT2DHist, HT1DHist);
+	HT2.SetLineColor(kRed);
+	HT2.Draw("SAME");
+
+	c2.Print("Output.pdf");
+
+
+
+	TH1D MHT1 = *getGenericObjHist(inFileFull, vHTBins, "MHT_CommJetgeq2_h_all;1", fullToFastScale, MHT2DHist, MHT1DHist);
+	MHT1.SetLineColor(kBlue);
+	MHT1.Draw();
+
+	TH1D MHT2 = *getGenericObjHist(inFileFast, vHTBins, "MHT_CommJetgeq2_h_all;1", 1.1, MHT2DHist, MHT1DHist);
+	MHT2.SetLineColor(kRed);
+	MHT2.Draw("SAME");
+
+	c2.Print("Output.pdf");
+
+
+
+	TH1D MHTMET1 = *getGenericObjHist(inFileFull, vHTBins, "MHToverMET_CommJetgeq2_h_all;1", fullToFastScale, MHTMET2DHist, MHTMET1DHist, 1./100.);
+	MHTMET1.SetLineColor(kBlue);
+	MHTMET1.GetXaxis()->SetRangeUser(0,1.5);
+
+
+	TH1D MHTMET2 = *getGenericObjHist(inFileFast, vHTBins, "MHToverMET_CommJetgeq2_h_all;1", 1.1, MHTMET2DHist, MHTMET1DHist, 1./100.);
+	MHTMET2.SetLineColor(kRed);
+	MHTMET2.GetXaxis()->SetRangeUser(0,1.5);
+	MHTMET2.Draw();
+	MHTMET1.Draw("SAME");
+
 	c2.Print("Output.pdf)");
-
-	//need to eventually modify to accept histograms, one from each
-	//input file. then plot both on same plot and print to a single
-	//pdf
-
-
 }
