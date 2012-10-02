@@ -24,19 +24,32 @@ def checkf(command_temp, evnum):
     args=command_temp.split(" ")
     cmd1="lcg-ls -l "+args[0]
     cmd2="lcg-ls -l "+args[1]
+    #print cmd1, cmd2
     check1=commands.getstatusoutput(cmd1)
     check2=commands.getstatusoutput(cmd2)
+ 
     check1=check1[1].split(" ")
     check2=check2[1].split(" ")
-    
+    #print check1[14]
+    #print check2[14]
     # input a temporary variable in case file does not exist (ie. no check2[14] element)
     try:
-    	tmpchk = check2[14]
+    	tmpchk2 = check2[14]
     except IndexError:
-    	tmpchk = 0
+    	tmpchk2 = 0
+    try:
+    	tmpchk1 = check1[14]
+    except IndexError:
+    	print check1
+    	for i in range(len(check1)):
+    		bad_files=bad_files+check2[i]
+		bad_files=bad_files+"\n"
+    	return
     
+    print check1[14]
+    print tmpchk2
     # check if two files are of the same size
-    if check1[14]!=tmpchk:
+    if check1[14]!=tmpchk2:
     	good_set=False
     	print "ERROR ", evnum
     	for i in range(len(check2)):
@@ -45,16 +58,22 @@ def checkf(command_temp, evnum):
     else:
 		pass
 	
-p=commands.getstatusoutput("./mkfiletransfer2.py")
+p=commands.getstatusoutput("python mkfiletransfer2.py")
 output_lines = p[1].split("\n")
 
 print "\n>>>>>>  Checking consistency of transferred files..."
 
 for line in range(1,len(output_lines)):
 	checkf(output_lines[line], line)
+	print line
+
+f = open("test1.txt", "w+")
 
 if good_set==True:
 	print "\n>>>>>>  The dataset was transferred fully (CONGRATS!) \n"
+	f.write("GREAT!")
 elif good_set==False:
 	print "\n>>>>>>  There was an error with the transferred dataset"
 	print bad_files
+	f.write(bad_files)
+f.close()
