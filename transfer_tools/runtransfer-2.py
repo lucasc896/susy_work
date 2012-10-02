@@ -9,7 +9,7 @@ import datetime
 ## Make sure to change the fileName to something unique for the sample being transferred
 
 
-fileName = 'sample_transfers/DYJetsToLL_TuneZ2_IC.txt'
+fileName = 'sample_transfers/ICHEP/T2tt_8tev_FNALtoIC.txt'
 bad_files = "\n 		>>>>>> FILE ERRORS >>>>>> \n\n"
 
 cmd1 = ["touch", fileName]
@@ -25,7 +25,7 @@ fileContent =  fileContent.split('\n')
 
 def copyf(command_temp, fileContent):
 	args=command_temp.split(" ")
-	cmd=["lcg-cp", args[0], args[1]]
+	cmd=["lcg-cp", "-v", args[0], args[1]]
 	print datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), cmd
 	for k in range(len(fileContent)):
 		if args[1] == fileContent[k]:
@@ -85,7 +85,7 @@ def fileWrite(fileContent_tmp):
 	f.close()
 
 
-p=commands.getstatusoutput("./mkfiletransfer2.py")
+p=commands.getstatusoutput("python mkfiletransfer2.py")
 output_lines = p[1].split("\n")
 
 # note, skips the first line of the mkfiletransfer output
@@ -96,7 +96,7 @@ for i in range(1, len(output_lines)):
 		fileContent.append(output_lines[i].split(" ")[1])
 	else:
 		print "bad transfer"
-	if i%100==0:
+	if i%10==0:
 		fileWrite(fileContent)
 		
 print bad_files
