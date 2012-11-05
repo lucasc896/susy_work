@@ -179,7 +179,8 @@ isData        = False,
 BTagAlgo      = 5,
 BTagAlgoCut   = 0.898,
 StandardPlots = True,
-minDR         = 0.6,
+minDR         = 0.5,
+threshold     = 50.,
 )
 
 genericPSet_data = PSet(
@@ -190,7 +191,8 @@ isData        = True,
 BTagAlgo      = 5,
 BTagAlgoCut   = 0.898,
 StandardPlots = True,
-minDR         = 0.6,
+minDR         = 0.5,
+threshold     = 50.,
 )
 
 
@@ -284,13 +286,12 @@ def AddBinedHist(cutTree = None, OP = (), cut = None, htBins = [],TriggerDict = 
           if Muon!=None:
             upperCutVal=("RECO_CommonHTTakeMuLessThanCut(%d)"%upper)
           else:
-            ###upperCutVal=("RECO_CommonHTLessThanCut(%d)"%upper)
-          ###upperCut = eval(upperCutVal)
-          ###out.append(upperCut)
-          ###cutTree.TAttach(lowerCut,upperCut)
-            print None
-        pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = lowerCut, label = "%s%d_"%(lab,lower)) 
-        ###pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
+            upperCutVal=("RECO_CommonHTLessThanCut(%d)"%upper)
+          upperCut = eval(upperCutVal)
+          out.append(upperCut)
+          cutTree.TAttach(lowerCut,upperCut)
+        ###pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = lowerCut, label = "%s%d_"%(lab,lower)) 
+        pOps = makePlotOp(cutTree = cutTree, OP = OP, cut = upperCut if upper else lowerCut, label = "%s%d%s"%(lab,lower, "_%d"%upper if upper else ""))
         out.append(pOps)
   return out
   pass
@@ -326,6 +327,8 @@ htTakeMu250_Trigger = RECO_CommonHTTakeMuCut(ht250trigger)
 
 htCut275 = RECO_CommonHTCut(275.)
 htTakeMuCut275 = RECO_CommonHTTakeMuCut(275.)
+
+nullCut = RECO_CommonHTCut(0.)
 
 DeadEcalCutData = OP_DeadECALCut(0.3,0.3,0.5,30.,10,0,"./deadRegionList_GR10_P_V10.txt")
 DeadEcalCutMC =   OP_DeadECALCut(0.3,0.3,0.5,30.,10,0,"./deadRegionList_START38_V12.txt")
@@ -687,7 +690,7 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
   out = []
 
   HTBins = []
-
+  
   if int(Threshold) is 100 and Split == None : HTBins = [375+100*i for i in range(6)]
   if int(Threshold) is 100 and Split == "Had_One" : HTBins = [375+100*i for i in range(4)]
   if int(Threshold) is 100 and Split == "Had_Two" : HTBins = [675+100*i for i in range(3)]
@@ -698,7 +701,7 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
   if int(Threshold) is 86 : HTBins = [325.,375.]
   
   ### override the above for thresh=100, split==None
-  if int(Threshold) is 100 and Split == None : HTBins = [375, 100000]
+  if int(Threshold) is 100 and Split == None : HTBins = [0.,10000.]
 
   if Muon!=None:
       secondJetET = OP_SecondJetOrMuEtCut(Threshold)
@@ -706,6 +709,7 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
       secondJetET = OP_SecondJetEtCut(Threshold)
 
   cutTreeMC = Tree("MC")
+
 
   if Muon!=None:
       cutTreeMC.Attach(htTakeMu250_Trigger)
@@ -715,7 +719,8 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
       cutTreeMC.TAttach(LeadingJetOrMuEta,secondJetET)
       cutTreeMC.TAttach(secondJetET,oddJet)
   else:
-      cutTreeMC.Attach(ht250_Trigger)
+      cutTreeMC.Attach(nullCut)
+      cutTreeMC.TAttach(nullCut,ht250_Trigger)
       cutTreeMC.TAttach(ht250_Trigger,NoiseFilt)
       cutTreeMC.TAttach(NoiseFilt,GoodVertexMonster)
       cutTreeMC.TAttach(GoodVertexMonster,LeadingJetEta)
@@ -745,8 +750,13 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
     cutTreeMC.TAttach(MHT_METCut,jet_g4) # jet n> 
         
     out.append(AddBinedHist(cutTree = cutTreeMC,
-    OP = ("OP_charmEffStudy",genericPSet_mc), cut = MHT_METCut,
+    OP = ("OP_analysisPlots",genericPSet_mc), cut = nullCut,
+    htBins = HTBins, TriggerDict = None, lab ="noCuts_", Muon=False))
+
+    out.append(AddBinedHist(cutTree = cutTreeMC,
+    OP = ("OP_analysisPlots",genericPSet_mc), cut = MHT_METCut,
     htBins = HTBins, TriggerDict = None, lab ="_", Muon=False))
+
   else:
     cutTreeMC.TAttach(Tot_VertexCut,htCut275)
     cutTreeMC.TAttach(htCut275,Mu45PtCut)
@@ -771,7 +781,7 @@ def MakeMCTree(Threshold, Muon = None, Split = None):
     cutTreeMC.TAttach(ZMass_2Muons,jet_e3_du) # jet n=3
     cutTreeMC.TAttach(ZMass_2Muons,jet_e4_du) # jet n=4
     cutTreeMC.TAttach(ZMass_2Muons,jet_g3_du) # jet n>3
-    cutTreeMC.TAttach(ZMass_2Muons,jet_g4_du) # je
+    cutTreeMC.TAttach(ZMass_2Muons,jet_g4_du) # jet n>4
     
     out.append(AddBinedHist(cutTree = cutTreeMC,
     OP = ("OP_charmEffStudy",genericPSet_mc), cut = ZMassCut,
