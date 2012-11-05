@@ -16,9 +16,9 @@ from ra1objectid.ra3PhotonId2012_cff import *
 from samples import *
 from sys import argv
 
-default_common.Jets.PtCut              = 50.
+default_common.Jets.PtCut              = 50.*(325./375.)
 
-cutTreeMC, junkVar,junkVar2            = MakeMCTree(100., Muon=None)
+cutTreeMC, junkVar,junkVar2            = MakeMCTree(100.*(325./375.),Muon = None)
 vbtfMuonId_cff                         = Muon_IDFilter( vbtfmuonidps.ps()  )
 ra3PhotonIdFilter                      = Photon_IDFilter2012( ra3photonid2012ps.ps() )
 CustomEleID                            = Electron_Egamma_Veto()
@@ -43,8 +43,8 @@ anal_ak5_caloMC           =Analysis("AK5Calo")
 addCutFlowMC(anal_ak5_caloMC)
 
 
-outDir = "../results_"+strftime("%d_%b_%H/375_")
+outDir = "../results_"+strftime("%d_%b_%H/325_/")
 ensure_dir(outDir)
 
 
-anal_ak5_caloMC.Run(outDir,conf_ak5_caloMC,sig_T2cc_160)
+anal_ak5_caloMC.Run(outDir,conf_ak5_caloMC,sig_T2cc)
