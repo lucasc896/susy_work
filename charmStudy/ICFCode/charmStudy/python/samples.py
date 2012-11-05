@@ -2,9 +2,15 @@
 
 import setupSUSY
 
+
+
 ###// Signal Samples //###
-from montecarlo.Summer12.FNAL.charmStudy.T2cc_mGL_160_mLSP_110_v1_TEST import *
-sig_T2cc = [T2cc_mGL_160_mLSP_110_v1_TEST]
+from montecarlo.Summer12.FNAL.charmStudy.T2cc_mGL_160_mLSP_110_v3 import *
+from montecarlo.Summer12.FNAL.charmStudy.T2cc_mGL_300_mLSP_250_v2 import *
+
+sig_T2cc_160 = [T2cc_mGL_160_mLSP_110_v3]
+sig_T2cc_300 = [T2cc_mGL_300_mLSP_250_v2]
+
 
 #-------------------------------------------------------#
             ###// MonteCarlo Samples //###
@@ -13,6 +19,14 @@ sig_T2cc = [T2cc_mGL_160_mLSP_110_v1_TEST]
 from montecarlo.Summer12.FNAL.HCP.TT_CT10_TuneZ2star_8TeV_powheg_tauola_Summer12_DR53X_PU_S10_START53_V7A_V17_5_taus import *
 #TT_CT10_TuneZ2star_8TeV_powheg_tauola_Summer12_DR53X_PU_S10_START53_V7A_V17_5_taus.File = TT_CT10_TuneZ2star_8TeV_powheg_tauola_Summer12_DR53X_PU_S10_START53_V7A_V17_5_taus.File[0:1]
 mc_TTbar = [TT_CT10_TuneZ2star_8TeV_powheg_tauola_Summer12_DR53X_PU_S10_START53_V7A_V17_5_taus]
+
+## WJets
+from montecarlo.Summer12.FNAL.HCP.WJetsToLNu_HT_250To300_8TeV_madgraph_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363 import *
+from montecarlo.Summer12.FNAL.HCP.WJetsToLNu_HT_300To400_8TeV_madgraph_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363 import *
+from montecarlo.Summer12.FNAL.HCP.WJetsToLNu_HT_400ToInf_8TeV_madgraph_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363 import *
+from montecarlo.Summer12.FNAL.HCP.WJetsToLNu_TuneZ2Star_8TeV_madgraph_tarball_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363 import *
+
+mc_WJets = [WJetsToLNu_TuneZ2Star_8TeV_madgraph_tarball_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363, WJetsToLNu_HT_300To400_8TeV_madgraph_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363, WJetsToLNu_HT_400ToInf_8TeV_madgraph_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363, WJetsToLNu_TuneZ2Star_8TeV_madgraph_tarball_Summer12_DR53X_PU_S10_START53_V7A_v1_V17_5_taus_0_clucasJob363]
 
 ## QCD
 from montecarlo.Summer12.FNAL.HCP.QCD_Pt_0to5_TuneZ2star_8TeV_pythia6_Summer12_PU_S7_START52_V9_v1_V17_5_taus_0_agapitosJobXXX import *
